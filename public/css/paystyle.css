@@ -1,0 +1,27 @@
+@import url(../../css);
+
+.body {
+// custom fonts, etcetera can go here 
+}
+
+.jumbotron-flat {
+  background-color: solid #4DB8FFF;
+  height: 30%;
+  border: 1px solid #4DB8FF;
+  background: white;
+  width: auto;
+text-align: left;
+overflow: auto;
+}
+
+.paymentAmt {
+    font-size: 50px; 
+}
+
+.centered {
+    text-align: center;
+}
+
+.title {
+ padding-top: 15px;   
+}
