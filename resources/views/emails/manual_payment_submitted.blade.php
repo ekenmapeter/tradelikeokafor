@@ -33,7 +33,5 @@
 <h3 style="color: #374151; font-size: 18px; margin-bottom: 12px;">What's next?</h3>
 <p style="margin-bottom: 24px;">We will verify the payment within 24-48 hours. Once approved, your subscription will be activated automatically, and you will receive another email confirmation.</p>
 
-<div style="text-align: center;">
-    <a href="{{ route('dashboard') }}" class="btn">Track Transaction</a>
-</div>
+<p style="margin-bottom: 24px;">If you have any questions, feel free to contact our support team.</p>
 @endsection

@@ -42,6 +42,7 @@ Route::get('mentorship-exclusive', function () {
 })->name('mentorship-exclusive');
 
 Route::get('/paystack/callback', [App\Http\Controllers\PaystackController::class, 'handleCallback'])->name('paystack.callback');
+Route::post('/paystack/webhook', [App\Http\Controllers\PaystackController::class, 'handleWebhook'])->name('paystack.webhook');
 
 // Redirect /dashboard based on user role
 Route::get('/dashboard', function () {

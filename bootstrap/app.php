@@ -16,6 +16,10 @@ return Application::configure(basePath: dirname(__DIR__))
             'check.user.status' => \App\Http\Middleware\CheckUserStatus::class,
             'impersonate' => \App\Http\Middleware\ImpersonateMiddleware::class,
         ]);
+
+        $middleware->validateCsrfTokens(except: [
+            'paystack/webhook',
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //

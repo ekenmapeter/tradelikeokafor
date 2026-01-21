@@ -140,16 +140,10 @@
                 <span>${{ number_format($amount, 2) }}</span>
             </div>
 
-            @if($tempPassword)
-            <div class="credentials">
-                <div style="font-weight: 700; margin-bottom: 5px;"><i class="fas fa-user-lock"></i> Account Created</div>
-                <div style="font-size: 0.9rem;">Your temporary password is: <strong>{{ $tempPassword }}</strong></div>
-                <div style="font-size: 0.8rem; margin-top: 5px;">You can login now to access your dashboard.</div>
-            </div>
-            @endif
+        <div style="margin-top: 30px;">
+            <p style="color: #a9e90f; font-weight: 700;">WELCOME ABOARD!</p>
+            <p style="font-size: 0.9rem; color: #d1d5db;">You will receive an email shortly with further instructions.</p>
         </div>
-
-        <a href="{{ url('/login') }}" class="btn">Login to Dashboard</a>
         <p style="margin-top: 20px; font-size: 0.9rem; color: #9ca3af;">
             Having trouble? Contact us at support@tradelikeokafor.com
         </p>

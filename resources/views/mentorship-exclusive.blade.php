@@ -1,12 +1,12 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('images/logo.PNG') }}">
-	<link rel="icon" type="image/png" sizes="32x32" href="{{ asset('images/logo.PNG') }}">
-	<link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/logo.PNG') }}">
-	<link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/logo.PNG') }}">
-	<link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/logo.PNG') }}">
-	<link rel="icon" type="image/x-icon" href="{{ asset('images/logo.PNG') }}">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('images/logo.png') }}">
+	<link rel="icon" type="image/png" sizes="32x32" href="{{ asset('images/logo.png') }}">
+	<link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/logo.png') }}">
+	<link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/logo.png') }}">
+	<link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/logo.png') }}">
+	<link rel="icon" type="image/x-icon" href="{{ asset('images/logo.png') }}">
 	<link rel="manifest" href="{{ asset('site.webmanifest') }}">
 
 
@@ -40,7 +40,7 @@
 
             
 
-            <h3 class="card-title" style="font-size: 1.25em;"><img id="company-logo-img" src="{{ asset('images/logo.PNG') }}" alt="Business Logo" style="height: 40px;">&nbsp;&nbsp;&nbsp;Exclusive<span style="color: #1e48e5;"> | Private Mentorship</span></h3>
+            <h3 class="card-title" style="font-size: 1.25em;"><img id="company-logo-img" src="{{ asset('images/logo.png') }}" alt="Business Logo" style="height: 40px;">&nbsp;&nbsp;&nbsp;Exclusive<span style="color: #1e48e5;"> | Private Mentorship</span></h3>
           </div>
           <div class="card-body" style="padding: 20px; margin: 5px; border-radius: 8px; line-height: 0.85; background: #eceae6">
 

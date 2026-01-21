@@ -17,22 +17,13 @@
             <td style="color: #6b7280; padding: 5px 0;">Amount:</td>
             <td style="text-align: right; font-weight: bold; color: #111827;">{{ number_format($amount, 2) }}</td>
         </tr>
-        @if($tempPassword)
-        <tr>
-            <td colspan="2" style="padding-top: 20px; border-top: 1px dashed #e5e7eb;">
-                <p style="margin-top: 0; color: #ef4444; font-weight: bold;">Account Created</p>
-                <p style="margin: 5px 0; font-size: 14px;">An account has been created for you to access our premium resources.</p>
-                <p style="margin: 5px 0; font-size: 14px;"><strong>Login Email:</strong> {{ $user->email }}</p>
-                <p style="margin: 5px 0; font-size: 14px;"><strong>Temporary Password:</strong> {{ $tempPassword }}</p>
-                <p style="margin: 5px 0; font-size: 12px; color: #6b7280;">Please change your password after logging in.</p>
-            </td>
-        </tr>
-        @endif
     </table>
 </div>
 
 <div style="text-align: center;">
-    <p style="margin-bottom: 20px; color: #4b5563;">You can now access your dashboard to view your signals and mentorship materials.</p>
-    <a href="{{ url('/login') }}" class="btn">Login to Dashboard</a>
+    <p style="margin-bottom: 24px;">Our platform gives you access to mentorship, signals, and a community of profitable traders.</p>
+
+    <p style="margin-top: 24px;">If you have any questions, our support team is always here to help.</p>
+    <p style="margin-top: 24px;">Thank you for choosing <strong>Trade Like Okafor</strong>. We're excited to have you on board!</p>
 </div>
 @endsection

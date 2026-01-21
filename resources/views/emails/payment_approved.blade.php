@@ -30,9 +30,5 @@
     </table>
 </div>
 
-<div style="text-align: center;">
-    <a href="{{ route('dashboard') }}" class="btn">Go to Dashboard</a>
-</div>
-
 <p style="margin-top: 24px;">Thank you for choosing <strong>Trade Like Okafor</strong>. We're excited to have you on board!</p>
 @endsection
