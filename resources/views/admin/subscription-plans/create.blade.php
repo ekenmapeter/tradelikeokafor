@@ -24,8 +24,10 @@
                 <!-- Description -->
                 <div>
                      <label for="description" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Description</label>
-                    <textarea name="description" id="description" rows="3"
-                        class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-white shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">{{ old('description') }}</textarea>
+                    <textarea name="description" id="description" rows="5"
+                        class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-white shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                        placeholder="Premium Signals&#10;Sniper Entries&#10;Risk & Money Management">{{ old('description') }}</textarea>
+                    <p class="mt-1 text-xs text-gray-500 italic">Enter each benefit/feature on a new line to display it as a bulleted list.</p>
                      @error('description')
                         <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                     @enderror

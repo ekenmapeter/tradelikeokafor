@@ -37,9 +37,18 @@
                     <span class="text-3xl font-extrabold tracking-tight">${{ number_format($plan->price, 2) }}</span>
                     <span class="ml-1 text-xl font-semibold text-gray-500">/ {{ $plan->duration_days }} days</span>
                 </div>
-                <p class="mt-4 text-gray-500 dark:text-gray-400">
-                    {{ $plan->description }}
-                </p>
+                <ul class="mt-4 space-y-2 text-gray-500 dark:text-gray-400">
+                    @foreach(explode("\n", $plan->description) as $feature)
+                        @if(trim($feature))
+                        <li class="flex items-start">
+                            <svg class="h-5 w-5 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span>{{ trim($feature) }}</span>
+                        </li>
+                        @endif
+                    @endforeach
+                </ul>
             </div>
             <div class="p-6 bg-gray-50 dark:bg-gray-750 border-t border-gray-200 dark:border-gray-700 space-y-3">
                 <a href="{{ $plan->payment_link }}" target="_blank" class="block w-full bg-blue-600 border border-transparent rounded-md py-2 text-sm font-semibold text-white text-center hover:bg-blue-700 transition duration-150">
