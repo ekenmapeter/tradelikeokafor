@@ -70,7 +70,7 @@
                     <hr>
 
                     <div class="form-submit text-center">
-                      <a href="https://t.me/+xYVyIeI8RMMwZjE0" class="btn btn-success btn-lg btn-block" style="font-size: 16px;"> Contact Admin to Join </a>
+                      <a href="https://paystack.shop/pay/fxctradepad-private-mentorship" class="btn btn-success btn-lg btn-block" style="font-size: 16px;">Enroll Now</a>
                       <p class="mt-3 text-muted" style="font-size: 12px;">Join our community to get started with your premium mentorship.</p>
                     </div>
 

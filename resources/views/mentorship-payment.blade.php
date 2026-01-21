@@ -76,7 +76,7 @@
 
                     &nbsp;<input type="radio" id="ikeja" name="location" value="./payment/Ikeja">
                     <label for="ikeja">Ikeja</label>&nbsp;&nbsp;  <br><br>
-                    <label><h6 style="font-size: 13px; margin-top: -8px">Please Note:<br><b>Kindly choose a Trading Floor close to your location</b><br><span style="color: #7e8e8f;">If you can't make it to any of these locations, consider the  <a target="_blank" href="payment/Online/index.htm"> Online General Mentorship Option</a></span></h6></label><br> 
+                    <label><h6 style="font-size: 13px; margin-top: -8px">Please Note:<br><b>Kindly choose a Trading Floor close to your location</b><br><span style="color: #7e8e8f;">If you can't make it to any of these locations, consider the  <a target="_blank" href="{{ route('mentorship-payment-online') }}"> Online General Mentorship Option</a></span></h6></label><br> 
                   </div>
 
 
