@@ -72,7 +72,7 @@
           
 
               <div class="form-submit">
-                <a href="https://paystack.shop/pay/general-class-mentorship" class="btn btn-success" style="font-size: 13px;"> Subscribe Now </a>
+                <a href="{{ route('register') }}" class="btn btn-success" style="font-size: 13px;"> Start Now </a>
                 <a href="{{ route('login') }}" class="btn btn-primary" style="font-size: 13px;"> Login </a>
             </div>
             </form>

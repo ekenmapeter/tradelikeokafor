@@ -1,16 +1,16 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="android-chrome-192x192.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="android-chrome-512x512.png">
-	<link rel="icon" type="image/x-icon" href="favicon.ico">
-	<link rel="manifest" href="site.webmanifest">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('images/logo.PNG') }}">
+	<link rel="icon" type="image/png" sizes="32x32" href="{{ asset('images/logo.PNG') }}">
+	<link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/logo.PNG') }}">
+	<link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/logo.PNG') }}">
+	<link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/logo.PNG') }}">
+	<link rel="icon" type="image/x-icon" href="{{ asset('images/logo.PNG') }}">
+	<link rel="manifest" href="{{ asset('site.webmanifest') }}">
 
 
-  <style> body {background-image: url('images/banner-home-group.png'); background-repeat: no-repeat; background-attachment: fixed; background-size: cover;} </style>
+  <style> body {background-image: url('{{ asset('images/banner-home-group.png') }}'); background-repeat: no-repeat; background-attachment: fixed; background-size: cover;} </style>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -40,7 +40,7 @@
 
             
 
-            <h3 class="card-title" style="font-size: 1.25em;"><img id="company-logo-img" src="../../images/logo.png" alt="Business Logo" style="height: 40px;">&nbsp;&nbsp;&nbsp;Exclusive<span style="color: #1e48e5;"> | Private Mentorship</span></h3>
+            <h3 class="card-title" style="font-size: 1.25em;"><img id="company-logo-img" src="{{ asset('images/logo.PNG') }}" alt="Business Logo" style="height: 40px;">&nbsp;&nbsp;&nbsp;Exclusive<span style="color: #1e48e5;"> | Private Mentorship</span></h3>
           </div>
           <div class="card-body" style="padding: 20px; margin: 5px; border-radius: 8px; line-height: 0.85; background: #eceae6">
 
@@ -78,7 +78,7 @@
              
 
               <div class="form-submit">
-                <a href="https://paystack.shop/pay/fxctradepad-exclusive-mentorship" class="btn btn-success" style="font-size: 13px;"> Subscribe Now </a>
+                <a href="{{ route('register') }}" class="btn btn-success" style="font-size: 13px;"> Start Now </a>
                 <a href="{{ route('login') }}" class="btn btn-primary" style="font-size: 13px;"> Login </a>                  </div>
 
             </div>
