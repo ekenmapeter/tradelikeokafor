@@ -3,16 +3,16 @@
 <head>
   <!-- Google tag (gtag.js) -->
  
-  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="android-chrome-192x192.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="android-chrome-512x512.png">
-	<link rel="icon" type="image/x-icon" href="favicon.ico">
-	<link rel="manifest" href="site.webmanifest">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('images/logo.PNG') }}">
+	<link rel="icon" type="image/png" sizes="32x32" href="{{ asset('images/logo.PNG') }}">
+	<link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/logo.PNG') }}">
+	<link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/logo.PNG') }}">
+	<link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/logo.PNG') }}">
+	<link rel="icon" type="image/x-icon" href="{{ asset('images/logo.PNG') }}">
+	<link rel="manifest" href="{{ asset('site.webmanifest') }}">
 
 
-  <style> body {background-image: url('../images/banner-home-group.png'); background-repeat: no-repeat; background-attachment: fixed; background-size: cover;} </style>
+  <style> body {background-image: url('{{ asset('images/banner-home-group.png') }}'); background-repeat: no-repeat; background-attachment: fixed; background-size: cover;} </style>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -38,7 +38,7 @@
         <div class="col-md-5">
           <div class="card" style="border: none; padding-bottom: 30px; background-color: #fff0;">
             <div class="card-header mt-3" style="padding-top: 30px; padding-bottom: 20px; border-bottom-right-radius: 12px; border-bottom-left-radius: 12px; margin-bottom: 20px; background-color: #eceae6;">
-                <h3 class="card-title" style="font-size: 1.25em;"><a class="navbar-brand" href="/"><img id="company-logo-img" src="images/logo.png" alt="Company Logo" class="img-fluid" style="height: 40px;"></a>Mentorship | TRADE LIKE OKAFOR <span style="color: #7e8e8f;"> </span></h3>
+                <h3 class="card-title" style="font-size: 1.25em;"><a class="navbar-brand" href="/"><img id="company-logo-img" src="{{ asset('images/logo.PNG') }}" alt="Company Logo" class="img-fluid" style="height: 40px;"></a>Mentorship | TRADE LIKE OKAFOR <span style="color: #7e8e8f;"> </span></h3>
             </div>
             <div class="card-body" style="padding: 20px; margin: 5px; border-radius: 8px; line-height: 0.85; background: #eceae6">
                 <form id="paymentForm"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-left" viewbox="0 0 16 16"><path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"></path>

@@ -8,30 +8,28 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Open+Sans+Condensed:ital,wght@0,300;0,700;1,300&family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&family=Ubuntu+Condensed&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
 
-	<script src="js/a407e24bdc.js" crossorigin="anonymous"></script>
-	<script src="js/snow.js"></script>
+	<script src="{{ asset('js/snow.js') }}"></script>
 
-	<link rel="stylesheet" href="css/animate.css">
+	<link rel="stylesheet" href="{{ asset('css/animate.css') }}">
 	
-	<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="android-chrome-192x192.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="android-chrome-512x512.png">
-	<link rel="icon" type="image/x-icon" href="favicon.ico">
-	<link rel="manifest" href="site.webmanifest">
+	<link rel="apple-touch-icon" sizes="180x180" href="{{ asset('images/logo.png') }}">
+	<link rel="icon" type="image/png" sizes="32x32" href="{{ asset('images/logo.png') }}">
+	<link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/logo.png') }}">
+	<link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/logo.png') }}">
+	<link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/logo.png') }}">
+	<link rel="icon" type="image/x-icon" href="{{ asset('images/logo.png') }}">
+	<link rel="manifest" href="{{ asset('site.webmanifest') }}">
 	
-	<link rel="stylesheet" href="css/tesgallery.css">
-	<link rel="stylesheet" href="css/paystyle.css">
-	<link rel="stylesheet" href="css/owl.carousel.min.css">
-	<link rel="stylesheet" href="css/owl.theme.default.min.css">
-	<link rel="stylesheet" href="css/magnific-popup.css">
-	<link href="assets/external/widget.css" rel="stylesheet">
+	<link rel="stylesheet" href="{{ asset('css/tesgallery.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/paystyle.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/owl.theme.default.min.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/magnific-popup.css') }}">
 	
-	<link rel="stylesheet" href="css/flaticon.css">
-	<link rel="stylesheet" href="css/styles.css">
-	<link rel="stylesheet" href="css/chat-rules.css">
-	<link rel="stylesheet" href="css/pr-style.css">
+	<link rel="stylesheet" href="{{ asset('css/flaticon.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/chat-rules.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/pr-style.css') }}">
 <!-- Font Awesome 6 (latest) -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 <!-- Google tag (gtag.js) -->
@@ -76,7 +74,7 @@
 
 	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 		<div class="container">
-			<a class="navbar-brand" href="../index.htm"><img src="../images/logo.png" class="img-fluid" style="max-height: 3.5rem"></a>
+			<a class="navbar-brand" href="/"><img src="{{ asset('images/logo.png') }}" class="img-fluid" style="max-height: 3.5rem"></a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="oi oi-menu"></span> Menu
 			</button>
@@ -96,7 +94,7 @@
 	</nav>
 	<!-- END nav -->
 	
-	<div class="hero-wrap js-fullheight" style="background-color: rgba(7, 5, 28, 0.79); background-blend-mode: overlay; background-image: url('images/signals.png');" data-stellar-background-ratio="0.5">
+	<div class="hero-wrap js-fullheight" style="background-color: rgba(7, 5, 28, 0.79); background-blend-mode: overlay; background-image: url('{{ asset('images/signals.png') }}');" data-stellar-background-ratio="0.5">
 		<div class="overlay"></div>
 		<div class="container">
 			<div class="row no-gutters slider-text js-fullheight align-items-center" data-scrollax-parent="true">
@@ -160,7 +158,7 @@
 				<div class="col-lg-3">
 					<h4 class="mb-3 center" style="font-size: 1.2em; color: #fff; font-weight: 700; margin-bottom: 5px!important; letter-spacing: -1px;">Go on Further ></h4>
 					<p class="lead b" style="line-height: 1.15; font-size: 1.2em">You may also be interested in Mentorship</p>
-					<a href="{{ route('mentorship') }}"><img src="images/ad-1.png" style="font-family:'ubuntu'; width: 100%; line-height: 1" class="img-fluid" alt=""></a>
+					<a href="{{ route('mentorship') }}"><img src="{{ asset('images/ad-1.png') }}" style="font-family:'ubuntu'; width: 100%; line-height: 1" class="img-fluid" alt=""></a>
 				</div>
 				</div>
 			</div>
@@ -173,7 +171,7 @@
 	                <div class="col-md-12 col-lg-4">
 	                    <div class="dk-footer-box-info">
 	                        <a href="/" class="footer-logo">
-	                            <img src="images/footer_logo.png" alt="footer_logo" class="img-fluid" style="width:95%; max-height:auto;">
+	                            <img src="{{ asset('images/footer_logo.png') }}" alt="footer_logo" class="img-fluid" style="width:95%; max-height:auto;">
 	                        </a>
 	                        <p class="footer-info-text">
 								Our strategy helps you find the best chances to make money in the market, while keeping the risky parts small so you can keep more of the profit.
@@ -354,25 +352,23 @@
 		<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="120px" height="120px"><circle class="path-bg" cx="60" cy="60" r="58" fill="none" stroke-width="4" stroke="#eeeeee"></circle><circle class="path" cx="60" cy="60" r="58" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"></circle></svg></div>
 
 
-		<script src="js/jquery.min.js"></script>
-		<script src="ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-		<script src="assets/external/widget.js" type="text/javascript"></script>
-		<script src="js/payjs.js"></script>
-		<script src="js/vidry.js"></script>
-		<script src="js/tesgallery.js"></script>
-		<script src="js/jquery-migrate-3.0.1.min.js"></script>
-		<script src="js/popper.min.js"></script>
-		<script src="js/bootstrap.min.js"></script>
-		<script src="js/jquery.easing.1.3.js"></script>
-		<script src="js/jquery.waypoints.min.js"></script>
-		<script src="js/jquery.stellar.min.js"></script>
-		<script src="js/owl.carousel.min.js"></script>
-		<script src="js/jquery.magnific-popup.min.js"></script>
-		<script src="js/jquery.animateNumber.min.js"></script>
-		<script src="js/scrollax.min.js"></script>
+		<script src="{{ asset('js/jquery.min.js') }}"></script>
+		<script src="{{ asset('js/payjs.js') }}"></script>
+		<script src="{{ asset('js/vidry.js') }}"></script>
+		<script src="{{ asset('js/tesgallery.js') }}"></script>
+		<script src="{{ asset('js/jquery-migrate-3.0.1.min.js') }}"></script>
+		<script src="{{ asset('js/popper.min.js') }}"></script>
+		<script src="{{ asset('js/bootstrap.min.js') }}"></script>
+		<script src="{{ asset('js/jquery.easing.1.3.js') }}"></script>
+		<script src="{{ asset('js/jquery.waypoints.min.js') }}"></script>
+		<script src="{{ asset('js/jquery.stellar.min.js') }}"></script>
+		<script src="{{ asset('js/owl.carousel.min.js') }}"></script>
+		<script src="{{ asset('js/jquery.magnific-popup.min.js') }}"></script>
+		<script src="{{ asset('js/jquery.animateNumber.min.js') }}"></script>
+		<script src="{{ asset('js/scrollax.min.js') }}"></script>
 		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-		<script src="js/google-map.js"></script>
-		<script src="js/main.js"></script>
+		<script src="{{ asset('js/google-map.js') }}"></script>
+		<script src="{{ asset('js/main.js') }}"></script>
 	
 		
 	</body>

@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
 	
-
 	<title>TRADE LIKE OKAFOR - Running digits up!</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -10,29 +9,28 @@
 	<link href="css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Open+Sans+Condensed:ital,wght@0,300;0,700;1,300&family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&family=Ubuntu+Condensed&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
 
 	<script src="a407e24bdc.js" crossorigin="anonymous"></script>
-	<script src="js/snow.js"></script>
+	<script src="{{ asset('js/snow.js') }}"></script>
 
-	<link rel="stylesheet" href="css/animate.css">
+	<link rel="stylesheet" href="{{ asset('css/animate.css') }}">
 
-	<link rel="apple-touch-icon" sizes="180x180" href="images/logo.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="images/logo.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="images/logo.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="images/logo.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="images/logo.png">
-	<link rel="icon" type="image/x-icon" href="images/logo.png">
-	<link rel="manifest" href="site.webmanifest">
+	<link rel="apple-touch-icon" sizes="180x180" href="{{ asset('images/logo.png') }}">
+	<link rel="icon" type="image/png" sizes="32x32" href="{{ asset('images/logo.png') }}">
+	<link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/logo.png') }}">
+	<link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/logo.png') }}">
+	<link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/logo.png') }}">
+	<link rel="icon" type="image/x-icon" href="{{ asset('images/logo.png') }}">
+	<link rel="manifest" href="{{ asset('site.webmanifest') }}">
 	
-	<link rel="stylesheet" href="css/tesgallery.css">
-	<link rel="stylesheet" href="css/paystyle.css">
-	<link rel="stylesheet" href="css/owl.carousel.min.css">
-	<link rel="stylesheet" href="css/owl.theme.default.min.css">
-	<link rel="stylesheet" href="css/magnific-popup.css">
-	<link href="../assets/external/widget.css" rel="stylesheet">
+	<link rel="stylesheet" href="{{ asset('css/tesgallery.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/paystyle.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/owl.theme.default.min.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/magnific-popup.css') }}">
 	
-	<link rel="stylesheet" href="css/flaticon.css">
-	<link rel="stylesheet" href="css/styles.css">
-	<link rel="stylesheet" href="css/chat-rules.css">
-	<link rel="stylesheet" href="css/pr-style.css">
+	<link rel="stylesheet" href="{{ asset('css/flaticon.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/chat-rules.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/pr-style.css') }}">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-M1GGY22G2V"></script>
 <script>
@@ -93,7 +91,7 @@
 
 	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 		<div class="container">
-			<a class="navbar-brand" href="/"><img src="images/logo.png" class="img-fluid" style="max-height: 3.5rem"></a>
+			<a class="navbar-brand" href="/"><img src="{{ asset('images/logo.png') }}" class="img-fluid" style="max-height: 3.5rem"></a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="oi oi-menu"></span> Menu
 			</button>
@@ -112,7 +110,7 @@
 	</nav>
 	<!-- END nav -->
 	
-	<div class="hero-wrap js-fullheight" style="background-color: rgba(7, 5, 28, 0.79); background-blend-mode: overlay; background-image: url('images/banner-home-desktop.PNG'); margin-bottom: -10px; margin-top: -10px;" data-stellar-background-ratio="0.5">
+	<div class="hero-wrap js-fullheight" style="background-color: rgba(7, 5, 28, 0.79); background-blend-mode: overlay; background-image: url('{{ asset('images/banner-home-desktop.png') }}'); margin-bottom: -10px; margin-top: -10px;" data-stellar-background-ratio="0.5">
 		<div class="overlay"><a href="#" class="back-to-top"></a></div>
 		<div class="container">
 			<div class="row no-gutters slider-text js-fullheight align-items-center" data-scrollax-parent="true">
@@ -144,12 +142,12 @@
 					<p class="lead b" style="line-height: 1.15; margin-left: 25px; color: #fff; font-size: 1.45rem; font-weight: 600; margin-right: 25px;">Choose how you trade with our team:</p>
 				</div>
 				<div class="col-lg-5">
-					<a href="{{ route('mentorship') }}"><img src="images/mentorship-home.png" class="img-fluid" alt=""></a><p style="padding: 15px; padding-bottom: 0px;" alt="">
+					<a href="{{ route('mentorship') }}"><img src="{{ asset('images/mentorship-home.png') }}" class="img-fluid" alt=""></a><p style="padding: 15px; padding-bottom: 0px;" alt="">
 						<p style="font-family:'Open Sans'; font-size: 1rem; margin: 1em; color: #fff; line-height: 1.5"><strong><ygreen>No Clarity yet?</ygreen></strong> Our Mentorship program turns an unprofitable trader into a profitable professional Forex Trader.
 							<br><a href="{{ route('mentorship') }}"><strong><ygreen> For more info on Mentorship - Click here</ygreen></strong></a></p>
 				</div>
 				<div class="col-lg-5">
-					<a href="{{ route('signals') }}"><img src="images/signals_DK.png" class="img-fluid" alt=""></a><p style="padding: 15px; padding-bottom: 0px;" alt="">
+					<a href="{{ route('signals') }}"><img src="{{ asset('images/signals_DK.png') }}" class="img-fluid" alt=""></a><p style="padding: 15px; padding-bottom: 0px;" alt="">
 						<p style="font-family:'Open Sans'; font-size: 1rem; margin: 1em; color: #fff; line-height: 1.5"><strong><ygreen>Looking for a reliable Signal Provider? </ygreen></strong>  Get ahead with TRADE LIKE OKAFOR Signals - Sniper Entries with entry and exit price + Trade Analysis.
 							<br><a href="{{ route('signals') }}"><strong><ygreen>For more info on Signal - Click here</ygreen></strong></a></p>
 				</div>
@@ -157,11 +155,11 @@
 		</div>
 	</section>
 
-	<section class="ftco-section bg-dark ftco-home img" style="background-image: url(images/mentorship-home.png);">
+	<section class="ftco-section bg-dark ftco-home img" style="background-image: url({{ asset('images/mentorship-home.png') }});">
 		<div class="container">
 			<div class="row" id="ads">
 				<div class="col-lg-7 col-md-7">
-						<img src="images/bk_box.png" style="font-family:'ubuntu'; color:#ffffff; height:1em; line-height: 0.25" class="img-fluid" alt="">
+						<img src="{{ asset('images/bk_box.png') }}" style="font-family:'ubuntu'; color:#ffffff; height:1em; line-height: 0.25" class="img-fluid" alt="">
 
 						<a href="#mentorship"><p class="lead b" style="font-family:'ubuntu'; color: #f0f0f0; font-size: 2em; line-height: 1.25">Mentorship</p></a>
 						<p style=" line-height: 1.25">Join our unique Lifetime Mentorship Program</p>
@@ -176,7 +174,7 @@
 		            <div class="card rounded">
 		                <div class="card-image">
 		                    <a href="{{ route('mentorship') }}"><span class="card-notify-badge">General Mentorship</span></a>
-		                    <img class="img-fluid" src="images/mentorship_news.png" alt="Mentorship Base">
+		                    <img class="img-fluid" src="{{ asset('images/mentorship_news.png') }}" alt="Mentorship Base">
 		                </div>
 		                <div class="card-image-overlay m-auto">
 		                    <span class="card-detail-badge">$250</span>
@@ -198,7 +196,7 @@
 		            <div class="card rounded">
 		                <div class="card-image">
 		                    <a href="{{ route('mentorship') }}"><span class="card-notify-badge">Exclusive Mentorship</span></a>
-		                    <img class="img-fluid" src="images/private_mentorships.png" alt="Mentorship Base">
+		                    <img class="img-fluid" src="{{ asset('images/private_mentorships.png') }}" alt="Mentorship Base">
 		                </div>
 		                <div class="card-image-overlay m-auto">
 		                    <span class="card-detail-badge">$500</span>
@@ -221,7 +219,7 @@
 		            <div class="card rounded">
 		                <div class="card-image">
 		                    <a href="{{ route('mentorship') }}"><span class="card-notify-badge">Physical Mentorship</span></a>
-		                    <img class="img-fluid" src="images/mentorship_exclusive.png" alt="Mentorship Plus">
+		                    <img class="img-fluid" src="{{ asset('images/mentorship_exclusive.png') }}" alt="Mentorship Plus">
 		                </div>
 		                <div class="card-image-overlay m-auto">
 		                    <span class="card-detail-badge">$1,000</span>
@@ -249,7 +247,7 @@
 			<div class="row" id="ads">
 				<div class="col-lg-7 col-md-7">
 
-						<img src="images/bk_box.png" style="font-family:'ubuntu'; color:#ffffff; height:1em; line-height: 0.25" class="img-fluid" alt="">
+						<img src="{{ asset('images/bk_box.png') }}" style="font-family:'ubuntu'; color:#ffffff; height:1em; line-height: 0.25" class="img-fluid" alt="">
 						<br>
 						<span class="lead b" style="font-family:'ubuntu'; color: #f0f0f0; font-size: 2em; line-height: 1.25">Resources</span>
 
@@ -258,23 +256,23 @@
 			
 			<div class="row">
 				<div class="col-lg-4 col-md-4">
-					<span><a href="https://t.me/+xYVyIeI8RMMwZjE0" target="_blank"><img src="images/telegram.png" class="img-fluid" alt="Get the Book: Breaking The Economic Mist"></a></span><p style="font-family:'Open Sans'; font-size: 1rem; margin: 0.5em; text-align: center; line-height: 1;"> <b>Join our Community:</b><br> Telegram </p>
+					<span><a href="https://t.me/+xYVyIeI8RMMwZjE0" target="_blank"><img src="{{ asset('images/telegram.png') }}" class="img-fluid" alt="Get the Book: Breaking The Economic Mist"></a></span><p style="font-family:'Open Sans'; font-size: 1rem; margin: 0.5em; text-align: center; line-height: 1;"> <b>Join our Community:</b><br> Telegram </p>
 				</div>
 				<div class="col-lg-4 col-md-4">
-						<span><a href="https://youtube.com/@tradelikeokafor" target="_blank"><img src="images/youtube_stream.png" class="img-fluid" alt="YouTube Live Sessions"></a>
+						<span><a href="https://youtube.com/@tradelikeokafor" target="_blank"><img src="{{ asset('images/youtube_stream.png') }}" class="img-fluid" alt="YouTube Live Sessions"></a>
 						</span>
 						<p style="font-family:'Open Sans'; font-size: 1rem; margin: 0.5em; text-align: center; line-height: 1;"> <b>Learn from our:</b><br>YouTube 						</p>
 				</div>
 				<div class="col-lg-4 col-md-4">
 				    <!-- Forex Videos Section -->
-						<span><a href="https://www.tradingview.com/u/IAMTRADELIKEOKAFOR/"><img src="images/tradingView.png" class="img-fluid" alt="Forex Videos"></a></span><p style="font-family:'Open Sans'; font-size: 1rem; margin: 0.5em; text-align: center; line-height: 1;"> <b>Follow our:</b> <br> TradingView</p>
+						<span><a href="https://www.tradingview.com/u/IAMTRADELIKEOKAFOR/"><img src="{{ asset('images/tradingView.png') }}" class="img-fluid" alt="Forex Videos"></a></span><p style="font-family:'Open Sans'; font-size: 1rem; margin: 0.5em; text-align: center; line-height: 1;"> <b>Follow our:</b> <br> TradingView</p>
 						
 				</div>
 			</div>
 		</div>
 	</section>
 
-	<section class="ftco-section bg-dark ftco-home img" style="background-image: url(images/mentorship-home.png);">
+	<section class="ftco-section bg-dark ftco-home img" style="background-image: url({{ asset('images/mentorship-home.png') }});">
 		<div class="container">
 			<h2 style="font-weight: 700 !important; font-size: 1.75rem; margin-left: 20px; line-height: 1; color: #d8d8d8; letter-spacing: -1px;">Join the Largest Forex Trading Academy.</h2>
 			<p style="margin-top: -10px; margin-left: 20px; ">TRADE LIKE OKAFOR Forex Academy</p>
@@ -286,9 +284,9 @@
 				</div>
 		        <div class="container">
 					<div class="scroll-container" style="margin-left: 0px; margin-right: 20px; background: #2d2d2d00;">
-					  <img src="images/mentorship/H1.jpg" alt="" height="300">
-					  <img src="images/mentorship/H2.jpeg" alt="" height="300">
-					  <img src="images/mentorship/H3.jpeg" alt="" height="300">
+					  <img src="{{ asset('images/mentorship/H1.jpg') }}" alt="" height="300">
+					  <img src="{{ asset('images/mentorship/H2.jpeg') }}" alt="" height="300">
+					  <img src="{{ asset('images/mentorship/H3.jpeg') }}" alt="" height="300">
 					
 					</div>
 
@@ -304,7 +302,7 @@
 	                <div class="col-md-12 col-lg-4">
 	                    <div class="dk-footer-box-info">
 	                        <a href="index.htm" class="footer-logo">
-	                            <img src="images/footer_logo.png" alt="footer_logo" class="img-fluid" style="display:block; margin: 0 auto; width:50%; max-height:50%;">
+	                            <img src="{{ asset('images/footer_logo.png') }}" alt="footer_logo" class="img-fluid" style="display:block; margin: 0 auto; width:50%; max-height:50%;">
 	                        </a>
 	                        <p class="footer-info-text">
 								Our strategy helps you find the best chances to make money in the market, while keeping the risky parts small so you can keep more of the profit.
@@ -482,25 +480,23 @@
 		<!-- loader -->
 		<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="120px" height="120px"><circle class="path-bg" cx="60" cy="60" r="58" fill="none" stroke-width="4" stroke="#eeeeee"></circle><circle class="path" cx="60" cy="60" r="58" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"></circle></svg></div>
 
-		<script src="js/jquery.min.js"></script>
-		<script src="ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-		<script src="assets/external/widget.js" type="text/javascript"></script>
-		<script src="js/payjs.js"></script>
-		<script src="js/vidry.js"></script>
-		<script src="js/tesgallery.js"></script>
-		<script src="js/jquery-migrate-3.0.1.min.js"></script>
-		<script src="js/popper.min.js"></script>
-		<script src="js/bootstrap.min.js"></script>
-		<script src="js/jquery.easing.1.3.js"></script>
-		<script src="js/jquery.waypoints.min.js"></script>
-		<script src="js/jquery.stellar.min.js"></script>
-		<script src="js/owl.carousel.min.js"></script>
-		<script src="js/jquery.magnific-popup.min.js"></script>
-		<script src="js/jquery.animateNumber.min.js"></script>
-		<script src="js/scrollax.min.js"></script>
+		<script src="{{ asset('js/jquery.min.js') }}"></script>
+		<script src="{{ asset('js/payjs.js') }}"></script>
+		<script src="{{ asset('js/vidry.js') }}"></script>
+		<script src="{{ asset('js/tesgallery.js') }}"></script>
+		<script src="{{ asset('js/jquery-migrate-3.0.1.min.js') }}"></script>
+		<script src="{{ asset('js/popper.min.js') }}"></script>
+		<script src="{{ asset('js/bootstrap.min.js') }}"></script>
+		<script src="{{ asset('js/jquery.easing.1.3.js') }}"></script>
+		<script src="{{ asset('js/jquery.waypoints.min.js') }}"></script>
+		<script src="{{ asset('js/jquery.stellar.min.js') }}"></script>
+		<script src="{{ asset('js/owl.carousel.min.js') }}"></script>
+		<script src="{{ asset('js/jquery.magnific-popup.min.js') }}"></script>
+		<script src="{{ asset('js/jquery.animateNumber.min.js') }}"></script>
+		<script src="{{ asset('js/scrollax.min.js') }}"></script>
 		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-		<script src="js/google-map.js"></script>
-		<script src="js/main.js"></script>
+		<script src="{{ asset('js/google-map.js') }}"></script>
+		<script src="{{ asset('js/main.js') }}"></script>
 		<!--
 		<script type="text/javascript">
           (function(d, t) {
