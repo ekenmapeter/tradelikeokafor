@@ -46,7 +46,7 @@ Route::get('/dashboard', function () {
     if (auth()->user()->isAdmin()) {
         return redirect()->route('admin.dashboard');
     }
-    return redirect()->route('user.dashboard');
+    return redirect('/');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 // Admin Routes
@@ -85,6 +85,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/leave-impersonation', [ImpersonateController::class, 'leave'])->name('impersonate.leave');
 });
 
+/*
 // User Routes
 Route::middleware(['auth', 'check.user.status', 'impersonate'])->prefix('user')->name('user.')->group(function () {
     Route::get('/dashboard', [UserDashboardController::class, 'index'])->name('dashboard');
@@ -93,6 +94,7 @@ Route::middleware(['auth', 'check.user.status', 'impersonate'])->prefix('user')-
     Route::post('/subscriptions/{plan}/manual-payment', [UserSubscriptionController::class, 'submitManualPayment'])->name('subscriptions.submit-manual-payment');
     Route::get('/transactions', [UserTransactionController::class, 'index'])->name('transactions');
 });
+*/
 
 Route::middleware(['auth', 'check.user.status'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

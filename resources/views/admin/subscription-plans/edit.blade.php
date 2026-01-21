@@ -35,7 +35,7 @@
                 </div>
 
                 <!-- Price & Duration -->
-                <div class="grid grid-cols-2 gap-4">
+                <div class="grid grid-cols-3 gap-4">
                     <div>
                          <label for="price" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Price ($)</label>
                         <input type="number" name="price" id="price" value="{{ old('price', $subscriptionPlan->price) }}" step="0.01" min="0" required 
@@ -45,12 +45,19 @@
                         @enderror
                     </div>
                     <div>
-                         <label for="duration_days" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Duration (Days)</label>
-                        <input type="number" name="duration_days" id="duration_days" value="{{ old('duration_days', $subscriptionPlan->duration_days) }}" min="1" required 
+                         <label for="price_ngn" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Price (₦)</label>
+                        <input type="number" name="price_ngn" id="price_ngn" value="{{ old('price_ngn', $subscriptionPlan->price_ngn) }}" step="0.01" min="0"
                             class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-white shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
-                         @error('duration_days')
+                         @error('price_ngn')
                             <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                         @enderror
+                    </div>
+                    <div>
+                         <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Duration</label>
+                         <div class="mt-1 block w-full py-2 px-3 border border-gray-300 dark:border-gray-700 dark:bg-gray-700 dark:text-gray-300 rounded-md shadow-sm sm:text-sm italic bg-gray-50">
+                             Lifetime Access
+                         </div>
+                         <input type="hidden" name="duration_days" value="0">
                     </div>
                 </div>
 

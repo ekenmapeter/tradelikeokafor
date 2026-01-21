@@ -46,7 +46,7 @@ class AdminUserSubscriptionController extends Controller
 
         $plan = SubscriptionPlan::findOrFail($validated['subscription_plan_id']);
         $startDate = \Carbon\Carbon::parse($validated['start_date']);
-        $endDate = $startDate->copy()->addDays($plan->duration_days);
+        $endDate = null; // Lifetime access
 
         // Cancel any existing active subscriptions for this user
         UserSubscription::where('user_id', $validated['user_id'])

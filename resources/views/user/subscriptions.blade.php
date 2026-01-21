@@ -13,14 +13,14 @@
                 <h2 class="text-lg font-semibold text-gray-700 dark:text-gray-300">Active Subscription</h2>
                 <p class="text-3xl font-bold text-gray-900 dark:text-white mt-2">{{ $activeSubscription->plan->name }}</p>
                 <p class="text-gray-500 dark:text-gray-400 mt-1">
-                    Valid until {{ $activeSubscription->end_date->format('F j, Y') }}
+                    Lifetime Access
                 </p>
             </div>
             <div class="text-right">
                 <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
                     Active
                 </span>
-                <p class="text-sm text-gray-500 mt-2">{{ $activeSubscription->daysRemaining() }} days remaining</p>
+                <p class="text-sm text-gray-500 mt-2">Active</p>
             </div>
         </div>
     </div>
@@ -33,9 +33,16 @@
         <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden flex flex-col hover:shadow-xl transition-shadow duration-300">
             <div class="p-6 flex-1">
                 <h3 class="text-xl font-bold text-gray-900 dark:text-white">{{ $plan->name }}</h3>
-                <div class="mt-4 flex items-baseline text-gray-900 dark:text-white">
-                    <span class="text-3xl font-extrabold tracking-tight">${{ number_format($plan->price, 2) }}</span>
-                    <span class="ml-1 text-xl font-semibold text-gray-500">/ {{ $plan->duration_days }} days</span>
+                <div class="mt-4 flex flex-col text-gray-900 dark:text-white">
+                    <div class="flex items-baseline">
+                        <span class="text-3xl font-extrabold tracking-tight">${{ number_format($plan->price, 2) }}</span>
+                        <span class="ml-1 text-xl font-semibold text-gray-500">/ One-time Payment</span>
+                    </div>
+                    @if($plan->price_ngn)
+                    <div class="mt-1 flex items-baseline text-green-600 dark:text-green-400">
+                        <span class="text-xl font-bold tracking-tight">₦{{ number_format($plan->price_ngn, 2) }}</span>
+                    </div>
+                    @endif
                 </div>
                 <ul class="mt-4 space-y-2 text-gray-500 dark:text-gray-400">
                     @foreach(explode("\n", $plan->description) as $feature)
@@ -80,7 +87,7 @@
                 <tr>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">{{ $sub->plan->name }}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">{{ $sub->start_date->format('M d, Y') }}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">{{ $sub->end_date->format('M d, Y') }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">Lifetime</td>
                     <td class="px-6 py-4 whitespace-nowrap">
                         <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full 
                             {{ $sub->status === 'active' ? 'bg-green-100 text-green-800' : 

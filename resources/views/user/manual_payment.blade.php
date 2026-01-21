@@ -14,9 +14,17 @@
     <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden border border-gray-200 dark:border-gray-700">
         <div class="p-6">
             <h2 class="text-lg font-bold text-gray-900 dark:text-white mb-4">Plan: {{ $plan->name }}</h2>
-            <div class="flex items-center justify-between p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg mb-6">
-                <span class="text-blue-900 dark:text-blue-200">Total to pay:</span>
-                <span class="text-2xl font-bold text-blue-900 dark:text-blue-200">${{ number_format($plan->price, 2) }}</span>
+            <div class="flex flex-col p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg mb-6">
+                <div class="flex justify-between items-center">
+                    <span class="text-blue-900 dark:text-blue-200">Total to pay ($):</span>
+                    <span class="text-2xl font-bold text-blue-900 dark:text-blue-200">${{ number_format($plan->price, 2) }}</span>
+                </div>
+                @if($plan->price_ngn)
+                <div class="flex justify-between items-center mt-2 pt-2 border-t border-blue-200 dark:border-blue-800">
+                    <span class="text-green-800 dark:text-green-300">Total to pay (₦):</span>
+                    <span class="text-2xl font-bold text-green-800 dark:text-green-300">₦{{ number_format($plan->price_ngn, 2) }}</span>
+                </div>
+                @endif
             </div>
 
             <div class="mb-8">

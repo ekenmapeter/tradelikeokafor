@@ -44,7 +44,7 @@ class UserSubscription extends Model
      */
     public function isActive(): bool
     {
-        return $this->status === 'active' && $this->end_date >= now();
+        return $this->status === 'active' && ($this->end_date === null || $this->end_date >= now());
     }
 
     /**
@@ -52,14 +52,20 @@ class UserSubscription extends Model
      */
     public function isExpired(): bool
     {
+        if ($this->end_date === null) {
+            return $this->status === 'expired';
+        }
         return $this->end_date < now() || $this->status === 'expired';
     }
 
     /**
      * Get days remaining in subscription.
      */
-    public function daysRemaining(): int
+    public function daysRemaining(): int|string
     {
+        if ($this->end_date === null) {
+            return 'Lifetime';
+        }
         if ($this->isExpired()) {
             return 0;
         }
@@ -71,8 +77,11 @@ class UserSubscription extends Model
      */
     public function isExpiringSoon(): bool
     {
+        if ($this->end_date === null) {
+            return false;
+        }
         $daysRemaining = $this->daysRemaining();
-        return $daysRemaining > 0 && $daysRemaining <= 7;
+        return is_numeric($daysRemaining) && $daysRemaining > 0 && $daysRemaining <= 7;
     }
 
     /**
@@ -81,7 +90,10 @@ class UserSubscription extends Model
     public function scopeActive($query)
     {
         return $query->where('status', 'active')
-            ->where('end_date', '>=', now());
+            ->where(function ($q) {
+                $q->whereNull('end_date')
+                  ->orWhere('end_date', '>=', now());
+            });
     }
 
     /**
@@ -89,9 +101,11 @@ class UserSubscription extends Model
      */
     public function scopeExpired($query)
     {
-        return $query->where(function($q) {
-            $q->where('end_date', '<', now())
-              ->orWhere('status', 'expired');
+        return $query->where(function ($q) {
+            $q->where(function ($sq) {
+                $sq->whereNotNull('end_date')
+                  ->where('end_date', '<', now());
+            })->orWhere('status', 'expired');
         });
     }
 

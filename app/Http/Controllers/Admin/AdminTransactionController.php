@@ -50,7 +50,7 @@ class AdminTransactionController extends Controller
 
         // Implementation like AdminUserSubscriptionController@store
         $startDate = now();
-        $endDate = $startDate->copy()->addDays($plan->duration_days);
+        $endDate = null; // Lifetime access
 
         // Cancel existing active subscriptions OR extend? 
         // Let's follow the existing pattern of cancelling old ones

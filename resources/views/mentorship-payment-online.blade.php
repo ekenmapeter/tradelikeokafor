@@ -71,10 +71,10 @@
               </div>
           
 
-              <div class="form-submit">
-                <a href="{{ route('register') }}" class="btn btn-success" style="font-size: 13px;"> Start Now </a>
-                <a href="{{ route('login') }}" class="btn btn-primary" style="font-size: 13px;"> Login </a>
-            </div>
+              <div class="form-submit text-center">
+                <a href="https://t.me/+xYVyIeI8RMMwZjE0" class="btn btn-success btn-lg btn-block" style="font-size: 16px;"> Contact Admin to Join </a>
+                <p class="mt-3 text-muted" style="font-size: 12px;">Join our community to get started with your mentorship.</p>
+              </div>
             </form>
             <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
             <script>

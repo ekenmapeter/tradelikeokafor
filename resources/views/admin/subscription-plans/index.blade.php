@@ -18,7 +18,8 @@
             <thead class="bg-gray-50 dark:bg-gray-700/50">
                 <tr>
                     <th class="px-6 py-3 text-left text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Name</th>
-                    <th class="px-6 py-3 text-left text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Price</th>
+                    <th class="px-6 py-3 text-left text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Price ($)</th>
+                    <th class="px-6 py-3 text-left text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Price (₦)</th>
                     <th class="px-6 py-3 text-left text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Duration</th>
                     <th class="px-6 py-3 text-left text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Subscribers</th>
                     <th class="px-6 py-3 text-left text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Status</th>
@@ -39,8 +40,11 @@
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300 font-mono">
                         ${{ number_format($plan->price, 2) }}
                     </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-green-600 dark:text-green-400 font-mono">
+                        {{ $plan->price_ngn ? '₦'.number_format($plan->price_ngn, 2) : '-' }}
+                    </td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300">
-                        {{ $plan->duration_days }} days
+                        Lifetime
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap">
                          <span class="bg-gray-100 text-gray-600 px-2 py-1 rounded text-xs font-semibold">
@@ -90,7 +94,12 @@
                         </div>
                         <div>
                              <h3 class="text-sm font-bold text-gray-900 dark:text-white">{{ $plan->name }}</h3>
-                             <span class="text-xs font-mono text-gray-500">${{ number_format($plan->price, 2) }} / {{ $plan->duration_days }} days</span>
+                             <div class="flex flex-col text-xs font-mono text-gray-500">
+                                <span>${{ number_format($plan->price, 2) }} / Lifetime</span>
+                                @if($plan->price_ngn)
+                                <span class="text-green-600">₦{{ number_format($plan->price_ngn, 2) }}</span>
+                                @endif
+                             </div>
                         </div>
                     </div>
                      <span class="px-2.5 py-0.5 inline-flex text-xs leading-5 font-semibold rounded-full 
@@ -104,7 +113,7 @@
                      <span class="font-bold text-gray-800">{{ $plan->subscriptions_count }}</span>
                 </div>
 
-                <div class="flex grid grid-cols-3 gap-2 border-t border-gray-100 pt-3">
+                <div class="grid grid-cols-3 gap-2 border-t border-gray-100 pt-3">
                     <a href="{{ route('admin.subscription-plans.edit', $plan) }}" class="flex items-center justify-center text-sm font-semibold text-blue-600 bg-blue-50 py-1.5 rounded hover:bg-blue-100">Edit</a>
                     
                     <form action="{{ route('admin.subscription-plans.toggle', $plan) }}" method="POST" class="flex-1 block">

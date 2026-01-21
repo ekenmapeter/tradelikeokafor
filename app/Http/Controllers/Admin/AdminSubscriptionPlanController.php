@@ -24,8 +24,9 @@ class AdminSubscriptionPlanController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
-            'duration_days' => 'required|integer|min:1',
+            'duration_days' => 'nullable|integer|min:1',
             'price' => 'required|numeric|min:0',
+            'price_ngn' => 'nullable|numeric|min:0',
             'payment_link' => 'nullable|url',
         ]);
 
@@ -47,8 +48,9 @@ class AdminSubscriptionPlanController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
-            'duration_days' => 'required|integer|min:1',
+            'duration_days' => 'nullable|integer|min:1',
             'price' => 'required|numeric|min:0',
+            'price_ngn' => 'nullable|numeric|min:0',
             'payment_link' => 'nullable|url',
         ]);
 

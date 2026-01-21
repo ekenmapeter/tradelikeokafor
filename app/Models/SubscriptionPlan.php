@@ -14,12 +14,14 @@ class SubscriptionPlan extends Model
         'description',
         'duration_days',
         'price',
+        'price_ngn',
         'payment_link',
         'is_active',
     ];
 
     protected $casts = [
         'price' => 'decimal:2',
+        'price_ngn' => 'decimal:2',
         'is_active' => 'boolean',
     ];
 
