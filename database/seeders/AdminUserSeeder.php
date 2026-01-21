@@ -15,7 +15,7 @@ class AdminUserSeeder extends Seeder
     {
         User::create([
             'name' => 'Admin',
-            'email' => 'admin@tradelikeokafor.com',
+            'email' => 'support@tradelikeokafor.com',
             'password' => Hash::make('password'),
             'phone' => '+1234567890',
             'role' => 'admin',
@@ -24,7 +24,7 @@ class AdminUserSeeder extends Seeder
         ]);
 
         $this->command->info('Admin user created successfully!');
-        $this->command->info('Email: admin@tradelikeokafor.com');
+        $this->command->info('Email: support@tradelikeokafor.com');
         $this->command->info('Password: password');
     }
 }
