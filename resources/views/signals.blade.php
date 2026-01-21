@@ -146,10 +146,10 @@
 						        <div class="heading-section mb-5 mt-5 mt-lg-0">
 						        	<h4 class="mb-3 center" style="font-size: 1.25em; color: #fff; font-weight: 700; margin-bottom: -35px!important; letter-spacing: -1px;">Payment Options</h4>
 						        </div>
-								<div class="alert alert-info" style="font-size: 14px;"> 
+								<div class="alert alert-info text-center" style="font-size: 14px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #fff;"> 
 								<b>TRADE LIKE OKAFOR Trade Signal Service</b> is managed securely on Telegram. <br><br>
-								<span class="price-label basic"><a href="https://paystack.shop/pay/tradelikeokafor-life-time-signal" data-target="#" target="_blank" style="color: #fff">Subscribe Now - Life Time</a></span><br><br>
-    								- Kindly Click on the <b>"Subscribe Now"</b> Button to Get Started.
+								<a href="https://paystack.shop/pay/tradelikeokafor-life-time-signal" class="btn btn-success btn-lg btn-block" style="font-size: 16px;">Enroll Now - Life Time Access</a><br>
+    								<p class="mt-2" style="font-size: 12px; opacity: 0.8;">Kindly Click on the <b>"Enroll Now"</b> Button to Get Started.</p>
 								</div>
 			                </div>
 			            </div>

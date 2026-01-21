@@ -39,7 +39,7 @@ class PaymentApproved extends Mailable
     public function content(): Content
     {
         return new Content(
-            markdown: 'emails.payment_approved',
+            view: 'emails.payment_approved',
         );
     }
 

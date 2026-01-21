@@ -137,7 +137,7 @@
             <!-- Header -->
             <tr>
                 <td class="header">
-                    <div class="logo-text">Trade Like Okafor</div>
+                    <img src="{{ config('app.url') }}/images/logo.png" alt="Trade Like Okafor" style="max-height: 60px;">
                 </td>
             </tr>
 

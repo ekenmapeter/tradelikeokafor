@@ -1,26 +1,33 @@
 <?php
 
-namespace App\Mail;
+namespace App\Mail\Admin;
 
+use App\Models\User;
+use App\Models\SubscriptionPlan;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class ManualPaymentSubmitted extends Mailable
+class NewPaymentNotification extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $transaction;
+    public $user;
+    public $amount;
+    public $plan;
+    public $reference;
 
     /**
      * Create a new message instance.
      */
-    public function __construct($transaction)
+    public function __construct(User $user, $amount, SubscriptionPlan $plan = null, $reference = null)
     {
-        $this->transaction = $transaction;
+        $this->user = $user;
+        $this->amount = $amount;
+        $this->plan = $plan;
+        $this->reference = $reference;
     }
 
     /**
@@ -29,7 +36,7 @@ class ManualPaymentSubmitted extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Manual Payment Submitted - ' . $this->transaction->reference,
+            subject: 'New Payment Received - ' . $this->user->name,
         );
     }
 
@@ -39,17 +46,7 @@ class ManualPaymentSubmitted extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'emails.manual_payment_submitted',
+            view: 'emails.admin.new_payment',
         );
-    }
-
-    /**
-     * Get the attachments for the message.
-     *
-     * @return array<int, \Illuminate\Mail\Mailables\Attachment>
-     */
-    public function attachments(): array
-    {
-        return [];
     }
 }

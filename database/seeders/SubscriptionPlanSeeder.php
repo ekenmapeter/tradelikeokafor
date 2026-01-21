@@ -14,35 +14,50 @@ class SubscriptionPlanSeeder extends Seeder
     {
         $plans = [
             [
-                'name' => 'Basic Plan',
-                'description' => 'Perfect for beginners. Get access to basic trading lessons and resources.',
-                'duration_days' => 30,
-                'price' => 49.99,
-                'payment_link' => 'https://paypal.me/example/49.99',
+                'name' => 'General Mentorship',
+                'description' => "Recorded Course Video\nZoom classes & practical\nOnline Mentorship\nAccess into my Inner Circle Trading Group with Co Traders\nCertification on completion",
+                'duration_days' => 0, // Lifetime
+                'price' => 150.00,
+                'price_ngn' => 215000.00,
+                'payment_link' => 'https://paystack.shop/pay/general-class-mentorship',
                 'is_active' => true,
             ],
             [
-                'name' => 'Premium Plan',
-                'description' => 'Advanced trading strategies and live sessions. Includes all basic features plus premium content.',
-                'duration_days' => 90,
-                'price' => 129.99,
-                'payment_link' => 'https://paypal.me/example/129.99',
+                'name' => 'Exclusive Mentorship',
+                'description' => "Online Mentorship\nOne-on-One Coaching\nPrivate Mentorship\nExclusive 5 weeks with a private coach\nAccess VIP Signal & Benefits\nAccess into my Inner Circle Trading Group with Co Traders\nCertification on completion",
+                'duration_days' => 0, // Lifetime
+                'price' => 500.00,
+                'price_ngn' => 750000.00,
+                'payment_link' => 'https://paystack.shop/pay/fxctradepad-exclusive-mentorship',
                 'is_active' => true,
             ],
             [
-                'name' => 'VIP Plan',
-                'description' => 'One-on-one mentorship, exclusive trading signals, and lifetime access to all resources.',
-                'duration_days' => 365,
-                'price' => 499.99,
-                'payment_link' => 'https://paypal.me/example/499.99',
+                'name' => 'Physical Mentorship',
+                'description' => "Physical class with a coach\nClasses & practical\nOne-on-One Coaching\nPrivate Mentorship\nExclusive 5 weeks with a private coach\nAccess VIP Signal & Benefits\nAccess into my Inner Circle Trading Group with Co Traders\nCertification on completion",
+                'duration_days' => 0, // Lifetime
+                'price' => 1000.00,
+                'price_ngn' => 1500000.00,
+                'payment_link' => 'https://paystack.shop/pay/fxctradepad-private-mentorship',
+                'is_active' => true,
+            ],
+            [
+                'name' => 'Lifetime Trade Signals',
+                'description' => "Premium Monthly Signals\nSniper Entries\nMaximum 50 pips Stop Loss\n0 - 4 trades Per Day\nRisk & Money Management\n80 - 90% Accuracy\nFree Tutorials on how to take signals",
+                'duration_days' => 0, // Lifetime
+                'price' => 250.00, // Approximate
+                'price_ngn' => 350000.00,
+                'payment_link' => 'https://paystack.shop/pay/tradelikeokafor-life-time-signal',
                 'is_active' => true,
             ],
         ];
 
         foreach ($plans as $plan) {
-            SubscriptionPlan::create($plan);
+            SubscriptionPlan::updateOrCreate(
+                ['name' => $plan['name']],
+                $plan
+            );
         }
 
-        $this->command->info('Subscription plans created successfully!');
+        $this->command->info('Subscription plans updated successfully!');
     }
 }
