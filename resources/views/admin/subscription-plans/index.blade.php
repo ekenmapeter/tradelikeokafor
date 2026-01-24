@@ -44,7 +44,7 @@
                         {{ $plan->price_ngn ? '₦'.number_format($plan->price_ngn, 2) : '-' }}
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300">
-                        Lifetime
+                        {{ $plan->duration_days > 0 ? $plan->duration_days . ' Days' : 'Lifetime' }}
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap">
                          <span class="bg-gray-100 text-gray-600 px-2 py-1 rounded text-xs font-semibold">
