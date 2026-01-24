@@ -78,9 +78,6 @@ class AdminUserSubscriptionController extends Controller
         // Send email notifications to user
         $user = User::findOrFail($validated['user_id']);
         
-        // Send Welcome Email
-        Mail::to($user->email)->send(new WelcomeUser($user));
-        
         // Send Subscription Assigned Email
         Mail::to($user->email)->send(new SubscriptionAssigned($subscription));
 
