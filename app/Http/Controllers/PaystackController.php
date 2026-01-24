@@ -8,6 +8,8 @@ use App\Models\SubscriptionPlan;
 use App\Models\UserSubscription;
 use App\Mail\PaymentSuccessReceipt;
 use App\Mail\Admin\NewPaymentNotification;
+use App\Mail\NewUserRegistered;
+use App\Mail\WelcomeUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Hash;
@@ -143,6 +145,11 @@ class PaystackController extends Controller
 
         // Assign subscription
         if ($plan) {
+            $endDate = null;
+            if ($plan->duration_days > 0) {
+                $endDate = now()->addDays($plan->duration_days);
+            }
+
             UserSubscription::updateOrCreate(
                 [
                     'user_id' => $user->id,
@@ -150,7 +157,7 @@ class PaystackController extends Controller
                 ],
                 [
                     'start_date' => now(),
-                    'end_date' => null, // Lifetime
+                    'end_date' => $endDate,
                     'status' => 'active',
                 ]
             );
@@ -158,6 +165,10 @@ class PaystackController extends Controller
 
         // Send emails
         try {
+            if ($tempPassword) {
+                Mail::to($user->email)->send(new WelcomeUser($user, $tempPassword));
+            }
+            
             Mail::to($user->email)->send(new PaymentSuccessReceipt($user, $amount, $plan, $tempPassword));
             
             $adminEmail = env('ADMIN_EMAIL', 'support@tradelikeokafor.com');

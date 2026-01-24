@@ -8,8 +8,5 @@
     <p style="margin-bottom: 24px;">Your <strong>{{ $subscription->plan->name }}</strong> subscription has just expired.</p>
     
     <p style="margin-bottom: 24px;">You have lost access to premium content, signals, and mentorship groups associated with this plan.</p>
-    
-    <div style="text-align: center;">
-        <a href="{{ route('user.subscriptions') }}" class="btn">Renew Access Now</a>
-    </div>
+
 @endsection

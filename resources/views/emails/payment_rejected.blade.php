@@ -24,9 +24,6 @@
     Plan: {{ $transaction->plan->name }}
 </div>
 
-<div style="text-align: center;">
-    <a href="{{ route('dashboard') }}" class="btn" style="background-color: #ef4444;">Try Again</a>
-</div>
 
 <p style="margin-top: 24px;">If you believe this is a mistake or need further assistance, please contact our support team.</p>
 @endsection

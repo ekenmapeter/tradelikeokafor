@@ -20,14 +20,10 @@
             </tr>
             <tr>
                 <td style="padding: 4px 0; color: #4b5563;">End Date:</td>
-                <td style="font-weight: bold; color: #111827;">{{ $subscription->end_date->format('M d, Y') }}</td>
+                <td style="font-weight: bold; color: #111827;">{{ $subscription->end_date ? $subscription->end_date->format('M d, Y') : 'Lifetime Access' }}</td>
             </tr>
         </table>
     </div>
     
-    <p style="margin-bottom: 24px;">Log in now to access your premium content and features.</p>
-    
-    <div style="text-align: center;">
-        <a href="{{ route('dashboard') }}" class="btn">Go to Dashboard</a>
-    </div>
+  
 @endsection

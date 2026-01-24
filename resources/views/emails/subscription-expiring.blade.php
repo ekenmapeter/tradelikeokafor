@@ -11,7 +11,4 @@
         <p style="margin: 0; color: #92400e;">Don't lose your access to premium signals and mentorship. Renew now to keep your momentum going!</p>
     </div>
     
-    <div style="text-align: center;">
-        <a href="{{ route('user.subscriptions') }}" class="btn">Renew Subscription</a>
-    </div>
 @endsection

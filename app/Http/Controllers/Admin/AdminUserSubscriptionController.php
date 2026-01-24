@@ -8,6 +8,7 @@ use App\Models\SubscriptionPlan;
 use App\Models\UserSubscription;
 use App\Models\Transaction;
 use App\Mail\SubscriptionAssigned;
+use App\Mail\WelcomeUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
@@ -46,7 +47,12 @@ class AdminUserSubscriptionController extends Controller
 
         $plan = SubscriptionPlan::findOrFail($validated['subscription_plan_id']);
         $startDate = \Carbon\Carbon::parse($validated['start_date']);
-        $endDate = null; // Lifetime access
+        
+        // Calculate end date based on plan duration
+        $endDate = null; 
+        if ($plan->duration_days > 0) {
+            $endDate = (clone $startDate)->addDays($plan->duration_days);
+        }
 
         // Cancel any existing active subscriptions for this user
         UserSubscription::where('user_id', $validated['user_id'])
@@ -72,12 +78,17 @@ class AdminUserSubscriptionController extends Controller
             'payment_date' => now(),
         ]);
 
-        // Send email notification to user
+        // Send email notifications to user
         $user = User::findOrFail($validated['user_id']);
+        
+        // Send Welcome Email
+        Mail::to($user->email)->send(new WelcomeUser($user));
+        
+        // Send Subscription Assigned Email
         Mail::to($user->email)->send(new SubscriptionAssigned($subscription));
 
         return redirect()->route('admin.subscriptions.index')
-            ->with('success', 'Subscription assigned successfully.');
+            ->with('success', 'Subscription assigned successfully. Emails sent to user.');
     }
 
     public function cancel(UserSubscription $subscription)
