@@ -76,7 +76,7 @@
                     <td class="px-6 py-4 whitespace-nowrap">
                         @if($user->activeSubscription)
                             <span class="text-sm text-green-700 font-semibold bg-green-50 px-2 py-0.5 rounded">{{ $user->activeSubscription->plan->name }}</span>
-                            <div class="text-xs text-gray-500 mt-0.5">Expires: {{ $user->activeSubscription->end_date->format('M d, Y') }}</div>
+                            <div class="text-xs text-gray-500 mt-0.5">Expires: {{ $user->activeSubscription->end_date ? $user->activeSubscription->end_date->format('M d, Y') : 'Lifetime' }}</div>
                         @else
                             <span class="text-sm text-gray-400 italic">No Active Plan</span>
                         @endif
@@ -142,7 +142,7 @@
                         @if($user->activeSubscription)
                             <div class="text-right">
                                 <span class="bg-green-50 text-green-700 px-2 py-0.5 rounded text-xs font-semibold">{{ $user->activeSubscription->plan->name }}</span>
-                                <div class="text-[10px] text-gray-400 mt-0.5">Expires: {{ $user->activeSubscription->end_date->format('M d') }}</div>
+                                 <div class="text-[10px] text-gray-400 mt-0.5">Expires: {{ $user->activeSubscription->end_date ? $user->activeSubscription->end_date->format('M d') : 'Lifetime' }}</div>
                             </div>
                         @else
                             <span class="text-gray-400 italic">None</span>

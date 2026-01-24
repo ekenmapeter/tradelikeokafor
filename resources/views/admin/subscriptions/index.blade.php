@@ -53,10 +53,10 @@
                          <span class="text-sm font-semibold text-gray-700 bg-gray-100 px-2 py-0.5 rounded">{{ $sub->plan->name }}</span>
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">
-                        {{ $sub->start_date->format('M d, Y') }}
+                        {{ $sub->start_date ? $sub->start_date->format('M d, Y') : '-' }}
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">
-                        {{ $sub->end_date->format('M d, Y') }}
+                        {{ $sub->end_date ? $sub->end_date->format('M d, Y') : 'Lifetime' }}
                         @if($sub->isActive() && $sub->isExpiringSoon())
                             <div class="text-xs text-amber-600 font-semibold mt-0.5 flex items-center">
                                 <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -114,11 +114,13 @@
                      </div>
                      <div class="flex justify-between mb-1">
                          <span class="text-gray-500">Starts:</span>
-                         <span>{{ $sub->start_date->format('M d, Y') }}</span>
+                         <span>{{ $sub->start_date ? $sub->start_date->format('M d, Y') : '-' }}</span>
                      </div>
                      <div class="flex justify-between">
                          <span class="text-gray-500">Ends:</span>
-                         <span class="{{ $sub->isActive() && $sub->isExpiringSoon() ? 'text-amber-600 font-medium' : '' }}">{{ $sub->end_date->format('M d, Y') }}</span>
+                         <span class="{{ $sub->isActive() && $sub->isExpiringSoon() ? 'text-amber-600 font-medium' : '' }}">
+                            {{ $sub->end_date ? $sub->end_date->format('M d, Y') : 'Lifetime' }}
+                         </span>
                      </div>
                  </div>
 

@@ -94,7 +94,7 @@
                             <span class="text-xs font-bold text-green-600 dark:text-green-500 uppercase">Active</span>
                         </div>
                         <div class="text-xs text-green-700 dark:text-green-600 mb-4">
-                            Expires on {{ $user->activeSubscription->end_date->format('M d, Y') }}
+                            {{ $user->activeSubscription->end_date ? 'Expires on ' . $user->activeSubscription->end_date->format('M d, Y') : 'Lifetime Access' }}
                         </div>
                          <form action="{{ route('admin.subscriptions.cancel', $user->activeSubscription) }}" method="POST" onsubmit="return confirm('Cancel this subscription?');">
                             @csrf
@@ -137,7 +137,9 @@
                                 </div>
                                 <div>
                                     <h4 class="font-bold text-gray-800 dark:text-white text-sm">{{ $sub->plan->name }}</h4>
-                                    <p class="text-[10px] text-gray-500">{{ $sub->start_date->format('M d, Y') }} - {{ $sub->end_date->format('M d, Y') }}</p>
+                                    <p class="text-[10px] text-gray-500">
+                                        {{ $sub->start_date->format('M d, Y') }} - {{ $sub->end_date ? $sub->end_date->format('M d, Y') : 'Lifetime' }}
+                                    </p>
                                 </div>
                             </div>
                             <div class="flex items-center gap-3 w-full sm:w-auto justify-between sm:justify-end">
