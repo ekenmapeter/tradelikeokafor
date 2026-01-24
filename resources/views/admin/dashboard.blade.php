@@ -94,7 +94,7 @@
                 <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 p-4 hover:shadow-md transition-shadow">
                     <div class="flex justify-between items-start mb-2">
                         <div>
-                            <h4 class="font-semibold text-gray-800 dark:text-white">{{ $plan->name }}</h4>
+                            <h4 class="font-semibold text-gray-800 text-xs dark:text-white">{{ $plan->name }}</h4>
                             <p class="text-xs text-gray-500 dark:text-gray-400">{{ $plan->duration }} Days • ${{ number_format($plan->price, 0) }}</p>
                         </div>
                         <span class="bg-green-100 text-green-700 text-xs font-bold px-2 py-1 rounded-full">
