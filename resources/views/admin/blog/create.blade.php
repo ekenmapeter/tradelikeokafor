@@ -61,7 +61,22 @@
 <script>
     ClassicEditor
         .create(document.querySelector('#editor'), {
-            toolbar: [ 'heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote', 'undo', 'redo' ],
+            ckfinder: {
+                uploadUrl: "{{ route('admin.blog.upload', ['_token' => csrf_token()]) }}",
+            },
+            toolbar: [
+                'heading', '|', 
+                'bold', 'italic', 'underline', 'link', '|',
+                'bulletedList', 'numberedList', 'blockQuote', '|',
+                'insertTable', 'imageUpload', 'mediaEmbed', '|',
+                'undo', 'redo'
+            ],
+            image: {
+                toolbar: [
+                    'imageStyle:inline', 'imageStyle:block', 'imageStyle:side', '|',
+                    'toggleImageCaption', 'imageTextAlternative'
+                ]
+            }
         })
         .catch(error => {
             console.error(error);

@@ -87,6 +87,70 @@
         .post-content a:hover {
             color: #fff;
         }
+        /* New Styles for Enhanced Rich Text */
+        .post-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        /* CKEditor 5 Image Styles */
+        .post-content .image {
+            margin: 20px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .post-content .image-style-side {
+            float: right;
+            max-width: 50%;
+            margin-left: 20px;
+        }
+        .post-content .image-style-block-align-left {
+            float: left;
+            margin-right: 20px;
+        }
+        .post-content .image > figcaption {
+            display: block;
+            caption-side: bottom;
+            word-break: break-word;
+            color: #888;
+            font-size: 0.8em;
+            padding-top: 0.5em;
+            text-align: center;
+        }
+        .post-content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            color: #fff;
+            background: #222;
+        }
+        .post-content table th, .post-content table td {
+            border: 1px solid #444;
+            padding: 12px;
+            text-align: left;
+        }
+        .post-content table th {
+            background: #333;
+            color: #a9e90f;
+        }
+        .post-content .media {
+            margin: 30px 0;
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+        }
+        .post-content .media iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+            border-radius: 10px;
+        }
         .sidebar-widget {
             background: #1a1a1a;
             border-radius: 15px;
