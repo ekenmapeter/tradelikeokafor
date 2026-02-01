@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	
 	<link rel="preconnect" href="https://fonts.gstatic.com">
-	<link href="css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Open+Sans+Condensed:ital,wght@0,300;0,700;1,300&family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&family=Ubuntu+Condensed&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Open+Sans+Condensed:ital,wght@0,300;0,700;1,300&family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&family=Ubuntu+Condensed&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
 
 	<link rel="stylesheet" href="{{ asset('css/animate.css') }}">
 	<link rel="apple-touch-icon" sizes="180x180" href="{{ asset('images/logo.png') }}">
@@ -87,14 +87,13 @@
         .post-content a:hover {
             color: #fff;
         }
-        /* New Styles for Enhanced Rich Text */
+        
         .post-content img {
             max-width: 100%;
             height: auto;
             border-radius: 10px;
             margin: 20px 0;
         }
-        /* CKEditor 5 Image Styles */
         .post-content .image {
             margin: 20px 0;
             display: flex;
@@ -151,6 +150,7 @@
             border: 0;
             border-radius: 10px;
         }
+
         .sidebar-widget {
             background: #1a1a1a;
             border-radius: 15px;
@@ -194,14 +194,6 @@
             color: #a9e90f;
             font-size: 0.8rem;
         }
-        @media (max-width: 768px) {
-            .post-title {
-                font-size: 1.8rem;
-            }
-            .post-container {
-                padding: 20px;
-            }
-        }
     </style>
 </head>
 <body style="background: #000;">
@@ -219,6 +211,9 @@
 							</a>
 							<a href="https://www.instagram.com/tradelikeokafor" target="_blank" class="d-flex align-items-center justify-content-center">
 							  <span class="fa-brands fa-instagram" aria-hidden="true"></span>
+							</a>
+							<a href="https://youtube.com/@tradelikeokafor" target="_blank" class="d-flex align-items-center justify-content-center">
+							  <span class="fa-brands fa-youtube" aria-hidden="true"></span>
 							</a>
 						  </p>
 					</div>
@@ -238,7 +233,8 @@
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item"><a href="{{ route('mentorship') }}" style="background: #a9e90f!important; font-weight: 600; color: #010102!important;" class="nav-link">Mentorship</a></li>
 					<li class="nav-item"><a href="{{ route('signals') }}" style="background: #02be2e; font-weight: 600; color: #ffffff!important;" class="nav-link">Trade Signals</a></li>
-					<li class="nav-item"><a href="{{ route('blog.index') }}" class="nav-link">Blog</a></li>
+					<li class="nav-item active"><a href="{{ route('blog.index') }}" class="nav-link">Blog</a></li>
+					<li class="nav-item cta"><a href="https://www.vantagemarkets.com/forex-trading/forex-trading-account/?affid=NzQzMDU=" class="nav-link">Recommended Broker</a></li>
 				</ul>
 			</div>
 		</div>
@@ -252,7 +248,7 @@
                         <div class="post-header">
                             <h1 class="post-title">{{ $post->title }}</h1>
                             <div class="post-meta">
-                                <span><i class="far fa-calendar-alt mr-2"></i> {{ $post->published_at->format('M d, Y') }}</span>
+                                <span><i class="far fa-calendar-alt mr-2"></i> {{ $post->published_at ? $post->published_at->format('M d, Y') : $post->created_at->format('M d, Y') }}</span>
                                 <span><i class="far fa-user mr-2"></i> Admin</span>
                             </div>
                         </div>
@@ -283,7 +279,7 @@
                             @endif
                             <div class="recent-post-info">
                                 <h4><a href="{{ route('blog.show', $recent->slug) }}">{{ Str::limit($recent->title, 40) }}</a></h4>
-                                <span>{{ $recent->published_at->format('M d, Y') }}</span>
+                                <span>{{ $recent->published_at ? $recent->published_at->format('M d, Y') : $recent->created_at->format('M d, Y') }}</span>
                             </div>
                         </div>
                         @endforeach
@@ -300,19 +296,191 @@
 	</section>
 
 	<footer id="dk-footer" class="dk-footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 col-lg-4">
-                    <div class="dk-footer-box-info text-center text-lg-left">
-                        <img src="{{ asset('images/footer_logo.png') }}" alt="footer_logo" class="img-fluid mb-4" style="width:50%;">
-                        <p class="footer-info-text">Revolutionizing your trading experience with precision and clarity.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+	        <div class="container">
+	            <div class="row">
+	                <div class="col-md-12 col-lg-4">
+	                    <div class="dk-footer-box-info">
+	                        <a href="/" class="footer-logo">
+	                            <img src="{{ asset('images/footer_logo.png') }}" alt="footer_logo" class="img-fluid" style="display:block; margin: 0 auto; width:50%;">
+	                        </a>
+	                        <p class="footer-info-text">
+								Our strategy helps you find the best chances to make money in the market, while keeping the risky parts small so you can keep more of the profit.
+	                        </p>
+	                        <div class="footer-social-link">
+	                            <h3>Follow us</h3>
+								<ul>
+									<li>
+									  <a href="https://www.instagram.com/tradelikeokafor" target="_blank">
+										<i class="fa-brands fa-instagram"></i>
+									  </a>
+									</li>
+									<li>
+									  <a href="https://youtube.com/@tradelikeokafor" target="_blank">
+										<i class="fa-brands fa-youtube"></i>
+									  </a>
+									</li>
+									<li>
+									  <a href="https://t.me/+xYVyIeI8RMMwZjE0" target="_blank">
+										<i class="fa-brands fa-telegram"></i>
+									  </a>
+									</li>
+								  </ul>
+	                        </div>
+	                        <!-- End Social link -->
+	                    </div>
+	                </div>
+	                <!-- End Col -->
+	                <div class="col-md-12 col-lg-8">
+	                    <div class="row footer_m">
+	                        <div class="col-md-6">
+	                            <div style="margin-left: 50px; margin-top: 10px;">
+	                                <div class="contact-icon">
+	                                </div>
+	                                <!-- End contact Icon -->
+	                                <div>
+	                                    <h3 style="color: #fff; font-weight: 900;">Nigeria</h3>
+	                                    <h6 style="margin-top: -7px">Lagos Offices</h6><br><br>
+	                                </div>
+	                                <!-- End Contact Info -->
+	                            </div>
+	                            <!-- End Contact Us -->
+	                        </div>
+	                        <!-- End Col -->
+	                        <div class="col-md-6">
+	                            <div style="margin-left: 50px; margin-top: 10px;">
+	                                <div class="contact-icon">
+	                                </div>
+	                                <!-- End contact Icon -->
+	                                <div>
+	                                    <h3 style="color: #fff; font-weight: 600; line-height: 1.25;">
+											+2348157841450 <br>
+	                                     </h3>
+	                                    <h6 style="margin-top: -7px">Give us a call</h6><br><br>
+	                                </div>
+	                                <!-- End Contact Info -->
+	                            </div>
+	                            <!-- End Contact Us -->
+	                        </div>
+	                        <!-- End Col -->
+	                    </div>
+	                    <!-- End Contact Row -->
+	                    <div class="row">
+	                        <div class="col-md-12 col-lg-6">
+	                            <div class="footer-widget footer-left-widget">
+	                                <div class="section-heading">
+	                                    <h3>Useful Links</h3><!--
+	                                    <span class="animate-border border-black"></span>-->
+	                                </div>
+	                                <ul>
+	                                    <!--<li>
+	                                        <a href="./Masterclass" target="_blank">Masterclass</a>
+	                                    </li> -->
+	                                    <li>
+	                                        <a href="{{ route('mentorship') }}" target="_blank">Mentorship</a>
+	                                    </li>
+	                                    <li>
+	                                        <a href="{{ route('signals') }}" target="_blank">Trade Signals</a>
+	                                    </li>
+	                                </ul>
+	                                <ul>
+	                                    <!-- <li>
+	                                        <a href="#resources" target="_blank">Resources</a>
+	                                    </li> -->
+	                                   
+	                                    <li>
+	                                        <a href="https://www.vantagemarkets.com/forex-trading/forex-trading-account/?affid=NzQzMDU=" target="_blank">Recommended Broker</a>
+	                                    </li>
+	                                </ul>
+	                            </div>
+	                            <!-- End Footer Widget -->
+	                        </div>
+	                        <!-- End col -->
+	                        <div class="col-md-12 col-lg-6">
+	                            <div class="footer-widget" style="padding-left: 50px;">
+	                                <div class="section-heading">
+	                                    <h3>Subscribe</h3><!--
+	                                    <span class="animate-border border-black"></span> -->
+	                                </div>
+	                                <span>
+	                                Never miss an update from us, Subscribe here:<br></span>
+	
+	                                <form action="" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate="">
+	                                    <div class="form-row">
+	                                        <div class="col dk-footer-form">
+	                                            <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" class="form-control" placeholder="Email Address">
+									    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_a939b9a617962057d7d97d766_2360e68684" tabindex="-1" value=""></div>
+									        <div class="optionalParent">
+									            <div class="clear foot">
+									                <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button" style="visibility: hidden;">
+									            </div>
+									        </div>
+	                                        </div>
+	                                    </div>
+	                                </form>
+	                                <!-- End form -->
+	                            </div>
+	                            <!-- End footer widget -->
+	                        </div>
+	                        <!-- End Col -->
+	                    </div>
+	                    <!-- End Row -->
+	                </div>
+	                <!-- End Col -->
+	            </div>
+	        </div>
+	        <!-- Back to top -->
+	        <div id="back-to-top" class="back-to-top">
+	            <a href="#"><button class="btn btn-dark" title="Back to Top" style="display: block;">
+	                <i class="fa fa-angle-up"></i>
+	            </button></a>
+	        </div>
+	        <div class="copyright">
+	            <div class="container">
+				<div class="row">
+	                <div class="col-md-12 col-sm-12 col-lg-12"><b style="font-size: 1.35em; line-height: 0.85; margin-top: 5px; margin-bottom: 25px; color: #fff; letter-spacing: -1px;">Ikeja<ygreen> Trading Floor</ygreen></b><br>
+	                	<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.428995431039!2d3.3660043594126736!3d6.593482772320989!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b93c5f605cd7f%3A0x4ce61da54bf0d476!2stradelikeokafor!5e0!3m2!1sen!2sus!4v1758553350769!5m2!1sen!2sus" width="100%" height="135" style="border: 3px; solid #EAEEF1FF; border-radius: 8px;" allowfullscreen="" loading="lazy"></iframe><br>
+							<p style="font-size: 1.15em; line-height: 1; margin-left: 10px; margin-top: 5px; margin-bottom: 25px; color: #fff; letter-spacing: -1px;">
+								 <b><ygreen>Location:</ygreen></b> <br>Block 1 plot 8 <b><ygreen>Memunat ayodeji crescent,</ygreen></b><br> Etal Ave, Ikeja Lagos NG, Oregun, Ikeja 100271, Lagos, Nigeria.</p>
+	                </div>
+				</div>
+				</div>
+				
+	            <div class="container">
+					<div class="row">
+						<div class="col-md-12 text-center">
+							<p><h6 style="font-size: 0.75em;">
+								 <b>Disclaimer: </b>This site contains strictly Educational materials for Leverage Trading. No form of Solicitation or other guarantee is intended.<br> Trading and/or investing in Leveraged Products comes with a substaintial amount of risk and you may loose part or all of your investments. Be Advised.</h6>
+						</div>
+					</div>
+				</div>
+	                <!-- End Row -->
+	        </div>
+	        
+	        <div class="copyright">
+	            <div class="container">
+				<div class="row">
+					<div class="col-md-12 text-center">
+						<p><h6 style="font-size: 0.75em;">
+							 <b>TRADE LIKE OKAFOR</b> | Copyright &copy;<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>document.write(new Date().getFullYear());</script> All rights reserved <br> Developed by <a href="https://t.me/ekenmapeter" target="_blank"> Shevootech Online</a></h6>
+					</div>
+				</div>
+				</div>
+	                <!-- End Row -->
+	            </div>
+	            <!-- End Copyright Container -->
 	</footer>
 
     <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/jquery-migrate-3.0.1.min.js') }}"></script>
+    <script src="{{ asset('js/popper.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.easing.1.3.js') }}"></script>
+    <script src="{{ asset('js/jquery.waypoints.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.stellar.min.js') }}"></script>
+    <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.magnific-popup.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.animateNumber.min.js') }}"></script>
+    <script src="{{ asset('js/scrollax.min.js') }}"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
 </body>
 </html>
