@@ -85,7 +85,9 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::post('/settings', [AdminSettingController::class, 'update'])->name('settings.update');
 
     // Blog Management
-    Route::resource('blog', AdminBlogController::class);
+    Route::resource('blog', AdminBlogController::class)->parameters([
+        'blog' => 'post'
+    ]);
     Route::post('blog/upload', [AdminBlogController::class, 'uploadImage'])->name('blog.upload');
 
     // Impersonation

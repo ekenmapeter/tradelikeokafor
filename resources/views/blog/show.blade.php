@@ -4,6 +4,25 @@
 	<title>{{ $post->title }} - TRADE LIKE OKAFOR</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- SEO Meta Tags -->
+	<meta name="description" content="{{ $post->short_description }}">
+	<meta name="keywords" content="Trade Like Okafor, Trading Tips, {{ $post->title }}">
+	<link rel="canonical" href="{{ route('blog.show', $post->slug) }}">
+
+	<!-- Open Graph / Facebook -->
+	<meta property="og:type" content="article">
+	<meta property="og:url" content="{{ route('blog.show', $post->slug) }}">
+	<meta property="og:title" content="{{ $post->title }} - TRADE LIKE OKAFOR">
+	<meta property="og:description" content="{{ $post->short_description }}">
+	<meta property="og:image" content="{{ $post->image ? Storage::url($post->image) : asset('images/logo.png') }}">
+
+	<!-- Twitter -->
+	<meta property="twitter:card" content="summary_large_image">
+	<meta property="twitter:url" content="{{ route('blog.show', $post->slug) }}">
+	<meta property="twitter:title" content="{{ $post->title }} - TRADE LIKE OKAFOR">
+	<meta property="twitter:description" content="{{ $post->short_description }}">
+	<meta property="twitter:image" content="{{ $post->image ? Storage::url($post->image) : asset('images/logo.png') }}">
 	
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Open+Sans+Condensed:ital,wght@0,300;0,700;1,300&family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&family=Ubuntu+Condensed&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
@@ -295,7 +314,7 @@
 		</div>
 	</section>
 
-	<footer id="dk-footer" class="dk-footer">
+<footer id="dk-footer" class="dk-footer">
 	        <div class="container">
 	            <div class="row">
 	                <div class="col-md-12 col-lg-4">
@@ -306,26 +325,7 @@
 	                        <p class="footer-info-text">
 								Our strategy helps you find the best chances to make money in the market, while keeping the risky parts small so you can keep more of the profit.
 	                        </p>
-	                        <div class="footer-social-link">
-	                            <h3>Follow us</h3>
-								<ul>
-									<li>
-									  <a href="https://www.instagram.com/tradelikeokafor" target="_blank">
-										<i class="fa-brands fa-instagram"></i>
-									  </a>
-									</li>
-									<li>
-									  <a href="https://youtube.com/@tradelikeokafor" target="_blank">
-										<i class="fa-brands fa-youtube"></i>
-									  </a>
-									</li>
-									<li>
-									  <a href="https://t.me/+xYVyIeI8RMMwZjE0" target="_blank">
-										<i class="fa-brands fa-telegram"></i>
-									  </a>
-									</li>
-								  </ul>
-	                        </div>
+	                
 	                        <!-- End Social link -->
 	                    </div>
 	                </div>
@@ -364,66 +364,6 @@
 	                        <!-- End Col -->
 	                    </div>
 	                    <!-- End Contact Row -->
-	                    <div class="row">
-	                        <div class="col-md-12 col-lg-6">
-	                            <div class="footer-widget footer-left-widget">
-	                                <div class="section-heading">
-	                                    <h3>Useful Links</h3><!--
-	                                    <span class="animate-border border-black"></span>-->
-	                                </div>
-	                                <ul>
-	                                    <!--<li>
-	                                        <a href="./Masterclass" target="_blank">Masterclass</a>
-	                                    </li> -->
-	                                    <li>
-	                                        <a href="{{ route('mentorship') }}" target="_blank">Mentorship</a>
-	                                    </li>
-	                                    <li>
-	                                        <a href="{{ route('signals') }}" target="_blank">Trade Signals</a>
-	                                    </li>
-	                                </ul>
-	                                <ul>
-	                                    <!-- <li>
-	                                        <a href="#resources" target="_blank">Resources</a>
-	                                    </li> -->
-	                                   
-	                                    <li>
-	                                        <a href="https://www.vantagemarkets.com/forex-trading/forex-trading-account/?affid=NzQzMDU=" target="_blank">Recommended Broker</a>
-	                                    </li>
-	                                </ul>
-	                            </div>
-	                            <!-- End Footer Widget -->
-	                        </div>
-	                        <!-- End col -->
-	                        <div class="col-md-12 col-lg-6">
-	                            <div class="footer-widget" style="padding-left: 50px;">
-	                                <div class="section-heading">
-	                                    <h3>Subscribe</h3><!--
-	                                    <span class="animate-border border-black"></span> -->
-	                                </div>
-	                                <span>
-	                                Never miss an update from us, Subscribe here:<br></span>
-	
-	                                <form action="" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate="">
-	                                    <div class="form-row">
-	                                        <div class="col dk-footer-form">
-	                                            <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" class="form-control" placeholder="Email Address">
-									    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_a939b9a617962057d7d97d766_2360e68684" tabindex="-1" value=""></div>
-									        <div class="optionalParent">
-									            <div class="clear foot">
-									                <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button" style="visibility: hidden;">
-									            </div>
-									        </div>
-	                                        </div>
-	                                    </div>
-	                                </form>
-	                                <!-- End form -->
-	                            </div>
-	                            <!-- End footer widget -->
-	                        </div>
-	                        <!-- End Col -->
-	                    </div>
-	                    <!-- End Row -->
 	                </div>
 	                <!-- End Col -->
 	            </div>
