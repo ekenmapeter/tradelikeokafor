@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\AdminSubscriptionPlanController;
 use App\Http\Controllers\Admin\AdminUserSubscriptionController;
 use App\Http\Controllers\Admin\AdminTransactionController;
 use App\Http\Controllers\Admin\AdminSettingController;
+use App\Http\Controllers\Admin\AdminBlogController;
 use App\Http\Controllers\Admin\ImpersonateController;
 use App\Http\Controllers\User\UserDashboardController;
 use App\Http\Controllers\User\UserSubscriptionController;
@@ -40,6 +41,9 @@ Route::get('mentorship', function () {
 Route::get('mentorship-exclusive', function () {
     return view('mentorship-exclusive');
 })->name('mentorship-exclusive');
+
+Route::get('blog', [App\Http\Controllers\BlogController::class, 'index'])->name('blog.index');
+Route::get('blog/{slug}', [App\Http\Controllers\BlogController::class, 'show'])->name('blog.show');
 
 Route::get('/paystack/callback', [App\Http\Controllers\PaystackController::class, 'handleCallback'])->name('paystack.callback');
 Route::post('/paystack/webhook', [App\Http\Controllers\PaystackController::class, 'handleWebhook'])->name('paystack.webhook');
@@ -79,6 +83,9 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     // Settings
     Route::get('/settings', [AdminSettingController::class, 'index'])->name('settings.index');
     Route::post('/settings', [AdminSettingController::class, 'update'])->name('settings.update');
+
+    // Blog Management
+    Route::resource('blog', AdminBlogController::class);
 
     // Impersonation
     Route::get('/users/{user}/impersonate', [ImpersonateController::class, 'impersonate'])->name('users.impersonate');

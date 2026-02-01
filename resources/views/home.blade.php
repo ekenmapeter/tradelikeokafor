@@ -102,6 +102,7 @@
 					<li class="nav-item"><a href="{{ route('register') }}" style="background: #010102!important; font-weight: 600; color: #ffffff!important;" class="nav-link">Register</a></li> --}}
 					<li class="nav-item"><a href="{{ route('mentorship') }}" style="background: #a9e90f!important; font-weight: 600; color: #010102!important;" class="nav-link">Mentorship</a></li>
 					<li class="nav-item"><a href="{{ route('signals') }}" style="background: #02be2e; font-weight: 600; color: #ffffff!important;" class="nav-link">Trade Signals</a></li>
+					<li class="nav-item"><a href="{{ route('blog.index') }}" style="background: #1a1a1a; font-weight: 600; color: #ffffff!important;" class="nav-link">Blog</a></li>
 					<li class="nav-item"><a href="https://t.me/+xYVyIeI8RMMwZjE0" style="background: #0088cc; color: #ffffff!important; font-weight: 600;" class="nav-link">Free Telegram Channel</a></li>
 					<li class="nav-item cta"><a href="https://www.vantagemarkets.com/forex-trading/forex-trading-account/?affid=NzQzMDU=" class="nav-link">Recommended broker</a></li>
 				</ul>
