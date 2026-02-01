@@ -54,7 +54,38 @@
             font-size: 1.1rem;
         }
         .post-content p {
+            margin-bottom: 25px;
+        }
+        .post-content h2, .post-content h3, .post-content h4 {
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            margin-top: 40px;
             margin-bottom: 20px;
+        }
+        .post-content h2 { font-size: 1.8rem; }
+        .post-content h3 { font-size: 1.5rem; }
+        .post-content ul, .post-content ol {
+            margin-bottom: 25px;
+            padding-left: 20px;
+        }
+        .post-content li {
+            margin-bottom: 10px;
+        }
+        .post-content blockquote {
+            border-left: 4px solid #a9e90f;
+            padding: 20px 30px;
+            background: rgba(169, 233, 15, 0.05);
+            font-style: italic;
+            margin: 30px 0;
+            color: #eee;
+        }
+        .post-content a {
+            color: #a9e90f;
+            text-decoration: underline;
+        }
+        .post-content a:hover {
+            color: #fff;
         }
         .sidebar-widget {
             background: #1a1a1a;
@@ -167,7 +198,7 @@
                         @endif
 
                         <div class="post-content">
-                            {!! nl2br(e($post->content)) !!}
+                            {!! $post->content !!}
                         </div>
                         
                         <div class="mt-5 pt-4 border-top">

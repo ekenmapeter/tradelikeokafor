@@ -28,7 +28,9 @@
 
         <div class="mb-4">
             <label for="content" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Content</label>
-            <textarea name="content" id="content" rows="15" required class="w-full px-4 py-2 border rounded-lg focus:ring-green-500 focus:border-green-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white">{{ old('content') }}</textarea>
+            <div class="dark:text-gray-900">
+                <textarea name="content" id="editor" rows="15" class="w-full px-4 py-2 border rounded-lg focus:ring-green-500 focus:border-green-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white">{{ old('content') }}</textarea>
+            </div>
         </div>
 
         <div class="mb-6 flex items-center">
@@ -42,4 +44,27 @@
         </div>
     </form>
 </div>
+
+<style>
+    .ck-editor__editable_inline {
+        min-height: 400px;
+    }
+    /* Fix for dark mode editor text visibility if needed, but CKEditor usually handles itself. 
+       Ensuring the editor container doesn't clash with dark bg */
+    .ck.ck-editor__main>.ck-editor__editable {
+        background: #fff !important;
+        color: #333 !important;
+    }
+</style>
+
+<script src="https://cdn.ckeditor.com/ckeditor5/40.0.0/classic/ckeditor.js"></script>
+<script>
+    ClassicEditor
+        .create(document.querySelector('#editor'), {
+            toolbar: [ 'heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote', 'undo', 'redo' ],
+        })
+        .catch(error => {
+            console.error(error);
+        });
+</script>
 @endsection
