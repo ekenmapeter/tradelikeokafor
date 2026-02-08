@@ -85,6 +85,22 @@ class User extends Authenticatable
     }
 
     /**
+     * Check if user is a blog moderator.
+     */
+    public function isModerator(): bool
+    {
+        return $this->role === 'moderator';
+    }
+
+    /**
+     * Check if user can access any part of admin panel.
+     */
+    public function canAccessAdmin(): bool
+    {
+        return in_array($this->role, ['admin', 'moderator']);
+    }
+
+    /**
      * Check if user account is active.
      */
     public function isActive(): bool

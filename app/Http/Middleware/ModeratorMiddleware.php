@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class AdminMiddleware
+class ModeratorMiddleware
 {
     /**
      * Handle an incoming request.
@@ -19,8 +19,8 @@ class AdminMiddleware
             return redirect()->route('login');
         }
 
-        if (!auth()->user()->isAdmin()) {
-            return redirect('/')->with('error', 'Access denied. Admin privileges required.');
+        if (!auth()->user()->isModerator() && !auth()->user()->isAdmin()) {
+            return redirect('/')->with('error', 'Access denied. Moderator privileges required.');
         }
 
         return $next($request);

@@ -53,10 +53,13 @@ Route::get('/dashboard', function () {
     if (auth()->user()->isAdmin()) {
         return redirect()->route('admin.dashboard');
     }
+    if (auth()->user()->isModerator()) {
+        return redirect()->route('admin.blog.index');
+    }
     return redirect('/');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-// Admin Routes
+// Admin Routes (Full Admin only)
 Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
     
@@ -84,14 +87,17 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::get('/settings', [AdminSettingController::class, 'index'])->name('settings.index');
     Route::post('/settings', [AdminSettingController::class, 'update'])->name('settings.update');
 
+    // Impersonation
+    Route::get('/users/{user}/impersonate', [ImpersonateController::class, 'impersonate'])->name('users.impersonate');
+});
+
+// Blog Moderator Routes (Admin + Moderator)
+Route::middleware(['auth', 'moderator'])->prefix('admin')->name('admin.')->group(function () {
     // Blog Management
     Route::resource('blog', AdminBlogController::class)->parameters([
         'blog' => 'post'
     ]);
     Route::post('blog/upload', [AdminBlogController::class, 'uploadImage'])->name('blog.upload');
-
-    // Impersonation
-    Route::get('/users/{user}/impersonate', [ImpersonateController::class, 'impersonate'])->name('users.impersonate');
 });
 
 Route::middleware(['auth'])->group(function () {
