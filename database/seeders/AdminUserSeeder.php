@@ -13,15 +13,17 @@ class AdminUserSeeder extends Seeder
      */
     public function run(): void
     {
-        User::create([
-            'name' => 'Admin',
-            'email' => 'support@tradelikeokafor.com',
-            'password' => Hash::make('password'),
-            'phone' => '+1234567890',
-            'role' => 'admin',
-            'status' => 'active',
-            'email_verified_at' => now(),
-        ]);
+        User::updateOrCreate(
+            ['email' => 'support@tradelikeokafor.com'],
+            [
+                'name' => 'Admin',
+                'password' => Hash::make('password'),
+                'phone' => '+1234567890',
+                'role' => 'admin',
+                'status' => 'active',
+                'email_verified_at' => now(),
+            ]
+        );
 
         $this->command->info('Admin user created successfully!');
         $this->command->info('Email: support@tradelikeokafor.com');
