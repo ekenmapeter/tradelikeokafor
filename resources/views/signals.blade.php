@@ -123,13 +123,13 @@
 			                <div class="col-lg-6">
 			                    <div class="price-box">
 			                        <div class="">
-			                        	<div class="price-label basic">One Month Subscription</div>
+			                        	<div class="price-label basic">Life Time Access</div>
 			                        	<div class="price">$100</div>
 											<div class="price-label basic">₦145,000</div>
 			                        </div>
 			                        <div class="info">
 			                            <ul>
-			                                <li><i class="fas fa-check"></i><b>Lifetime Signals</b></li>
+			                                <li><i class="fas fa-check"></i><b>Premium Monthly Signals</b></li>
 											<li><i class="fas fa-check"></i>Sniper Entries</li>
 											<li><i class="fas fa-check"></i>Maximum 50 pips Stop Loss</li>
 											<li><i class="fas fa-check"></i><b>0 - 4 trades Per Day</b></li>
