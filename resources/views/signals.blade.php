@@ -129,7 +129,7 @@
 			                        </div>
 			                        <div class="info">
 			                            <ul>
-			                                <li><i class="fas fa-check"></i><b>Premium Monthly Signals</b></li>
+			                                <li><i class="fas fa-check"></i><b>Lifetime Signals</b></li>
 											<li><i class="fas fa-check"></i>Sniper Entries</li>
 											<li><i class="fas fa-check"></i>Maximum 50 pips Stop Loss</li>
 											<li><i class="fas fa-check"></i><b>0 - 4 trades Per Day</b></li>

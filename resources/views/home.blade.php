@@ -178,7 +178,7 @@
 		                    <img class="img-fluid" src="{{ asset('images/mentorship_news.png') }}" alt="Mentorship Base">
 		                </div>
 		                <div class="card-image-overlay m-auto">
-		                    <span class="card-detail-badge">$250</span>
+		                    <span class="card-detail-badge">$150</span>
 		                </div>
 		                <div class="card-body">
 		                        <span><b>Includes</b><br>
