@@ -23,6 +23,7 @@
             <tr>
                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Time</th>
                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">IP Address</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Country</th>
                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">User</th>
                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Browser/Device</th>
             </tr>
@@ -36,6 +37,16 @@
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap text-sm font-mono text-gray-900 dark:text-gray-200">
                     {{ $view->ip_address }}
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-200">
+                    @if($view->country)
+                        <div class="flex items-center">
+                            <span class="mr-2">{{ $view->country }}</span>
+                            <span class="text-xs text-gray-400 uppercase">({{ $view->country_code }})</span>
+                        </div>
+                    @else
+                        <span class="text-gray-400 italic">Unknown</span>
+                    @endif
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-200">
                     @if($view->user)
