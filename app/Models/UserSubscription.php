@@ -16,6 +16,7 @@ class UserSubscription extends Model
         'start_date',
         'end_date',
         'status',
+        'payment_proof',
     ];
 
     protected $casts = [

@@ -97,6 +97,7 @@ Route::middleware(['auth', 'moderator'])->prefix('admin')->name('admin.')->group
     Route::resource('blog', AdminBlogController::class)->parameters([
         'blog' => 'post'
     ]);
+    Route::get('blog/{post}/views', [AdminBlogController::class, 'views'])->name('blog.views');
     Route::post('blog/upload', [AdminBlogController::class, 'uploadImage'])->name('blog.upload');
 });
 

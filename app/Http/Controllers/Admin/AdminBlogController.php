@@ -98,6 +98,12 @@ class AdminBlogController extends Controller
             ->with('success', 'Post deleted successfully.');
     }
 
+    public function views(Post $post)
+    {
+        $views = $post->views()->with('user')->latest()->paginate(50);
+        return view('admin.blog.views', compact('post', 'views'));
+    }
+
     public function uploadImage(Request $request)
     {
         if ($request->hasFile('upload')) {

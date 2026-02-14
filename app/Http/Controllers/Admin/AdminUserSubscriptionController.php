@@ -43,6 +43,7 @@ class AdminUserSubscriptionController extends Controller
             'user_id' => 'required|exists:users,id',
             'subscription_plan_id' => 'required|exists:subscription_plans,id',
             'start_date' => 'required|date',
+            'payment_proof' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         $plan = SubscriptionPlan::findOrFail($validated['subscription_plan_id']);
@@ -50,6 +51,11 @@ class AdminUserSubscriptionController extends Controller
         
         // All subscriptions are lifetime
         $endDate = null; 
+
+        $proofPath = null;
+        if ($request->hasFile('payment_proof')) {
+            $proofPath = $request->file('payment_proof')->store('proofs', 'public');
+        }
 
         // Cancel any existing active subscriptions for this user
         UserSubscription::where('user_id', $validated['user_id'])
@@ -63,6 +69,7 @@ class AdminUserSubscriptionController extends Controller
             'start_date' => $startDate,
             'end_date' => $endDate,
             'status' => 'active',
+            'payment_proof' => $proofPath,
         ]);
 
         // Create transaction record
@@ -71,6 +78,7 @@ class AdminUserSubscriptionController extends Controller
             'subscription_plan_id' => $validated['subscription_plan_id'],
             'amount' => $plan->price,
             'reference' => 'ADMIN-' . strtoupper(Str::random(10)),
+            'proof' => $proofPath,
             'status' => 'completed',
             'payment_date' => now(),
         ]);
