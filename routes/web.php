@@ -8,7 +8,9 @@ use App\Http\Controllers\Admin\AdminUserSubscriptionController;
 use App\Http\Controllers\Admin\AdminTransactionController;
 use App\Http\Controllers\Admin\AdminSettingController;
 use App\Http\Controllers\Admin\AdminBlogController;
+use App\Http\Controllers\Admin\AdminEbookController;
 use App\Http\Controllers\Admin\ImpersonateController;
+use App\Http\Controllers\EbookController;
 use App\Http\Controllers\User\UserDashboardController;
 use App\Http\Controllers\User\UserSubscriptionController;
 use App\Http\Controllers\User\UserTransactionController;
@@ -44,6 +46,12 @@ Route::get('mentorship-exclusive', function () {
 
 Route::get('blog', [App\Http\Controllers\BlogController::class, 'index'])->name('blog.index');
 Route::get('blog/{slug}', [App\Http\Controllers\BlogController::class, 'show'])->name('blog.show');
+
+// Ebook Routes (Public)
+Route::get('ebooks', [EbookController::class, 'index'])->name('ebooks.index');
+Route::get('ebooks/{slug}', [EbookController::class, 'show'])->name('ebooks.show');
+Route::post('ebooks/{slug}/purchase', [EbookController::class, 'purchase'])->name('ebooks.purchase');
+Route::get('ebooks/order/{orderNumber}/thankyou', [EbookController::class, 'thankyou'])->name('ebooks.thankyou');
 
 Route::get('/paystack/callback', [App\Http\Controllers\PaystackController::class, 'handleCallback'])->name('paystack.callback');
 Route::post('/paystack/webhook', [App\Http\Controllers\PaystackController::class, 'handleWebhook'])->name('paystack.webhook');
@@ -87,6 +95,12 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::get('/settings', [AdminSettingController::class, 'index'])->name('settings.index');
     Route::post('/settings', [AdminSettingController::class, 'update'])->name('settings.update');
 
+    // Ebook Management
+    Route::resource('ebooks', AdminEbookController::class);
+    Route::get('/ebook-orders', [AdminEbookController::class, 'orders'])->name('ebook-orders.index');
+    Route::post('/ebook-orders/{order}/approve', [AdminEbookController::class, 'approveOrder'])->name('ebook-orders.approve');
+    Route::post('/ebook-orders/{order}/decline', [AdminEbookController::class, 'declineOrder'])->name('ebook-orders.decline');
+
     // Impersonation
     Route::get('/users/{user}/impersonate', [ImpersonateController::class, 'impersonate'])->name('users.impersonate');
 });
@@ -94,6 +108,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
 // Blog Moderator Routes (Admin + Moderator)
 Route::middleware(['auth', 'moderator'])->prefix('admin')->name('admin.')->group(function () {
     // Blog Management
+    Route::get('blog/analytics', [AdminBlogController::class, 'analytics'])->name('blog.analytics');
     Route::resource('blog', AdminBlogController::class)->parameters([
         'blog' => 'post'
     ]);

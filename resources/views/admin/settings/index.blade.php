@@ -93,6 +93,17 @@
                 </div>
             </div>
 
+            <div class="mb-8">
+                <h2 class="text-lg font-semibold text-gray-800 dark:text-white mb-4 border-b border-gray-100 dark:border-gray-700 pb-2">PayPal Details (Ebook Payments)</h2>
+                <div class="grid grid-cols-1 gap-6">
+                    <div>
+                        <label for="paypal_email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">PayPal Email</label>
+                        <input type="email" name="paypal_email" id="paypal_email" value="{{ $settings['paypal_email'] ?? '' }}" class="w-full rounded-lg border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white shadow-sm focus:border-green-500 focus:ring-green-500">
+                        <p class="mt-1 text-xs text-gray-500">This email will be shown to customers for PayPal ebook payments.</p>
+                    </div>
+                </div>
+            </div>
+
             <div class="flex justify-end">
                 <button type="submit" class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-lg shadow-sm transition-colors">
                     Save Changes
