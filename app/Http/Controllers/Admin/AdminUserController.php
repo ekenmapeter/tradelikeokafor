@@ -123,6 +123,10 @@ class AdminUserController extends Controller
                 ->with('error', 'Cannot delete admin users.');
         }
 
+        // Clean up related records manually to prevent orphaned data errors
+        $user->transactions()->delete();
+        $user->subscriptions()->delete();
+
         $user->delete();
 
         return redirect()->route('admin.users.index')

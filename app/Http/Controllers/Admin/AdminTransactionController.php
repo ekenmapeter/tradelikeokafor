@@ -52,11 +52,7 @@ class AdminTransactionController extends Controller
         $startDate = now();
         $endDate = null; // Lifetime access
 
-        // Cancel existing active subscriptions OR extend? 
-        // Let's follow the existing pattern of cancelling old ones
-        \App\Models\UserSubscription::where('user_id', $user->id)
-            ->where('status', 'active')
-            ->update(['status' => 'cancelled']);
+        // Do not cancel existing subscriptions, allowing multiple active plans
 
         // Create new subscription
         $subscription = \App\Models\UserSubscription::create([

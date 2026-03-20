@@ -10,9 +10,9 @@ class UserDashboardController extends Controller
     public function index()
     {
         $user = auth()->user();
-        $activeSubscription = $user->activeSubscription;
+        $activeSubscriptions = $user->activeSubscriptions()->with('plan')->get();
         $recentTransactions = $user->transactions()->latest()->take(5)->get();
 
-        return view('user.dashboard', compact('user', 'activeSubscription', 'recentTransactions'));
+        return view('user.dashboard', compact('user', 'activeSubscriptions', 'recentTransactions'));
     }
 }

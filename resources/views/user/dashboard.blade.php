@@ -15,50 +15,58 @@
         </div>
     </div>
 
-    <!-- Active Subscription Card -->
-    <div class="bg-gradient-to-br from-green-600 to-emerald-800 rounded-2xl shadow-xl p-6 md:p-8 text-white mb-10 relative overflow-hidden transition-transform transform hover:scale-[1.01] duration-300">
-        <!-- Abstract Background Pattern -->
-        <div class="absolute right-0 top-0 opacity-10 transform translate-x-10 -translate-y-10">
-            <svg class="h-64 w-64" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
-        </div>
-        <div class="absolute bottom-0 left-0 opacity-10 transform -translate-x-10 translate-y-10">
-             <svg class="h-48 w-48" fill="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle></svg>
-        </div>
-        
-        <div class="relative z-10">
-            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-                <div>
-                    <h2 class="text-indigo-100 font-medium mb-1 uppercase tracking-wider text-sm">Current Membership</h2>
-                    @if($activeSubscription)
-                        <div class="text-4xl md:text-5xl font-extrabold mb-4 tracking-tight text-white">{{ $activeSubscription->plan->name }}</div>
-                        <div class="flex flex-wrap items-center gap-4 text-sm md:text-base">
-                            <div class="bg-white/20 backdrop-blur-sm rounded-lg px-4 py-2">
-                                <span class="block text-indigo-100 text-xs uppercase">Status</span>
-                                <span class="font-bold text-white flex items-center">
-                                    <svg class="w-4 h-4 mr-1 text-green-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                    Active
-                                </span>
-                            </div>
-                            <div class="bg-white/20 backdrop-blur-sm rounded-lg px-4 py-2">
-                                <span class="block text-indigo-100 text-xs uppercase">Expires In</span>
-                                <span class="font-bold text-white">{{ $activeSubscription->daysRemaining() }} days</span> 
-                            </div>
-                            <div class="bg-white/20 backdrop-blur-sm rounded-lg px-4 py-2">
-                                <span class="block text-indigo-100 text-xs uppercase">Valid Until</span>
-                                <span class="font-bold text-white">{{ $activeSubscription->end_date->format('M d, Y') }}</span>
+    <!-- Active Subscriptions Section -->
+    <div class="mb-10">
+        <h2 class="text-xl font-bold text-gray-800 dark:text-white mb-4">Your Memberships</h2>
+        @forelse($activeSubscriptions as $subscription)
+            <div class="bg-gradient-to-br from-green-600 to-emerald-800 rounded-2xl shadow-xl p-6 md:p-8 text-white mb-6 relative overflow-hidden transition-transform transform hover:scale-[1.01] duration-300">
+                <!-- Abstract Background Pattern -->
+                <div class="absolute right-0 top-0 opacity-10 transform translate-x-10 -translate-y-10">
+                    <svg class="h-64 w-64" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+                </div>
+                
+                <div class="relative z-10">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+                        <div>
+                            <h2 class="text-indigo-100 font-medium mb-1 uppercase tracking-wider text-sm">Active Membership</h2>
+                            <div class="text-4xl md:text-5xl font-extrabold mb-4 tracking-tight text-white">{{ $subscription->plan->name }}</div>
+                            <div class="flex flex-wrap items-center gap-4 text-sm md:text-base">
+                                <div class="bg-white/20 backdrop-blur-sm rounded-lg px-4 py-2">
+                                    <span class="block text-indigo-100 text-xs uppercase">Status</span>
+                                    <span class="font-bold text-white flex items-center">
+                                        <svg class="w-4 h-4 mr-1 text-green-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                        Active
+                                    </span>
+                                </div>
+                                <div class="bg-white/20 backdrop-blur-sm rounded-lg px-4 py-2">
+                                    <span class="block text-indigo-100 text-xs uppercase">Expires In</span>
+                                    <span class="font-bold text-white">{{ $subscription->daysRemaining() }} {{ is_numeric($subscription->daysRemaining()) ? 'days' : '' }}</span> 
+                                </div>
+                                <div class="bg-white/20 backdrop-blur-sm rounded-lg px-4 py-2">
+                                    <span class="block text-indigo-100 text-xs uppercase">Valid Since</span>
+                                    <span class="font-bold text-white">{{ $subscription->start_date->format('M d, Y') }}</span>
+                                </div>
+                                @if($subscription->end_date)
+                                <div class="bg-white/20 backdrop-blur-sm rounded-lg px-4 py-2">
+                                    <span class="block text-indigo-100 text-xs uppercase">Valid Until</span>
+                                    <span class="font-bold text-white">{{ $subscription->end_date->format('M d, Y') }}</span>
+                                </div>
+                                @endif
                             </div>
                         </div>
-                    @else
-                        <div class="text-3xl md:text-4xl font-bold mb-3">No Active Plan</div>
-                        <p class="mb-6 text-indigo-100 max-w-lg leading-relaxed">Upgrade now to unlock premium trading signals, exclusive market analysis, and mentorship.</p>
-                        <a href="{{ route('user.subscriptions') }}" class="inline-flex items-center bg-white text-green-700 font-bold py-3 px-8 rounded-xl hover:bg-gray-50 transition duration-300 shadow-md transform hover:-translate-y-1">
-                            Choose a Plan
-                            <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-                        </a>
-                    @endif
+                    </div>
                 </div>
             </div>
-        </div>
+        @empty
+            <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 p-8 text-center">
+                <div class="text-3xl md:text-4xl font-bold mb-3 text-gray-800 dark:text-white">No Active Plans</div>
+                <p class="mb-6 text-gray-500 dark:text-gray-400 max-w-lg mx-auto leading-relaxed">Upgrade now to unlock premium trading signals, exclusive market analysis, and mentorship.</p>
+                <a href="{{ route('user.subscriptions') }}" class="inline-flex items-center bg-green-600 text-white font-bold py-3 px-8 rounded-xl hover:bg-green-700 transition duration-300 shadow-md transform hover:-translate-y-1">
+                    Choose a Plan
+                    <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                </a>
+            </div>
+        @endforelse
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">

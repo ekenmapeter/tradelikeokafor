@@ -57,10 +57,7 @@ class AdminUserSubscriptionController extends Controller
             $proofPath = $request->file('payment_proof')->store('proofs', 'public');
         }
 
-        // Cancel any existing active subscriptions for this user
-        UserSubscription::where('user_id', $validated['user_id'])
-            ->where('status', 'active')
-            ->update(['status' => 'cancelled']);
+        // Do not cancel existing subscriptions, allowing multiple active plans
 
         // Create new subscription
         $subscription = UserSubscription::create([

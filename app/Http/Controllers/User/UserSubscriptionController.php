@@ -11,11 +11,11 @@ class UserSubscriptionController extends Controller
     public function index()
     {
         $user = auth()->user();
-        $activeSubscription = $user->activeSubscription;
+        $activeSubscriptions = $user->activeSubscriptions()->with('plan')->get();
         $subscriptionHistory = $user->subscriptions()->latest()->paginate(10);
         $availablePlans = SubscriptionPlan::active()->get();
 
-        return view('user.subscriptions', compact('activeSubscription', 'subscriptionHistory', 'availablePlans'));
+        return view('user.subscriptions', compact('activeSubscriptions', 'subscriptionHistory', 'availablePlans'));
     }
 
     public function manualPayment(SubscriptionPlan $plan)

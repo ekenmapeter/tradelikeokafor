@@ -66,14 +66,38 @@ class User extends Authenticatable
     }
 
     /**
-     * Get the user's active subscription.
+     * Get the user's active subscriptions (plural).
+     */
+    public function activeSubscriptions()
+    {
+        return $this->hasMany(UserSubscription::class)
+            ->where('status', 'active')
+            ->where(function ($query) {
+                $query->whereNull('end_date')
+                      ->orWhere('end_date', '>=', now());
+            });
+    }
+
+    /**
+     * Get the user's latest active subscription (singular).
      */
     public function activeSubscription()
     {
         return $this->hasOne(UserSubscription::class)
             ->where('status', 'active')
-            ->where('end_date', '>=', now())
+            ->where(function ($query) {
+                $query->whereNull('end_date')
+                      ->orWhere('end_date', '>=', now());
+            })
             ->latest();
+    }
+
+    /**
+     * Get IDs of all plans the user is actively subscribed to.
+     */
+    public function activePlanIds(): array
+    {
+        return $this->activeSubscriptions()->pluck('subscription_plan_id')->toArray();
     }
 
     /**

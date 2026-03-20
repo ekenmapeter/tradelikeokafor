@@ -6,33 +6,42 @@
         <h1 class="text-2xl font-bold text-gray-800 dark:text-white">Subscription Management</h1>
     </div>
 
-    @if($activeSubscription)
-    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 mb-8 border-l-4 border-green-500">
+    @forelse($activeSubscriptions as $subscription)
+    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 mb-4 border-l-4 border-green-500 overflow-hidden relative">
         <div class="flex justify-between items-start">
             <div>
-                <h2 class="text-lg font-semibold text-gray-700 dark:text-gray-300">Active Subscription</h2>
-                <p class="text-3xl font-bold text-gray-900 dark:text-white mt-2">{{ $activeSubscription->plan->name }}</p>
+                <h2 class="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Active Subscription</h2>
+                <p class="text-3xl font-bold text-gray-900 dark:text-white mt-1">{{ $subscription->plan->name }}</p>
                 <p class="text-gray-500 dark:text-gray-400 mt-1">
-                    Lifetime Access
+                    {{ is_numeric($subscription->daysRemaining()) ? 'Expires in ' . $subscription->daysRemaining() . ' days' : 'Lifetime Access' }}
                 </p>
             </div>
             <div class="text-right">
                 <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
                     Active
                 </span>
-                <p class="text-sm text-gray-500 mt-2">Active</p>
+                <p class="text-xs text-gray-400 mt-2">Started on {{ $subscription->start_date->format('M d, Y') }}</p>
             </div>
         </div>
     </div>
-    @endif
+    @empty
+    <div class="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-6 mb-8 border-l-4 border-blue-500">
+        <p class="text-blue-700 dark:text-blue-300">You don't have any active subscriptions. Choose a plan below to get started.</p>
+    </div>
+    @endforelse
 
     <!-- Available Plans -->
     <h2 class="text-xl font-semibold text-gray-800 dark:text-white mb-4">Available Plans</h2>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
         @foreach($availablePlans as $plan)
-        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden flex flex-col hover:shadow-xl transition-shadow duration-300">
+        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden flex flex-col hover:shadow-xl transition-shadow duration-300 {{ in_array($plan->id, auth()->user()->activePlanIds()) ? 'border-2 border-green-500' : '' }}">
             <div class="p-6 flex-1">
-                <h3 class="text-xl font-bold text-gray-900 dark:text-white">{{ $plan->name }}</h3>
+                <div class="flex justify-between items-start">
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white">{{ $plan->name }}</h3>
+                    @if(in_array($plan->id, auth()->user()->activePlanIds()))
+                        <span class="bg-green-100 text-green-800 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wide">Subscribed</span>
+                    @endif
+                </div>
                 <div class="mt-4 flex flex-col text-gray-900 dark:text-white">
                     <div class="flex items-baseline">
                         <span class="text-3xl font-extrabold tracking-tight">${{ number_format($plan->price, 2) }}</span>
