@@ -196,11 +196,11 @@
 
 			<div class="collapse navbar-collapse" id="ftco-nav">
 				<ul class="navbar-nav ml-auto">
-					<li class="nav-item"><a href="{{ route('mentorship') }}" style="background: #02be2e!important; font-weight: 600; color: #ffffff!important;" class="nav-link">Mentorship</a></li>
-					<li class="nav-item"><a href="{{ route('signals') }}" style="background: #02be2e!important; font-weight: 600; color: #ffffff!important;" class="nav-link">Trade Signals</a></li>
-					<li class="nav-item"><a href="{{ route('blog.index') }}" style="background: #02be2e!important; font-weight: 600; color: #ffffff!important;" class="nav-link">Blog</a></li>
-					<li class="nav-item active"><a href="{{ route('ebooks.index') }}" style="background: #02be2e!important; font-weight: 600; color: #ffffff!important;" class="nav-link">📚 Ebooks</a></li>
-					<li class="nav-item"><a href="https://t.me/+xYVyIeI8RMMwZjE0" style="background: #02be2e!important; color: #ffffff!important; font-weight: 600;" class="nav-link">Free Telegram Channel</a></li>
+					<li class="nav-item"><a href="{{ route('mentorship') }}" style="background: #02be2e!important; font-weight: 600; color: #ffffff!important; border-radius: 50px; padding: 8px 20px!important; margin-left: 5px;" class="nav-link">Mentorship</a></li>
+					<li class="nav-item"><a href="{{ route('signals') }}" style="background: #02be2e!important; font-weight: 600; color: #ffffff!important; border-radius: 50px; padding: 8px 20px!important; margin-left: 5px;" class="nav-link">Trade Signals</a></li>
+					<li class="nav-item"><a href="{{ route('blog.index') }}" style="background: #02be2e!important; font-weight: 600; color: #ffffff!important; border-radius: 50px; padding: 8px 20px!important; margin-left: 5px;" class="nav-link">Blog</a></li>
+					<li class="nav-item active"><a href="{{ route('ebooks.index') }}" style="background: #02be2e!important; font-weight: 600; color: #ffffff!important; border-radius: 50px; padding: 8px 20px!important; margin-left: 5px;" class="nav-link">Ebooks</a></li>
+					<li class="nav-item"><a href="https://t.me/+xYVyIeI8RMMwZjE0" style="background: #02be2e!important; color: #ffffff!important; font-weight: 600; border-radius: 50px; padding: 8px 20px!important; margin-left: 5px;" class="nav-link">Free Telegram Channel</a></li>
 					<li class="nav-item cta"><a href="https://www.vantagemarkets.com/forex-trading/forex-trading-account/?affid=NzQzMDU=" class="nav-link">Recommended broker</a></li>
 				</ul>
 			</div>
