@@ -14,11 +14,13 @@ class Ebook extends Model
         'cover_image',
         'pdf_file',
         'price',
+        'price_naira',
         'is_active',
     ];
 
     protected $casts = [
         'price' => 'decimal:2',
+        'price_naira' => 'decimal:2',
         'is_active' => 'boolean',
     ];
 

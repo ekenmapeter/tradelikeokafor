@@ -30,12 +30,18 @@
                     <input type="number" name="price" id="price" value="{{ old('price', $ebook->price) }}" step="0.01" min="0" required class="w-full rounded-lg border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white shadow-sm focus:border-green-500 focus:ring-green-500">
                     @error('price') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
                 </div>
-                <div class="flex items-end">
-                    <label class="flex items-center">
-                        <input type="checkbox" name="is_active" value="1" {{ old('is_active', $ebook->is_active) ? 'checked' : '' }} class="rounded border-gray-300 text-green-600 shadow-sm focus:border-green-500 focus:ring-green-500 mr-2">
-                        <span class="text-sm font-medium text-gray-700 dark:text-gray-300">Active (visible to visitors)</span>
-                    </label>
+                <div>
+                    <label for="price_naira" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Price (Naira)</label>
+                    <input type="number" name="price_naira" id="price_naira" value="{{ old('price_naira', $ebook->price_naira) }}" step="0.01" min="0" class="w-full rounded-lg border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white shadow-sm focus:border-green-500 focus:ring-green-500">
+                    @error('price_naira') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
                 </div>
+            </div>
+
+            <div class="mb-4">
+                <label class="flex items-center">
+                    <input type="checkbox" name="is_active" value="1" {{ old('is_active', $ebook->is_active) ? 'checked' : '' }} class="rounded border-gray-300 text-green-600 shadow-sm focus:border-green-500 focus:ring-green-500 mr-2">
+                    <span class="text-sm font-medium text-gray-700 dark:text-gray-300">Active (visible to visitors)</span>
+                </label>
             </div>
 
             <div class="mb-4">

@@ -237,7 +237,13 @@
                             <div class="ebook-card-body">
                                 <h3 class="ebook-card-title">{{ $ebook->title }}</h3>
                                 <p class="ebook-card-desc">{{ Str::limit($ebook->short_description, 150) }}</p>
-                                <div class="ebook-card-price">${{ number_format($ebook->price, 2) }} <small>USD</small></div>
+                                <div class="ebook-card-price">
+                                    ${{ number_format($ebook->price, 2) }}
+                                    @if($ebook->price_naira)
+                                        <span style="font-size: 0.7em; color: #888; margin: 0 5px;">/</span>
+                                        ₦{{ number_format($ebook->price_naira, 0) }}
+                                    @endif
+                                </div>
                                 <a href="{{ route('ebooks.show', $ebook->slug) }}" class="btn-buy">
                                     <i class="fas fa-shopping-cart mr-2"></i> Buy Now
                                 </a>

@@ -48,6 +48,14 @@ class EbookController extends Controller
 
         $proofPath = $request->file('payment_proof')->store('ebook-proofs', 'public');
 
+        $amount = $ebook->price;
+        $currency = 'USD';
+
+        if ($request->payment_method === 'bank_transfer' && $ebook->price_naira) {
+            $amount = $ebook->price_naira;
+            $currency = 'NGN';
+        }
+
         $order = EbookOrder::create([
             'order_number' => EbookOrder::generateOrderNumber(),
             'ebook_id' => $ebook->id,
@@ -56,7 +64,8 @@ class EbookController extends Controller
             'customer_phone' => $request->customer_phone,
             'payment_method' => $request->payment_method,
             'payment_proof' => $proofPath,
-            'amount' => $ebook->price,
+            'amount' => $amount,
+            'currency' => $currency,
             'status' => 'pending',
         ]);
 

@@ -41,7 +41,7 @@
                     {{ $order->ebook ? Str::limit($order->ebook->title, 25) : 'Deleted' }}
                 </td>
                 <td class="px-4 py-4 whitespace-nowrap text-sm font-bold text-green-600">
-                    ${{ number_format($order->amount, 2) }}
+                    {{ $order->currency == 'NGN' ? '₦' : '$' }}{{ number_format($order->amount, ($order->currency == 'NGN' ? 0 : 2)) }}
                 </td>
                 <td class="px-4 py-4 whitespace-nowrap">
                     @if($order->payment_method === 'paypal')

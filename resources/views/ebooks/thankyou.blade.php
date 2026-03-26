@@ -152,7 +152,7 @@
                         </div>
                         <div class="row-item">
                             <span class="label">Amount</span>
-                            <span class="value">${{ number_format($order->amount, 2) }}</span>
+                            <span class="value">{{ $order->currency == 'NGN' ? '₦' : '$' }}{{ number_format($order->amount, ($order->currency == 'NGN' ? 0 : 2)) }}</span>
                         </div>
                         <div class="row-item">
                             <span class="label">Payment Method</span>

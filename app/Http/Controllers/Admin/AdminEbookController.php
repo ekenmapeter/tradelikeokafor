@@ -36,12 +36,13 @@ class AdminEbookController extends Controller
             'title' => 'required|string|max:255',
             'short_description' => 'required|string|max:1000',
             'price' => 'required|numeric|min:0',
+            'price_naira' => 'nullable|numeric|min:0',
             'cover_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'pdf_file' => 'required|mimes:pdf|max:51200', // max 50MB
             'is_active' => 'nullable|boolean',
         ]);
 
-        $data = $request->only(['title', 'short_description', 'price']);
+        $data = $request->only(['title', 'short_description', 'price', 'price_naira']);
         $data['is_active'] = $request->has('is_active');
 
         if ($request->hasFile('cover_image')) {
@@ -67,12 +68,13 @@ class AdminEbookController extends Controller
             'title' => 'required|string|max:255',
             'short_description' => 'required|string|max:1000',
             'price' => 'required|numeric|min:0',
+            'price_naira' => 'nullable|numeric|min:0',
             'cover_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'pdf_file' => 'nullable|mimes:pdf|max:51200',
             'is_active' => 'nullable|boolean',
         ]);
 
-        $data = $request->only(['title', 'short_description', 'price']);
+        $data = $request->only(['title', 'short_description', 'price', 'price_naira']);
         $data['is_active'] = $request->has('is_active');
 
         if ($request->hasFile('cover_image')) {

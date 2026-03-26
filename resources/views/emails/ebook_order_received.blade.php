@@ -21,7 +21,7 @@
         </tr>
         <tr>
             <td style="color: #6b7280; padding: 5px 0;">Amount:</td>
-            <td style="text-align: right; font-weight: bold; color: #111827;">${{ number_format($order->amount, 2) }}</td>
+            <td style="text-align: right; font-weight: bold; color: #111827;">{{ $order->currency == 'NGN' ? '₦' : '$' }}{{ number_format($order->amount, ($order->currency == 'NGN' ? 0 : 2)) }}</td>
         </tr>
         <tr>
             <td style="color: #6b7280; padding: 5px 0;">Payment Method:</td>

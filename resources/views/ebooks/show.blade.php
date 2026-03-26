@@ -291,7 +291,13 @@
                         <div class="ebook-detail-body">
                             <h1 class="ebook-detail-title">{{ $ebook->title }}</h1>
                             <p class="ebook-detail-desc">{{ $ebook->short_description }}</p>
-                            <div class="ebook-detail-price">${{ number_format($ebook->price, 2) }}</div>
+                            <div class="ebook-detail-price">
+                                ${{ number_format($ebook->price, 2) }}
+                                @if($ebook->price_naira)
+                                    <span style="font-size: 0.6em; color: #888; margin: 0 10px;">/</span>
+                                    ₦{{ number_format($ebook->price_naira, 0) }}
+                                @endif
+                            </div>
                             <p style="color: #777; font-size: 0.85rem;"><i class="fas fa-file-pdf mr-1"></i> PDF Format — Instant delivery after payment verification</p>
                         </div>
                     </div>
@@ -352,7 +358,7 @@
                             {{-- Bank Transfer Details --}}
                             <div class="payment-details" id="bankDetails">
                                 <h4><i class="fas fa-university mr-1"></i> Bank Transfer Details</h4>
-                                <p>Transfer <span class="detail-value">${{ number_format($ebook->price, 2) }}</span> to the account below:</p>
+                                <p>Transfer <span class="detail-value">@if($ebook->price_naira) ₦{{ number_format($ebook->price_naira, 0) }} @else ${{ number_format($ebook->price, 2) }} @endif</span> to the account below:</p>
                                 <div style="background: #1a1a1a; padding: 16px; border-radius: 8px; margin-top: 10px;">
                                     <p style="margin-bottom: 8px;">Bank: <span class="detail-value">{{ $settings['bank_name'] ?? 'N/A' }}</span></p>
                                     <p style="margin-bottom: 8px;">Account Name: <span class="detail-value">{{ $settings['account_name'] ?? 'N/A' }}</span></p>
@@ -369,7 +375,7 @@
                             </div>
 
                             <button type="submit" class="btn-submit-purchase" id="submitBtn">
-                                <i class="fas fa-lock mr-2"></i> Submit Payment — ${{ number_format($ebook->price, 2) }}
+                                <i class="fas fa-lock mr-2"></i> Submit Payment — <span id="displayPrice">${{ number_format($ebook->price, 2) }} @if($ebook->price_naira) / ₦{{ number_format($ebook->price_naira, 0) }} @endif</span>
                             </button>
                         </form>
                     </div>

@@ -15,6 +15,7 @@ class EbookOrder extends Model
         'payment_method',
         'payment_proof',
         'amount',
+        'currency',
         'status',
         'admin_note',
         'approved_at',
