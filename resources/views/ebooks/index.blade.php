@@ -1,31 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<title>Ebooks - TRADE LIKE OKAFOR :: Running digits up!</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Ebooks - TRADE LIKE OKAFOR :: Running digits up!</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<meta name="description" content="Browse and purchase premium trading ebooks from TRADE LIKE OKAFOR. Level up your trading knowledge.">
-	<meta name="keywords" content="Trade Like Okafor, Trading Ebooks, Forex Ebooks, Trading Education">
-	<link rel="canonical" href="{{ route('ebooks.index') }}">
+    <meta name="description"
+        content="Browse and purchase premium trading ebooks from TRADE LIKE OKAFOR. Level up your trading knowledge.">
+    <meta name="keywords" content="Trade Like Okafor, Trading Ebooks, Forex Ebooks, Trading Education">
+    <link rel="canonical" href="{{ route('ebooks.index') }}">
 
-	<meta property="og:type" content="website">
-	<meta property="og:url" content="{{ route('ebooks.index') }}">
-	<meta property="og:title" content="Ebooks - TRADE LIKE OKAFOR">
-	<meta property="og:description" content="Browse and purchase premium trading ebooks from TRADE LIKE OKAFOR.">
-	<meta property="og:image" content="{{ asset('images/logo.png') }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ route('ebooks.index') }}">
+    <meta property="og:title" content="Ebooks - TRADE LIKE OKAFOR">
+    <meta property="og:description" content="Browse and purchase premium trading ebooks from TRADE LIKE OKAFOR.">
+    <meta property="og:image" content="{{ asset('images/logo.png') }}">
 
-	<link rel="preconnect" href="https://fonts.gstatic.com">
-	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Open+Sans:wght@300;400;600;700;800&display=swap"
+        rel="stylesheet">
 
-	<link rel="stylesheet" href="{{ asset('css/animate.css') }}">
-	<link rel="apple-touch-icon" sizes="180x180" href="{{ asset('images/logo.png') }}">
-	<link rel="icon" type="image/png" sizes="32x32" href="{{ asset('images/logo.png') }}">
-	<link rel="icon" type="image/x-icon" href="{{ asset('images/logo.png') }}">
-	
-	<link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/animate.css') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('images/logo.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('images/logo.png') }}">
+    <link rel="icon" type="image/x-icon" href="{{ asset('images/logo.png') }}">
+
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    
+
     <style>
         .ftco-navbar-light {
             top: 40px !important;
@@ -37,6 +41,7 @@
             position: relative;
             overflow: hidden;
         }
+
         .ebook-hero::before {
             content: '';
             position: absolute;
@@ -44,18 +49,21 @@
             right: -20%;
             width: 600px;
             height: 600px;
-            background: radial-gradient(circle, rgba(169,233,15,0.08) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(169, 233, 15, 0.08) 0%, transparent 70%);
             border-radius: 50%;
         }
+
         .ebook-hero h1 {
             font-size: 2.8rem;
             font-weight: 800;
             color: #fff;
             margin-bottom: 15px;
         }
+
         .ebook-hero h1 span {
             color: #a9e90f;
         }
+
         .ebook-hero p {
             color: #ccc;
             font-size: 1.1rem;
@@ -77,17 +85,20 @@
             display: flex;
             flex-direction: column;
         }
+
         .ebook-card:hover {
             transform: translateY(-8px);
             border-color: #a9e90f;
             box-shadow: 0 20px 60px rgba(169, 233, 15, 0.1);
         }
+
         .ebook-card-img {
             width: 100%;
             height: 280px;
             object-fit: cover;
             border-bottom: 3px solid #a9e90f;
         }
+
         .ebook-card-img-placeholder {
             width: 100%;
             height: 280px;
@@ -98,18 +109,21 @@
             color: #a9e90f;
             border-bottom: 3px solid #a9e90f;
         }
+
         .ebook-card-body {
             padding: 24px;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
         }
+
         .ebook-card-title {
             color: #fff;
             font-size: 1.3rem;
             font-weight: 700;
             margin-bottom: 10px;
         }
+
         .ebook-card-desc {
             color: #aaa;
             font-size: 0.9rem;
@@ -117,17 +131,20 @@
             margin-bottom: 20px;
             flex-grow: 1;
         }
+
         .ebook-card-price {
             font-size: 1.8rem;
             font-weight: 800;
             color: #a9e90f;
             margin-bottom: 16px;
         }
+
         .ebook-card-price small {
             font-size: 0.6em;
             color: #777;
             font-weight: 400;
         }
+
         .btn-buy {
             background: #a9e90f;
             color: #000;
@@ -140,6 +157,7 @@
             text-decoration: none;
             font-size: 1rem;
         }
+
         .btn-buy:hover {
             background: #fff;
             color: #000;
@@ -152,69 +170,92 @@
             padding: 80px 20px;
             color: #666;
         }
+
         .empty-state i {
             font-size: 4rem;
             color: #333;
             margin-bottom: 20px;
         }
 
-        .ftco-section { padding: 0; }
+        .ftco-section {
+            padding: 0;
+        }
     </style>
 </head>
+
 <body style="background: #000;">
-	<div class="wrap">
-		<div class="container">
-			<div class="row justify-content-between">
-				<div class="col-12 col-md d-flex align-items-center">
-					<p class="mb-0 phone"><span class="mailus">Call Support:</span> <a href="tel:+2348157841450">+2348157841450</a>  or <span class="mailus">email us:</span> <a href="email:support@tradelikeokafor.com"><span class="">support@tradelikeokafor.com</span></a></p>
-				</div>
-				<div class="col-12 col-md d-flex justify-content-md-end">
-					<div class="social-media">
-						<p class="mb-0 d-flex">
-							<a href="https://t.me/+xYVyIeI8RMMwZjE0" target="_blank" class="d-flex align-items-center justify-content-center">
-							  <span class="fa-brands fa-telegram" aria-hidden="true"></span>
-							</a>
-							<a href="https://www.instagram.com/tradelikeokafor" target="_blank" class="d-flex align-items-center justify-content-center">
-							  <span class="fa-brands fa-instagram" aria-hidden="true"></span>
-							</a>
-							<a href="https://youtube.com/@tradelikeokafor" target="_blank" class="d-flex align-items-center justify-content-center">
-							  <span class="fa-brands fa-youtube" aria-hidden="true"></span>
-							</a>
-						  </p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+    <div class="wrap">
+        <div class="container">
+            <div class="row justify-content-between">
+                <div class="col-12 col-md d-flex align-items-center">
+                    <p class="mb-0 phone"><span class="mailus">Call Support:</span> <a
+                            href="tel:+2348157841450">+2348157841450</a> or <span class="mailus">email us:</span> <a
+                            href="email:support@tradelikeokafor.com"><span
+                                class="">support@tradelikeokafor.com</span></a></p>
+                </div>
+                <div class="col-12 col-md d-flex justify-content-md-end">
+                    <div class="social-media">
+                        <p class="mb-0 d-flex">
+                            <a href="https://t.me/+xYVyIeI8RMMwZjE0" target="_blank"
+                                class="d-flex align-items-center justify-content-center">
+                                <span class="fa-brands fa-telegram" aria-hidden="true"></span>
+                            </a>
+                            <a href="https://www.instagram.com/tradelikeokafor" target="_blank"
+                                class="d-flex align-items-center justify-content-center">
+                                <span class="fa-brands fa-instagram" aria-hidden="true"></span>
+                            </a>
+                            <a href="https://youtube.com/@tradelikeokafor" target="_blank"
+                                class="d-flex align-items-center justify-content-center">
+                                <span class="fa-brands fa-youtube" aria-hidden="true"></span>
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-		<div class="container">
-			<a class="navbar-brand" href="/"><img src="{{ asset('images/logo.png') }}" class="img-fluid" style="max-height: 3.5rem"></a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="oi oi-menu"></span> Menu
-			</button>
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="/"><img src="{{ asset('images/logo.png') }}" class="img-fluid"
+                    style="max-height: 3.5rem"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
+                aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
 
-			<div class="collapse navbar-collapse" id="ftco-nav">
-				<ul class="navbar-nav ml-auto">
-					<li class="nav-item"><a href="{{ route('mentorship') }}" style="background: #02be2e!important; font-weight: 600; color: #ffffff!important; border-radius: 50px; padding: 8px 20px!important; margin-left: 5px; margin-top: 0!important;" class="nav-link">Mentorship</a></li>
-					<li class="nav-item"><a href="{{ route('signals') }}" style="background: #02be2e!important; font-weight: 600; color: #ffffff!important; border-radius: 50px; padding: 8px 20px!important; margin-left: 5px; margin-top: 0!important;" class="nav-link">Trade Signals</a></li>
-					<li class="nav-item"><a href="{{ route('blog.index') }}" style="background: #02be2e!important; font-weight: 600; color: #ffffff!important; border-radius: 50px; padding: 8px 20px!important; margin-left: 5px; margin-top: 0!important;" class="nav-link">Blog</a></li>
-					<li class="nav-item active"><a href="{{ route('ebooks.index') }}" style="background: #02be2e!important; font-weight: 600; color: #ffffff!important; border-radius: 50px; padding: 8px 20px!important; margin-left: 5px; margin-top: 0!important;" class="nav-link">Ebooks</a></li>
-					<li class="nav-item"><a href="https://t.me/+xYVyIeI8RMMwZjE0" style="background: #02be2e!important; color: #ffffff!important; font-weight: 600; border-radius: 50px; padding: 8px 20px!important; margin-left: 5px; margin-top: 0!important;" class="nav-link">Free Telegram Channel</a></li>
-					<li class="nav-item cta"><a href="https://www.vantagemarkets.com/forex-trading/forex-trading-account/?affid=NzQzMDU=" style="background: #02be2e!important; font-weight: 600; color: #ffffff!important; border-radius: 50px; padding: 8px 20px!important; margin-left: 5px; margin-top: 0!important;" class="nav-link">Recommended broker</a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a href="{{ route('mentorship') }}"
+                            style="background: #a9e90f!important; font-weight: 600; color: #010102!important;"
+                            class="nav-link">Mentorship</a></li>
+                    <li class="nav-item"><a href="{{ route('signals') }}"
+                            style="background: #02be2e; font-weight: 600; color: #ffffff!important;"
+                            class="nav-link">Trade Signals</a></li>
+                    <li class="nav-item"><a href="{{ route('blog.index') }}" class="nav-link">Blog</a></li>
+                    <li class="nav-item active"><a href="{{ route('ebooks.index') }}" class="nav-link">Ebooks</a>
+                    </li>
+                    <li class="nav-item"><a href="https://t.me/+xYVyIeI8RMMwZjE0" class="nav-link">Free Telegram
+                            Channel</a></li>
+                    <li class="nav-item cta"><a
+                            href="https://www.vantagemarkets.com/forex-trading/forex-trading-account/?affid=NzQzMDU="
+                            class="nav-link">Recommended Broker</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
     {{-- Hero Section --}}
     <section class="ebook-hero">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-8">
-                    <p style="color: #a9e90f; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem; margin-bottom: 10px;">📚 Premium Trading Resources</p>
+                    <p
+                        style="color: #a9e90f; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem; margin-bottom: 10px;">
+                        📚 Premium Trading Resources</p>
                     <h1>Trade Like Okafor <span>Ebooks</span></h1>
-                    <p>Unlock powerful trading strategies and knowledge from our expert-curated ebook collection. Start your journey to consistent profitability.</p>
+                    <p>Unlock powerful trading strategies and knowledge from our expert-curated ebook collection. Start
+                        your journey to consistent profitability.</p>
                 </div>
             </div>
         </div>
@@ -223,34 +264,35 @@
     {{-- Ebook Grid --}}
     <section class="ebook-grid">
         <div class="container">
-            @if($ebooks->count() > 0)
+            @if ($ebooks->count() > 0)
                 <div class="row">
-                    @foreach($ebooks as $ebook)
-                    <div class="col-md-4 mb-4">
-                        <div class="ebook-card">
-                            @if($ebook->cover_image)
-                                <img src="{{ Storage::url($ebook->cover_image) }}" alt="{{ $ebook->title }}" class="ebook-card-img">
-                            @else
-                                <div class="ebook-card-img-placeholder">
-                                    <i class="fas fa-book-open fa-4x"></i>
+                    @foreach ($ebooks as $ebook)
+                        <div class="col-md-4 mb-4">
+                            <div class="ebook-card">
+                                @if ($ebook->cover_image)
+                                    <img src="{{ Storage::url($ebook->cover_image) }}" alt="{{ $ebook->title }}"
+                                        class="ebook-card-img">
+                                @else
+                                    <div class="ebook-card-img-placeholder">
+                                        <i class="fas fa-book-open fa-4x"></i>
+                                    </div>
+                                @endif
+                                <div class="ebook-card-body">
+                                    <h3 class="ebook-card-title">{{ $ebook->title }}</h3>
+                                    <p class="ebook-card-desc">{{ Str::limit($ebook->short_description, 150) }}</p>
+                                    <div class="ebook-card-price">
+                                        ${{ number_format($ebook->price, 2) }}
+                                        @if ($ebook->price_naira)
+                                            <span style="font-size: 0.7em; color: #888; margin: 0 5px;">/</span>
+                                            ₦{{ number_format($ebook->price_naira, 0) }}
+                                        @endif
+                                    </div>
+                                    <a href="{{ route('ebooks.show', $ebook->slug) }}" class="btn-buy">
+                                        <i class="fas fa-shopping-cart mr-2"></i> Buy Now
+                                    </a>
                                 </div>
-                            @endif
-                            <div class="ebook-card-body">
-                                <h3 class="ebook-card-title">{{ $ebook->title }}</h3>
-                                <p class="ebook-card-desc">{{ Str::limit($ebook->short_description, 150) }}</p>
-                                <div class="ebook-card-price">
-                                    ${{ number_format($ebook->price, 2) }}
-                                    @if($ebook->price_naira)
-                                        <span style="font-size: 0.7em; color: #888; margin: 0 5px;">/</span>
-                                        ₦{{ number_format($ebook->price_naira, 0) }}
-                                    @endif
-                                </div>
-                                <a href="{{ route('ebooks.show', $ebook->slug) }}" class="btn-buy">
-                                    <i class="fas fa-shopping-cart mr-2"></i> Buy Now
-                                </a>
                             </div>
                         </div>
-                    </div>
                     @endforeach
                 </div>
             @else
@@ -263,43 +305,58 @@
         </div>
     </section>
 
-	<footer id="dk-footer" class="dk-footer">
-	    <div class="container">
-	        <div class="row">
-	            <div class="col-md-12 col-lg-4">
-	                <div class="dk-footer-box-info">
-	                    <a href="/" class="footer-logo">
-	                        <img src="{{ asset('images/footer_logo.png') }}" alt="footer_logo" class="img-fluid" style="display:block; margin: 0 auto; width:50%;">
-	                    </a>
-	                    <p class="footer-info-text">Our strategy helps you find the best chances to make money in the market, while keeping the risky parts small so you can keep more of the profit.</p>
-	                </div>
-	            </div>
-	            <div class="col-md-12 col-lg-8">
-	                <div class="row footer_m">
-	                    <div class="col-md-6">
-	                        <div style="margin-left: 50px; margin-top: 10px;">
-	                            <div><h3 style="color: #fff; font-weight: 900;">Nigeria</h3><h6 style="margin-top: -7px">Lagos Offices</h6><br><br></div>
-	                        </div>
-	                    </div>
-	                    <div class="col-md-6">
-	                        <div style="margin-left: 50px; margin-top: 10px;">
-	                            <div><h3 style="color: #fff; font-weight: 600; line-height: 1.25;">+2348157841450<br></h3><h6 style="margin-top: -7px">Give us a call</h6><br><br></div>
-	                        </div>
-	                    </div>
-	                </div>
-	            </div>
-	        </div>
-	    </div>
-	    <div class="copyright">
-	        <div class="container">
-                <div class="row">
-                    <div class="col-md-12 text-center">
-                        <p><h6 style="font-size: 0.75em;"><b>TRADE LIKE OKAFOR</b> | Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved <br> Developed by <a href="https://t.me/ekenmapeter" target="_blank"> Shevootech Online</a></h6>
+    <footer id="dk-footer" class="dk-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-lg-4">
+                    <div class="dk-footer-box-info">
+                        <a href="/" class="footer-logo">
+                            <img src="{{ asset('images/footer_logo2.png') }}" alt="footer_logo" class="img-fluid"
+                                style="display:block; margin: 0 auto; width:50%;">
+                        </a>
+                        <p class="footer-info-text">Our strategy helps you find the best chances to make money in the
+                            market, while keeping the risky parts small so you can keep more of the profit.</p>
                     </div>
                 </div>
-	        </div>
-	    </div>
-	</footer>
+                <div class="col-md-12 col-lg-8">
+                    <div class="row footer_m">
+                        <div class="col-md-6">
+                            <div style="margin-left: 50px; margin-top: 10px;">
+                                <div>
+                                    <h3 style="color: #fff; font-weight: 900;">Nigeria</h3>
+                                    <h6 style="margin-top: -7px">Lagos Offices</h6><br><br>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div style="margin-left: 50px; margin-top: 10px;">
+                                <div>
+                                    <h3 style="color: #fff; font-weight: 600; line-height: 1.25;">+2348157841450<br>
+                                    </h3>
+                                    <h6 style="margin-top: -7px">Give us a call</h6><br><br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <p>
+                        <h6 style="font-size: 0.75em;"><b>TRADE LIKE OKAFOR</b> | Copyright &copy;
+                            <script>
+                                document.write(new Date().getFullYear());
+                            </script> All rights reserved <br> Developed by <a
+                                href="https://t.me/ekenmapeter" target="_blank"> Shevootech Online</a>
+                        </h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/jquery-migrate-3.0.1.min.js') }}"></script>
@@ -314,4 +371,5 @@
     <script src="{{ asset('js/scrollax.min.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
 </body>
+
 </html>

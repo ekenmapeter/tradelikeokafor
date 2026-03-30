@@ -113,14 +113,24 @@
 
             <div class="collapse navbar-collapse" id="ftco-nav">
                 <ul class="navbar-nav ml-auto">
-                    {{-- <li class="nav-item"><a href="{{ route('login') }}" style="background: #ffffff!important; font-weight: 600; color: #010102!important;" class="nav-link">Login</a></li>
-					<li class="nav-item"><a href="{{ route('register') }}" style="background: #010102!important; font-weight: 600; color: #ffffff!important;" class="nav-link">Register</a></li> --}}
-                    <li class="nav-item"><a href="{{ route('mentorship') }}" style="background: #02be2e!important; font-weight: 600; color: #ffffff!important; border-radius: 50px; padding: 8px 20px!important; margin-left: 5px; margin-top: 0!important;" class="nav-link">Mentorship</a></li>
-					<li class="nav-item"><a href="{{ route('signals') }}" style="background: #02be2e!important; font-weight: 600; color: #ffffff!important; border-radius: 50px; padding: 8px 20px!important; margin-left: 5px; margin-top: 0!important;" class="nav-link">Trade Signals</a></li>
-					<li class="nav-item"><a href="{{ route('blog.index') }}" style="background: #02be2e!important; font-weight: 600; color: #ffffff!important; border-radius: 50px; padding: 8px 20px!important; margin-left: 5px; margin-top: 0!important;" class="nav-link">Blog</a></li>
-					<li class="nav-item"><a href="{{ route('ebooks.index') }}" style="background: #02be2e!important; font-weight: 600; color: #ffffff!important; border-radius: 50px; padding: 8px 20px!important; margin-left: 5px; margin-top: 0!important;" class="nav-link">Ebooks</a></li>
-					<li class="nav-item"><a href="https://t.me/+xYVyIeI8RMMwZjE0" style="background: #02be2e!important; color: #ffffff!important; font-weight: 600; border-radius: 50px; padding: 8px 20px!important; margin-left: 5px; margin-top: 0!important;" class="nav-link">Free Telegram Channel</a></li>
-					<li class="nav-item cta"><a href="https://www.vantagemarkets.com/forex-trading/forex-trading-account/?affid=NzQzMDU=" style="background: #02be2e!important; font-weight: 600; color: #ffffff!important; border-radius: 50px; padding: 8px 20px!important; margin-left: 5px; margin-top: 0!important;" class="nav-link">Recommended broker</a></li>
+                    <li class="nav-item"><a href="{{ route('mentorship') }}"
+                            style="background: #a9e90f!important; font-weight: 600; color: #010102!important;"
+                            class="nav-link">Mentorship</a></li>
+                    <li class="nav-item"><a href="{{ route('signals') }}"
+                            style="background: #02be2e; font-weight: 600; color: #ffffff!important;"
+                            class="nav-link">Trade Signals</a></li>
+                    <li class="nav-item"><a href="{{ route('blog.index') }}"
+                            style="background: #a9e90f!important; font-weight: 600; color: #010102!important;"
+                            class="nav-link">Blog</a></li>
+                    <li class="nav-item"><a href="{{ route('ebooks.index') }}"
+                            style="background: #02be2e!important; font-weight: 600; color: #010102!important;"
+                            class="nav-link">Ebooks</a></li>
+                    <li class="nav-item"><a href="https://t.me/+xYVyIeI8RMMwZjE0"
+                            style="background: #a9e90f!important; font-weight: 600; color: #010102!important;"
+                            class="nav-link">Free Telegram Channel</a></li>
+                    <li class="nav-item cta"><a
+                            href="https://www.vantagemarkets.com/forex-trading/forex-trading-account/?affid=NzQzMDU="
+                            class="nav-link">Recommended Broker</a></li>
                 </ul>
             </div>
         </div>
@@ -326,7 +336,8 @@
                                 alt="Get the Book: Breaking The Economic Mist"></a></span>
                     <p
                         style="font-family:'Open Sans'; font-size: 1rem; margin: 0.5em; text-align: center; line-height: 1;">
-                        <b>Join our Community:</b><br> Telegram </p>
+                        <b>Join our Community:</b><br> Telegram
+                    </p>
                 </div>
                 <div class="col-lg-4 col-md-4">
                     <span><a href="https://youtube.com/@tradelikeokafor" target="_blank"><img
@@ -335,7 +346,8 @@
                     </span>
                     <p
                         style="font-family:'Open Sans'; font-size: 1rem; margin: 0.5em; text-align: center; line-height: 1;">
-                        <b>Learn from our:</b><br>YouTube </p>
+                        <b>Learn from our:</b><br>YouTube
+                    </p>
                 </div>
                 <div class="col-lg-4 col-md-4">
                     <!-- Forex Videos Section -->
@@ -344,7 +356,8 @@
                                 alt="Forex Videos"></a></span>
                     <p
                         style="font-family:'Open Sans'; font-size: 1rem; margin: 0.5em; text-align: center; line-height: 1;">
-                        <b>Follow our:</b> <br> TradingView</p>
+                        <b>Follow our:</b> <br> TradingView
+                    </p>
 
                 </div>
             </div>
@@ -537,7 +550,8 @@
                 <div class="row">
                     <div class="col-md-12 col-sm-12 col-lg-12"><b
                             style="font-size: 1.35em; line-height: 0.85; margin-top: 5px; margin-bottom: 25px; color: #fff; letter-spacing: -1px;">Ikeja
-                            <ygreen> Trading Floor</ygreen></b><br>
+                            <ygreen> Trading Floor</ygreen>
+                        </b><br>
                         <iframe
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.428995431039!2d3.3660043594126736!3d6.593482772320989!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b93c5f605cd7f%3A0x4ce61da54bf0d476!2stradelikeokafor!5e0!3m2!1sen!2sus!4v1758553350769!5m2!1sen!2sus"
                             width="100%" height="135" style="border: 3px; solid #EAEEF1FF; border-radius: 8px;"

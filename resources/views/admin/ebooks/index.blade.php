@@ -39,8 +39,11 @@
                 <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">
                     {{ Str::limit($ebook->title, 40) }}
                 </td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm font-bold text-green-600">
-                    ${{ number_format($ebook->price, 2) }}
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300">
+                    <div class="font-bold text-green-600">${{ number_format($ebook->price, 2) }}</div>
+                    @if($ebook->price_naira)
+                        <div class="text-xs text-gray-500">₦{{ number_format($ebook->price_naira, 0) }}</div>
+                    @endif
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap">
                     @if($ebook->is_active)
