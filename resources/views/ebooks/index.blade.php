@@ -311,7 +311,7 @@
                 <div class="col-md-12 col-lg-4">
                     <div class="dk-footer-box-info">
                         <a href="/" class="footer-logo">
-                            <img src="{{ asset('images/footer_logo2.png') }}" alt="footer_logo" class="img-fluid"
+                            <img src="{{ asset('images/footer_logo2.png') }}" alt="footer_logo2" class="img-fluid"
                                 style="display:block; margin: 0 auto; width:50%;">
                         </a>
                         <p class="footer-info-text">Our strategy helps you find the best chances to make money in the

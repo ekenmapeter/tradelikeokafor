@@ -96,12 +96,19 @@
 
             <div class="collapse navbar-collapse" id="ftco-nav">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a href="{{ route('mentorship') }}" style="background: #a9e90f!important; font-weight: 600; color: #010102!important;" class="nav-link">Mentorship</a></li>
-                    <li class="nav-item active"><a href="{{ route('signals') }}" style="background: #02be2e; font-weight: 600; color: #ffffff!important;" class="nav-link">Trade Signals</a></li>
+                    <li class="nav-item"><a href="{{ route('mentorship') }}"
+                            style="background: #a9e90f!important; font-weight: 600; color: #010102!important;"
+                            class="nav-link">Mentorship</a></li>
+                    <li class="nav-item active"><a href="{{ route('signals') }}"
+                            style="background: #02be2e; font-weight: 600; color: #ffffff!important;"
+                            class="nav-link">Trade Signals</a></li>
                     <li class="nav-item"><a href="{{ route('blog.index') }}" class="nav-link">Blog</a></li>
                     <li class="nav-item"><a href="{{ route('ebooks.index') }}" class="nav-link">Ebooks</a></li>
-                    <li class="nav-item"><a href="https://t.me/+xYVyIeI8RMMwZjE0" class="nav-link">Free Telegram Channel</a></li>
-                    <li class="nav-item cta"><a href="https://www.vantagemarkets.com/forex-trading/forex-trading-account/?affid=NzQzMDU=" class="nav-link">Recommended Broker</a></li>
+                    <li class="nav-item"><a href="https://t.me/+xYVyIeI8RMMwZjE0" class="nav-link">Free Telegram
+                            Channel</a></li>
+                    <li class="nav-item cta"><a
+                            href="https://www.vantagemarkets.com/forex-trading/forex-trading-account/?affid=NzQzMDU="
+                            class="nav-link">Recommended Broker</a></li>
                 </ul>
             </div>
         </div>
@@ -178,7 +185,8 @@
                                         class="btn btn-success btn-lg btn-block" style="font-size: 16px;">Enroll Now -
                                         Life Time Access</a><br>
                                     <p class="mt-2" style="font-size: 12px; opacity: 0.8;">Kindly Click on the
-                                        <b>"Enroll Now"</b> Button to Get Started.</p>
+                                        <b>"Enroll Now"</b> Button to Get Started.
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -205,7 +213,7 @@
                 <div class="col-md-12 col-lg-4">
                     <div class="dk-footer-box-info">
                         <a href="/" class="footer-logo">
-                            <img src="{{ asset('images/footer_logo.png') }}" alt="footer_logo" class="img-fluid"
+                            <img src="{{ asset('images/footer_logo2.png') }}" alt="footer_logo2" class="img-fluid"
                                 style="width:95%; max-height:auto;">
                         </a>
                         <p class="footer-info-text">
@@ -356,7 +364,8 @@
                 <div class="row">
                     <div class="col-md-12 col-sm-12 col-lg-12"><b
                             style="font-size: 1.35em; line-height: 0.85; margin-top: 5px; margin-bottom: 25px; color: #fff; letter-spacing: -1px;">Ikeja
-                            <ygreen> Trading Floor</ygreen></b><br>
+                            <ygreen> Trading Floor</ygreen>
+                        </b><br>
                         <iframe
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.428995431039!2d3.3660043594126736!3d6.593482772320989!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b93c5f605cd7f%3A0x4ce61da54bf0d476!2stradelikeokafor!5e0!3m2!1sen!2sus!4v1758553350769!5m2!1sen!2sus"
                             width="100%" height="135" style="border: 3px; solid #dbdee1; border-radius: 8px;"
