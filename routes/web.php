@@ -103,6 +103,9 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
 
     // Impersonation
     Route::get('/users/{user}/impersonate', [ImpersonateController::class, 'impersonate'])->name('users.impersonate');
+
+    // Profit Records
+    Route::resource('profit-records', \App\Http\Controllers\Admin\AdminProfitRecordController::class);
 });
 
 // Blog Moderator Routes (Admin + Moderator)
