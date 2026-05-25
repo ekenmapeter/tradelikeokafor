@@ -133,6 +133,40 @@
                     Blog Analytics
                 </a>
 
+                <div class="px-4 py-2 mt-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                    AI Content
+                </div>
+                
+                <a href="{{ route('admin.forex-drafts.index') }}"
+                    class="flex items-center px-4 py-2 rounded-lg transition-colors duration-200 {{ request()->routeIs('admin.forex-drafts.index') || request()->routeIs('admin.forex-drafts.show') || request()->routeIs('admin.forex-drafts.edit') ? 'bg-green-50 text-green-700 font-semibold dark:bg-gray-700 dark:text-green-400 border-l-4 border-green-600' : 'text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-green-600' }}">
+                    <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10l4 4v10a2 2 0 01-2 2z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 2v4a2 2 0 002 2h4"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h5M8 14h8M8 18h8"></path></svg>
+                    AI Forex Drafts
+                    @php
+                        $pendingDraftsCount = \App\Models\ForexBlogDraft::drafts()->count();
+                    @endphp
+                    @if($pendingDraftsCount > 0)
+                    <span class="ml-auto inline-flex items-center justify-center px-2 py-0.5 text-xs font-bold leading-none text-yellow-800 bg-yellow-100 rounded-full dark:bg-yellow-900 dark:text-yellow-300">{{ $pendingDraftsCount }}</span>
+                    @endif
+                </a>
+
+                <a href="{{ route('admin.forex-drafts.pipeline') }}"
+                    class="flex items-center px-4 py-2 rounded-lg transition-colors duration-200 {{ request()->routeIs('admin.forex-drafts.pipeline') ? 'bg-green-50 text-green-700 font-semibold dark:bg-gray-700 dark:text-green-400 border-l-4 border-green-600' : 'text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-green-600' }}">
+                    <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    AI Pipeline
+                </a>
+
+                <a href="{{ route('admin.forex-raw.index') }}"
+                    class="flex items-center px-4 py-2 rounded-lg transition-colors duration-200 {{ request()->routeIs('admin.forex-raw.*') ? 'bg-green-50 text-green-700 font-semibold dark:bg-gray-700 dark:text-green-400 border-l-4 border-green-600' : 'text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-green-600' }}">
+                    <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                    Pending Feeds
+                    @php
+                        $pendingRawCount = \App\Models\ForexRawArticle::pending()->count();
+                    @endphp
+                    @if($pendingRawCount > 0)
+                    <span class="ml-auto inline-flex items-center justify-center px-2 py-0.5 text-xs font-bold leading-none text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">{{ $pendingRawCount }}</span>
+                    @endif
+                </a>
+
                 @if(Auth::user()->isAdmin())
                     <a href="{{ route('admin.ebooks.index') }}"
                         class="flex items-center px-4 py-2 rounded-lg transition-colors duration-200 {{ request()->routeIs('admin.ebooks.*') ? 'bg-green-50 text-green-700 font-semibold dark:bg-gray-700 dark:text-green-400 border-l-4 border-green-600' : 'text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-green-600' }}">

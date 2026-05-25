@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\AdminSettingController;
 use App\Http\Controllers\Admin\AdminBlogController;
 use App\Http\Controllers\Admin\AdminEbookController;
 use App\Http\Controllers\Admin\ImpersonateController;
+use App\Http\Controllers\Admin\ForexDraftController;
 use App\Http\Controllers\EbookController;
 use App\Http\Controllers\User\UserDashboardController;
 use App\Http\Controllers\User\UserSubscriptionController;
@@ -19,6 +20,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('home');
 });
+
+Route::redirect('/admin/login', '/login');
 
 Route::get('mentorship-payment', function () {
     return view('mentorship-payment');
@@ -69,6 +72,7 @@ Route::get('/dashboard', function () {
 
 // Admin Routes (Full Admin only)
 Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
+    Route::get('/', fn() => redirect()->route('admin.dashboard'));
     Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
     
     // User Management
@@ -117,6 +121,24 @@ Route::middleware(['auth', 'moderator'])->prefix('admin')->name('admin.')->group
     ]);
     Route::get('blog/{post}/views', [AdminBlogController::class, 'views'])->name('blog.views');
     Route::post('blog/upload', [AdminBlogController::class, 'uploadImage'])->name('blog.upload');
+
+    // Forex Pipeline & Drafts
+    Route::get('forex-drafts/pipeline', [ForexDraftController::class, 'pipeline'])->name('forex-drafts.pipeline');
+    Route::post('forex-drafts/trigger-fetch', [ForexDraftController::class, 'triggerFetch'])->name('forex-drafts.trigger-fetch');
+    Route::post('forex-drafts/trigger-generate', [ForexDraftController::class, 'triggerGenerate'])->name('forex-drafts.trigger-generate');
+    Route::post('forex-drafts/{draft}/approve', [ForexDraftController::class, 'approve'])->name('forex-drafts.approve');
+    Route::post('forex-drafts/{draft}/reject', [ForexDraftController::class, 'reject'])->name('forex-drafts.reject');
+    Route::post('forex-drafts/{draft}/regenerate', [ForexDraftController::class, 'regenerate'])->name('forex-drafts.regenerate');
+    Route::post('forex-drafts/bulk-approve', [ForexDraftController::class, 'bulkApprove'])->name('forex-drafts.bulk-approve');
+    Route::resource('forex-drafts', ForexDraftController::class)->parameters([
+        'forex-drafts' => 'draft'
+    ])->except(['create', 'store', 'destroy']);
+
+    // Forex Raw Articles
+    Route::get('forex-raw', [ForexDraftController::class, 'listRawArticles'])->name('forex-raw.index');
+    Route::get('forex-raw/{article}/preview', [ForexDraftController::class, 'previewRaw'])->name('forex-raw.preview');
+    Route::post('forex-raw/{article}/publish', [ForexDraftController::class, 'publishWithoutRewrite'])->name('forex-raw.publish');
+    Route::post('forex-raw/{article}/rewrite', [ForexDraftController::class, 'rewriteSingle'])->name('forex-raw.rewrite');
 });
 
 Route::middleware(['auth'])->group(function () {
