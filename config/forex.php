@@ -7,6 +7,7 @@ return [
     | HuggingFace API Configuration
     |--------------------------------------------------------------------------
     */
+    'verify_ssl' => env('CURL_VERIFY_SSL', true),
     'huggingface_api_token' => env('HUGGINGFACE_API_TOKEN', ''),
     'huggingface_model' => env('HUGGINGFACE_MODEL', 'mistralai/Mistral-7B-Instruct-v0.3'),
     'huggingface_fallback_model' => env('HUGGINGFACE_FALLBACK_MODEL', 'meta-llama/Meta-Llama-3-8B-Instruct'),

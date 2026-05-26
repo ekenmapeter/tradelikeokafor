@@ -170,22 +170,25 @@ PROMPT;
 
         for ($attempt = 1; $attempt <= $maxRetries; $attempt++) {
             try {
-                $response = Http::timeout(120)
-                    ->withoutVerifying()
-                    ->withHeaders([
-                        'Authorization' => "Bearer {$this->apiToken}",
-                        'Content-Type' => 'application/json',
-                    ])
-                    ->post($url, [
-                        'inputs' => $prompt,
-                        'parameters' => [
-                            'max_new_tokens' => 2048,
-                            'temperature' => 0.7,
-                            'top_p' => 0.9,
-                            'do_sample' => true,
-                            'return_full_text' => false,
-                        ],
-                    ]);
+                $http = Http::timeout(120);
+if (!config('forex.verify_ssl')) {
+    $http = $http->withoutVerifying();
+}
+$response = $http
+    ->withHeaders([
+        'Authorization' => "Bearer {$this->apiToken}",
+        'Content-Type' => 'application/json',
+    ])
+    ->post($url, [
+        'inputs' => $prompt,
+        'parameters' => [
+            'max_new_tokens' => 2048,
+            'temperature' => 0.7,
+            'top_p' => 0.9,
+            'do_sample' => true,
+            'return_full_text' => false,
+        ],
+    ]);
 
                 // Handle model loading (503)
                 if ($response->status() === 503) {
