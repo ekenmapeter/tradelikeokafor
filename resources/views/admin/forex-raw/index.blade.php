@@ -111,7 +111,7 @@
                                         class="inline">
                                         @csrf
                                         <button type="submit"
-                                            class="inline-flex items-center px-3 py-1.5 bg-yellow-600 text-white rounded-lg text-xs font-semibold hover:bg-indigo-700 transition">
+                                            class="inline-flex items-center px-3 py-1.5 bg-green-600 text-white rounded-lg text-xs font-semibold hover:bg-green-700 transition">
                                             <svg class="w-3.5 h-3.5 mr-1" fill="none" stroke="currentColor"
                                                 viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
