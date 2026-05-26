@@ -111,7 +111,7 @@
                                         class="inline">
                                         @csrf
                                         <button type="submit"
-                                            class="inline-flex items-center px-3 py-1.5 bg-indigo-600 text-white rounded-lg text-xs font-semibold hover:bg-indigo-700 transition">
+                                            class="inline-flex items-center px-3 py-1.5 bg-yellow-600 text-white rounded-lg text-xs font-semibold hover:bg-indigo-700 transition">
                                             <svg class="w-3.5 h-3.5 mr-1" fill="none" stroke="currentColor"
                                                 viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -164,7 +164,8 @@
     </div>
 
     {{-- Toast Notification System --}}
-    <div id="toast-container" class="fixed bottom-5 right-5 z-50 flex flex-col gap-3 max-w-sm w-full pointer-events-none"></div>
+    <div id="toast-container" class="fixed bottom-5 right-5 z-50 flex flex-col gap-3 max-w-sm w-full pointer-events-none">
+    </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -172,12 +173,13 @@
 
             function showToast(message, type = 'success', link = null, linkText = 'View') {
                 const toast = document.createElement('div');
-                toast.className = `p-4 rounded-xl shadow-lg border text-sm transition-all duration-300 transform translate-y-5 opacity-0 flex flex-col gap-2 pointer-events-auto backdrop-blur-md ` +
-                    (type === 'success' 
-                        ? 'bg-green-600 text-white border-green-500' 
-                        : (type === 'error' 
-                            ? 'bg-red-600 text-white border-red-500' 
-                            : 'bg-indigo-600 text-white border-indigo-500'));
+                toast.className =
+                    `p-4 rounded-xl shadow-lg border text-sm transition-all duration-300 transform translate-y-5 opacity-0 flex flex-col gap-2 pointer-events-auto backdrop-blur-md ` +
+                    (type === 'success' ?
+                        'bg-green-600 text-white border-green-500' :
+                        (type === 'error' ?
+                            'bg-red-600 text-white border-red-500' :
+                            'bg-indigo-600 text-white border-indigo-500'));
 
                 let content = `<div class="flex items-center justify-between gap-3">
                     <div class="flex items-center gap-2">
@@ -231,26 +233,30 @@
             document.querySelectorAll('form[action*="/forex-raw/"][action$="/rewrite"]').forEach(form => {
                 form.addEventListener('submit', async (e) => {
                     e.preventDefault();
-                    
+
                     const button = form.querySelector('button[type="submit"]');
                     const originalHtml = button.innerHTML;
-                    
+
                     // Set loading button state
                     button.disabled = true;
-                    button.innerHTML = `<svg class="animate-spin h-3.5 w-3.5 mr-1" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> Generating...`;
+                    button.innerHTML =
+                        `<svg class="animate-spin h-3.5 w-3.5 mr-1" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> Generating...`;
                     button.classList.add('opacity-75');
 
                     // Show active background toast
                     const linkEl = form.closest('tr').querySelector('a[title]');
                     const articleTitle = linkEl ? linkEl.getAttribute('title') : 'Article';
-                    const loadingToast = showToast(`AI rewrite started in background for "${articleTitle.substring(0, 30)}..."`, 'loading');
+                    const loadingToast = showToast(
+                        `AI rewrite started in background for "${articleTitle.substring(0, 30)}..."`,
+                        'loading');
 
                     try {
                         const response = await fetch(form.action, {
                             method: 'POST',
                             headers: {
                                 'X-Requested-With': 'XMLHttpRequest',
-                                'X-CSRF-TOKEN': form.querySelector('input[name="_token"]').value,
+                                'X-CSRF-TOKEN': form.querySelector(
+                                    'input[name="_token"]').value,
                                 'Accept': 'application/json'
                             }
                         });
@@ -259,15 +265,19 @@
                         dismissToast(loadingToast);
 
                         if (response.ok && result.success) {
-                            showToast(`Success! "${articleTitle.substring(0, 30)}..." rewritten.`, 'success', result.redirect_url, 'Review Draft');
-                            
+                            showToast(
+                                `Success! "${articleTitle.substring(0, 30)}..." rewritten.`,
+                                'success', result.redirect_url, 'Review Draft');
+
                             // Visual indication of row completion
                             const row = form.closest('tr');
-                            row.classList.add('bg-green-500/10', 'transition-all', 'duration-500');
-                            button.innerHTML = `<svg class="w-3.5 h-3.5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Rewritten`;
+                            row.classList.add('bg-green-500/10', 'transition-all',
+                                'duration-500');
+                            button.innerHTML =
+                                `<svg class="w-3.5 h-3.5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Rewritten`;
                             button.classList.remove('bg-indigo-600', 'hover:bg-indigo-700');
                             button.classList.add('bg-green-600');
-                            
+
                             // Remove row after delay
                             setTimeout(() => {
                                 row.style.transition = 'all 0.5s ease';
@@ -276,20 +286,23 @@
                                 row.style.padding = '0';
                                 setTimeout(() => {
                                     row.remove();
-                                    if (document.querySelectorAll('tbody tr').length === 0) {
+                                    if (document.querySelectorAll('tbody tr')
+                                        .length === 0) {
                                         window.location.reload();
                                     }
                                 }, 500);
                             }, 3000);
                         } else {
-                            showToast(result.message || 'AI rewrite generation failed. Check connection.', 'error');
+                            showToast(result.message ||
+                                'AI rewrite generation failed. Check connection.', 'error');
                             button.disabled = false;
                             button.innerHTML = originalHtml;
                             button.classList.remove('opacity-75');
                         }
                     } catch (error) {
                         dismissToast(loadingToast);
-                        showToast('Network error: Unable to connect to rewriter service.', 'error');
+                        showToast('Network error: Unable to connect to rewriter service.',
+                            'error');
                         button.disabled = false;
                         button.innerHTML = originalHtml;
                         button.classList.remove('opacity-75');
