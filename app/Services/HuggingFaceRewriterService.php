@@ -171,6 +171,7 @@ PROMPT;
         for ($attempt = 1; $attempt <= $maxRetries; $attempt++) {
             try {
                 $response = Http::timeout(120)
+                    ->withoutVerifying()
                     ->withHeaders([
                         'Authorization' => "Bearer {$this->apiToken}",
                         'Content-Type' => 'application/json',
