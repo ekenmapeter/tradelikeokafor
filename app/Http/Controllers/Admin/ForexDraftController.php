@@ -312,22 +312,28 @@ class ForexDraftController extends Controller
     /**
      * List raw articles (pending) with stats.
      */
-    public function listRawArticles()
+    /**
+    * Delete a raw article permanently.
+    */
+    public function deleteRawArticle(ForexRawArticle $article)
     {
-        $articles = ForexRawArticle::where('status', 'pending')
-            ->orderByDesc('relevance_score')
-            ->orderByDesc('published_at')
-            ->paginate(15);
-
-        $stats = [
-            'total' => ForexRawArticle::count(),
-            'pending' => ForexRawArticle::pending()->count(),
-            'used' => ForexRawArticle::used()->count(),
-            'today' => ForexRawArticle::whereDate('fetched_at', today())->count(),
-        ];
-
-        return view('admin.forex-raw.index', compact('articles', 'stats'));
+        $article->delete();
+        return back()->with('success', "Raw article \"{$article->raw_title}\" has been deleted.");
     }
+
+    /**
+    * Bulk delete selected raw articles.
+    */
+    public function bulkDeleteRawArticles(Request $request)
+    {
+        $request->validate([
+            'article_ids' => 'required|array',
+            'article_ids.*' => 'exists:forex_raw_articles,id',
+        ]);
+        $deleted = ForexRawArticle::whereIn('id', $request->article_ids)->delete();
+        return back()->with('success', "{$deleted} raw articles have been deleted.");
+    }
+
 
     /**
      * Preview a raw article before any rewrite.

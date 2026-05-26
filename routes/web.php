@@ -139,6 +139,10 @@ Route::middleware(['auth', 'moderator'])->prefix('admin')->name('admin.')->group
     Route::get('forex-raw/{article}/preview', [ForexDraftController::class, 'previewRaw'])->name('forex-raw.preview');
     Route::post('forex-raw/{article}/publish', [ForexDraftController::class, 'publishWithoutRewrite'])->name('forex-raw.publish');
     Route::post('forex-raw/{article}/rewrite', [ForexDraftController::class, 'rewriteSingle'])->name('forex-raw.rewrite');
+    // Delete raw article
+    Route::delete('forex-raw/{article}', [ForexDraftController::class, 'deleteRawArticle'])->name('forex-raw.delete');
+    // Bulk delete raw articles
+    Route::post('forex-raw/bulk-delete', [ForexDraftController::class, 'bulkDeleteRawArticles'])->name('forex-raw.bulk-delete');
 });
 
 Route::middleware(['auth'])->group(function () {
