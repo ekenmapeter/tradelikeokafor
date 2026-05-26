@@ -34,10 +34,7 @@ return [
             'name' => 'BabyPips',
             'url' => 'https://www.babypips.com/feed',
         ],
-        [
-            'name' => 'DailyFX',
-            'url' => 'https://www.dailyfx.com/feeds/all',
-        ],
+
     ],
 
     /*
