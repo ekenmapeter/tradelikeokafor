@@ -289,9 +289,11 @@ class ForexDraftController extends Controller
     /**
      * Manually trigger AI generation.
      */
-    public function triggerGenerate(HuggingFaceRewriterService $rewriter)
+    public function triggerGenerate(Request $request, HuggingFaceRewriterService $rewriter)
     {
-        $count = config('forex.posts_per_day', 10);
+        $limit = $request->input('count', config('forex.posts_per_day', 10));
+        $count = max(1, min((int)$limit, 50)); // Ensure bounds between 1 and 50
+
         $articles = ForexRawArticle::topCandidates($count)->get();
 
         if ($articles->isEmpty()) {

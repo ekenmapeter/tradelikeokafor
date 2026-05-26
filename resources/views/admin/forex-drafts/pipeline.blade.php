@@ -78,9 +78,22 @@
                 </div>
             </div>
 
-            <form action="{{ route('admin.forex-drafts.trigger-generate') }}" method="POST">
+            <form action="{{ route('admin.forex-drafts.trigger-generate') }}" method="POST" class="space-y-4">
                 @csrf
-                <button type="submit" class="w-full flex justify-center items-center px-4 py-2 bg-purple-600 text-white rounded-lg text-sm font-medium hover:bg-purple-700 transition shadow-sm" {{ $stats['raw_pending'] === 0 ? 'disabled' : '' }} onclick="return confirm('This will consume API tokens to generate new drafts. Proceed?')">
+                <div class="flex flex-col gap-1.5">
+                    <label for="count" class="text-xs font-semibold text-gray-500 dark:text-gray-400">Limit AI Generations</label>
+                    <div class="relative">
+                        <select name="count" id="count" class="w-full bg-gray-50 dark:bg-gray-700/50 border border-gray-200 dark:border-gray-650 rounded-lg py-2 px-3 text-sm text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-purple-500 transition">
+                            <option value="1">1 Draft</option>
+                            <option value="3">3 Drafts</option>
+                            <option value="5" selected>5 Drafts</option>
+                            <option value="10">10 Drafts</option>
+                            <option value="15">15 Drafts</option>
+                            <option value="20">20 Drafts</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="w-full flex justify-center items-center px-4 py-2.5 bg-purple-600 text-white rounded-lg text-sm font-medium hover:bg-purple-700 transition shadow-sm" {{ $stats['raw_pending'] === 0 ? 'disabled' : '' }} onclick="return confirm('This will consume API tokens to generate the selected number of drafts. Proceed?')">
                     <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
                     Generate AI Drafts Now
                 </button>
