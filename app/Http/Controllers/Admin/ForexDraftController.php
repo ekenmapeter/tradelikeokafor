@@ -7,6 +7,7 @@ use App\Models\ForexBlogDraft;
 use App\Models\ForexRawArticle;
 use App\Models\Post;
 use App\Services\ForexRssFetcherService;
+
 use App\Services\HuggingFaceRewriterService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -163,15 +164,13 @@ class ForexDraftController extends Controller
     /**
      * Regenerate AI content for a draft.
      */
-    public function regenerate(ForexBlogDraft $draft, HuggingFaceRewriterService $rewriter)
+    public function regenerate(ForexBlogDraft $draft, HuggingFaceRewriterService $hf)
     {
-        $result = $rewriter->regenerate($draft);
-
+        $result = $hf->regenerate($draft);
         if ($result) {
             return back()->with('success', 'Draft regenerated with fresh AI content.');
         }
-
-        return back()->with('error', 'Failed to regenerate. Check your HuggingFace API token and try again.');
+        return back()->with('error', 'Failed to regenerate. Check your API tokens and try again.');
     }
 
     /**
@@ -276,20 +275,15 @@ class ForexDraftController extends Controller
     /**
      * Manually trigger RSS fetch.
      */
-    public function triggerFetch(ForexRssFetcherService $fetcher)
+    public function handle(ForexRssFetcherService $fetcher, HuggingFaceRewriterService $hf): int
     {
-        try {
-            $stats = $fetcher->fetchAll();
-            return back()->with('success', "RSS Fetch complete: {$stats['fetched']} new articles, {$stats['duplicates']} duplicates, {$stats['errors']} errors.");
-        } catch (\Exception $e) {
-            return back()->with('error', 'Fetch failed: ' . $e->getMessage());
-        }
+        try { $stats = $fetcher->fetchAll(); return back()->with('success', "RSS Fetch complete: {$stats['fetched']} new articles, {$stats['duplicates']} duplicates, {$stats['errors']} errors."); } catch (\Exception $e) { return back()->with('error', 'Fetch failed: ' . $e->getMessage()); }
     }
 
     /**
      * Manually trigger AI generation.
      */
-    public function triggerGenerate(Request $request, HuggingFaceRewriterService $rewriter)
+    public function triggerGenerate(Request $request, HuggingFaceRewriterService $hf)
     {
         $limit = $request->input('count', config('forex.posts_per_day', 10));
         $count = max(1, min((int)$limit, 50)); // Ensure bounds between 1 and 50
@@ -304,7 +298,7 @@ class ForexDraftController extends Controller
         $failed = 0;
 
         foreach ($articles as $article) {
-            $draft = $rewriter->rewrite($article);
+            $draft = $hf->rewrite($article);
             if ($draft) {
                 $success++;
             } else {
@@ -389,7 +383,7 @@ class ForexDraftController extends Controller
     /**
      * Rewrite a specific raw article using AI.
      */
-    public function rewriteSingle(Request $request, ForexRawArticle $article, HuggingFaceRewriterService $rewriter)
+    public function rewriteSingle(Request $request, ForexRawArticle $article, HuggingFaceRewriterService $hf)
     {
         if ($article->status !== 'pending') {
             if ($request->ajax() || $request->wantsJson()) {
@@ -402,7 +396,7 @@ class ForexDraftController extends Controller
         }
 
         try {
-            $draft = $rewriter->rewrite($article);
+            $draft = $hf->rewrite($article);
 
             if ($draft) {
                 if ($request->ajax() || $request->wantsJson()) {
