@@ -356,13 +356,25 @@ class ForexDraftController extends Controller
             $slug = $originalSlug . '-' . $counter++;
         }
 
-        // Use raw content as post content
-        $content = $article->raw_content;
+        // Parse raw plain text content to beautiful HTML paragraphs and headings
+        $paragraphs = explode("\n", $article->raw_content);
+        $formattedContent = '';
+        foreach ($paragraphs as $para) {
+            $para = trim($para);
+            if (empty($para)) continue;
+
+            // If the line is short and doesn't end with typical punctuation, treat as heading
+            if (strlen($para) < 90 && !str_ends_with($para, '.') && !str_ends_with($para, '?') && !str_ends_with($para, '!')) {
+                $formattedContent .= "<h3>" . e($para) . "</h3>\n";
+            } else {
+                $formattedContent .= "<p>" . e($para) . "</p>\n";
+            }
+        }
 
         $post = Post::create([
             'title' => $article->raw_title,
             'slug' => $slug,
-            'content' => $content,
+            'content' => $formattedContent,
             'short_description' => mb_substr(strip_tags($article->raw_content), 0, 500),
             'is_published' => true,
             'published_at' => now(),
@@ -371,7 +383,7 @@ class ForexDraftController extends Controller
         // Mark raw article as used
         $article->update(['status' => 'used']);
 
-        return back()->with('success', "Raw article \"{$article->raw_title}\" published.");
+        return back()->with('success', "Raw article \"{$article->raw_title}\" published successfully with beautiful formatting.");
     }
 
     /**

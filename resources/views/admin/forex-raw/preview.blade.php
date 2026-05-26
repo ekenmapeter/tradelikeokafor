@@ -49,10 +49,22 @@
             </div>
         </div>
 
-        {{-- Raw Content --}}
-        <div class="p-6 sm:p-8">
-            <div class="prose dark:prose-invert max-w-none text-gray-700 dark:text-gray-300 space-y-4 leading-relaxed whitespace-pre-line">
-                {{ $article->raw_content }}
+        {{-- Raw Content formatted as Blog --}}
+        <div class="p-6 sm:p-8 border-b border-gray-150 dark:border-gray-700 bg-white dark:bg-gray-800">
+            <div class="prose dark:prose-invert max-w-none space-y-4 leading-relaxed">
+                @php
+                    $paragraphs = explode("\n", $article->raw_content);
+                    foreach ($paragraphs as $para) {
+                        $para = trim($para);
+                        if (empty($para)) continue;
+
+                        if (strlen($para) < 90 && !str_ends_with($para, '.') && !str_ends_with($para, '?') && !str_ends_with($para, '!')) {
+                            echo '<h3 class="text-xl font-bold text-gray-900 dark:text-white mt-6 mb-2 tracking-tight">' . e($para) . '</h3>';
+                        } else {
+                            echo '<p class="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed text-base">' . e($para) . '</p>';
+                        }
+                    }
+                @endphp
             </div>
         </div>
 
