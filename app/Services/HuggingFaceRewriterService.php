@@ -164,7 +164,7 @@ PROMPT;
     /**
      * Call the HuggingFace Inference API with retry logic.
      */
-    protected function callApi(string $prompt, string $model, int $maxRetries = 3): ?array
+    protected function callApi(string $prompt, string $model, int $maxRetries = 1): ?array
     {
         $url = "https://api-inference.huggingface.co/models/{$model}";
 

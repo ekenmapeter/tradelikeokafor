@@ -8,6 +8,7 @@ use App\Models\ForexRawArticle;
 use App\Models\Post;
 use App\Services\ForexRssFetcherService;
 
+use App\Services\GroqRewriterService;
 use App\Services\HuggingFaceRewriterService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -164,9 +165,10 @@ class ForexDraftController extends Controller
     /**
      * Regenerate AI content for a draft.
      */
-    public function regenerate(ForexBlogDraft $draft, HuggingFaceRewriterService $hf)
+    public function regenerate(ForexBlogDraft $draft, GroqRewriterService $groq, HuggingFaceRewriterService $hf)
     {
-        $result = $hf->regenerate($draft);
+        // Try Groq first (faster, more reliable locally), fall back to HuggingFace
+        $result = $groq->regenerate($draft) ?? $hf->regenerate($draft);
         if ($result) {
             return back()->with('success', 'Draft regenerated with fresh AI content.');
         }
@@ -384,7 +386,7 @@ public function listRawArticles()
     /**
      * Rewrite a specific raw article using AI.
      */
-    public function rewriteSingle(Request $request, ForexRawArticle $article, HuggingFaceRewriterService $hf)
+    public function rewriteSingle(Request $request, ForexRawArticle $article, GroqRewriterService $groq, HuggingFaceRewriterService $hf)
     {
         if ($article->status !== 'pending') {
             if ($request->ajax() || $request->wantsJson()) {
@@ -397,7 +399,8 @@ public function listRawArticles()
         }
 
         try {
-            $draft = $hf->rewrite($article);
+            // Try Groq first (works locally), fall back to HuggingFace
+            $draft = $groq->rewrite($article) ?? $hf->rewrite($article);
 
             if ($draft) {
                 if ($request->ajax() || $request->wantsJson()) {
@@ -414,10 +417,10 @@ public function listRawArticles()
             if ($request->ajax() || $request->wantsJson()) {
                 return response()->json([
                     'success' => false,
-                    'message' => 'Failed to generate AI rewrite. Please check the rewriter integration.'
+                    'message' => 'Failed to generate AI rewrite. Both Groq and HuggingFace are unavailable.'
                 ], 422);
             }
-            return back()->with('error', 'Failed to generate AI rewrite. Please check the rewriter integration.');
+            return back()->with('error', 'Failed to generate AI rewrite. Both Groq and HuggingFace are unavailable.');
         } catch (\Exception $e) {
             if ($request->ajax() || $request->wantsJson()) {
                 return response()->json([
