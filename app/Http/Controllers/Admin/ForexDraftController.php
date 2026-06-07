@@ -74,6 +74,7 @@ class ForexDraftController extends Controller
             'ai_meta_description' => 'nullable|string|max:255',
             'lead_cta' => 'nullable|string|max:500',
             'ai_tags' => 'nullable|string',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         $tags = [];
@@ -82,14 +83,25 @@ class ForexDraftController extends Controller
             $tags = array_filter($tags);
         }
 
-        $draft->update([
+        $data = [
             'ai_title' => $request->ai_title,
             'ai_content' => $request->ai_content,
             'ai_excerpt' => $request->ai_excerpt,
             'ai_meta_description' => $request->ai_meta_description,
             'lead_cta' => $request->lead_cta,
             'ai_tags' => $tags,
-        ]);
+        ];
+
+        if ($request->hasFile('image')) {
+            // Delete old image
+            if ($draft->image) {
+                \Illuminate\Support\Facades\Storage::disk('public')->delete($draft->image);
+            }
+            $path = $request->file('image')->store('posts', 'public');
+            $data['image'] = $path;
+        }
+
+        $draft->update($data);
 
         return redirect()->route('admin.forex-drafts.show', $draft)
             ->with('success', 'Draft updated successfully.');
@@ -123,6 +135,7 @@ class ForexDraftController extends Controller
         $post = Post::create([
             'title' => $draft->ai_title,
             'slug' => $slug,
+            'image' => $draft->image,
             'content' => $content,
             'short_description' => $draft->ai_excerpt,
             'is_published' => true,
@@ -207,6 +220,7 @@ class ForexDraftController extends Controller
                 $post = Post::create([
                     'title' => $draft->ai_title,
                     'slug' => $slug,
+                    'image' => $draft->image,
                     'content' => $content,
                     'short_description' => $draft->ai_excerpt,
                     'is_published' => true,
@@ -430,6 +444,30 @@ public function listRawArticles()
             }
             return back()->with('error', 'AI rewrite failed: ' . $e->getMessage());
         }
+    }
+
+    /**
+     * Regenerate the draft's featured image using the ImageGeneratorService.
+     */
+    public function regenerateImage(ForexBlogDraft $draft, \App\Services\ImageGeneratorService $imageGenerator)
+    {
+        $tags = $draft->ai_tags ?? [];
+        $title = $draft->ai_title;
+
+        // Delete old image if it exists
+        if ($draft->image) {
+            \Illuminate\Support\Facades\Storage::disk('public')->delete($draft->image);
+        }
+
+        // Generate fresh image
+        $imagePath = $imageGenerator->generateForDraft($tags, $title);
+
+        if ($imagePath) {
+            $draft->update(['image' => $imagePath]);
+            return back()->with('success', 'Featured image regenerated successfully.');
+        }
+
+        return back()->with('error', 'Failed to generate a fresh image.');
     }
 
 }

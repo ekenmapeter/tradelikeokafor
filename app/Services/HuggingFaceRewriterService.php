@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\ForexBlogDraft;
 use App\Models\ForexRawArticle;
+use App\Services\ImageGeneratorService;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 
@@ -13,13 +14,15 @@ class HuggingFaceRewriterService
     protected string $model;
     protected string $fallbackModel;
     protected array $ctaMapping;
+    protected ImageGeneratorService $imageGenerator;
 
-    public function __construct()
+    public function __construct(ImageGeneratorService $imageGenerator)
     {
         $this->apiToken = config('forex.huggingface_api_token');
         $this->model = config('forex.huggingface_model');
         $this->fallbackModel = config('forex.huggingface_fallback_model');
         $this->ctaMapping = config('forex.cta_mapping', []);
+        $this->imageGenerator = $imageGenerator;
     }
 
     /**
@@ -60,6 +63,9 @@ class HuggingFaceRewriterService
             return null;
         }
 
+        // Generate featured image
+        $imagePath = $this->imageGenerator->generateForDraft($parsed['tags'] ?? [], $parsed['title']);
+
         // Create the draft
         $draft = ForexBlogDraft::create([
             'raw_article_id' => $article->id,
@@ -69,6 +75,7 @@ class HuggingFaceRewriterService
             'ai_tags' => $parsed['tags'] ?? [],
             'ai_meta_description' => mb_substr($parsed['meta_description'] ?? '', 0, 255),
             'lead_cta' => $cta,
+            'image' => $imagePath,
             'status' => 'draft',
             'generation_model' => $response['model'],
             'generation_tokens' => $response['tokens'] ?? null,
@@ -107,6 +114,14 @@ class HuggingFaceRewriterService
             return null;
         }
 
+        // Delete old image if it exists
+        if ($draft->image) {
+            \Illuminate\Support\Facades\Storage::disk('public')->delete($draft->image);
+        }
+
+        // Generate fresh image
+        $imagePath = $this->imageGenerator->generateForDraft($parsed['tags'] ?? [], $parsed['title']);
+
         $draft->update([
             'ai_title' => mb_substr($parsed['title'], 0, 255),
             'ai_content' => $parsed['content'],
@@ -114,6 +129,7 @@ class HuggingFaceRewriterService
             'ai_tags' => $parsed['tags'] ?? [],
             'ai_meta_description' => mb_substr($parsed['meta_description'] ?? '', 0, 255),
             'lead_cta' => $cta,
+            'image' => $imagePath,
             'status' => 'draft',
             'generation_model' => $response['model'],
             'generation_tokens' => $response['tokens'] ?? null,

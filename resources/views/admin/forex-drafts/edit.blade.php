@@ -11,7 +11,7 @@
         </div>
     </div>
 
-    <form action="{{ route('admin.forex-drafts.update', $draft) }}" method="POST" class="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-6 space-y-6">
+    <form action="{{ route('admin.forex-drafts.update', $draft) }}" method="POST" enctype="multipart/form-data" class="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-6 space-y-6">
         @csrf
         @method('PUT')
 
@@ -60,6 +60,23 @@
                 <input type="text" name="lead_cta" value="{{ old('lead_cta', $draft->lead_cta) }}"
                        class="w-full rounded-lg border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:ring-green-500 focus:border-green-500">
                 @error('lead_cta') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
+            </div>
+        </div>
+
+        {{-- Featured Image Upload --}}
+        <div class="border-t border-gray-200 dark:border-gray-700 pt-6">
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Featured Image</label>
+            <div class="flex flex-col md:flex-row gap-4 items-start">
+                @if($draft->image)
+                    <div class="w-full md:w-48 h-32 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700 bg-gray-100 dark:bg-gray-950">
+                        <img src="{{ Storage::url($draft->image) }}" alt="Current Image" class="w-full h-full object-cover">
+                    </div>
+                @endif
+                <div class="flex-1">
+                    <input type="file" name="image" class="w-full text-sm text-gray-500 dark:text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-green-50 file:text-green-700 hover:file:bg-green-100 dark:file:bg-green-900/30 dark:file:text-green-400">
+                    <p class="text-xs text-gray-400 mt-2">Recommended resolution: 1024x576 (16:9). Maximum size: 2MB.</p>
+                    @error('image') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
+                </div>
             </div>
         </div>
 

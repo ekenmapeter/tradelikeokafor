@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\ForexBlogDraft;
 use App\Models\ForexRawArticle;
+use App\Services\ImageGeneratorService;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 
@@ -12,12 +13,14 @@ class GroqRewriterService
     protected string $apiKey;
     protected string $model;
     protected array $ctaMapping;
+    protected ImageGeneratorService $imageGenerator;
 
-    public function __construct()
+    public function __construct(ImageGeneratorService $imageGenerator)
     {
         $this->apiKey = config('forex.groq_api_key');
         $this->model = config('forex.groq_model');
         $this->ctaMapping = config('forex.cta_mapping', []);
+        $this->imageGenerator = $imageGenerator;
     }
 
     /**
@@ -40,6 +43,9 @@ class GroqRewriterService
             return null;
         }
 
+        // Generate featured image
+        $imagePath = $this->imageGenerator->generateForDraft($parsed['tags'] ?? [], $parsed['title']);
+
         $draft = ForexBlogDraft::create([
             'raw_article_id' => $article->id,
             'ai_title' => mb_substr($parsed['title'], 0, 255),
@@ -48,6 +54,7 @@ class GroqRewriterService
             'ai_tags' => $parsed['tags'] ?? [],
             'ai_meta_description' => mb_substr($parsed['meta_description'] ?? '', 0, 255),
             'lead_cta' => $cta,
+            'image' => $imagePath,
             'status' => 'draft',
             'generation_model' => $response['model'] ?? $this->model,
             'generation_tokens' => $response['tokens'] ?? null,
@@ -78,6 +85,14 @@ class GroqRewriterService
             Log::error('Groq: Failed to parse regeneration response', ['draft_id' => $draft->id]);
             return null;
         }
+        // Delete old image if it was a generated one to save space
+        if ($draft->image) {
+            \Illuminate\Support\Facades\Storage::disk('public')->delete($draft->image);
+        }
+
+        // Generate a fresh image
+        $imagePath = $this->imageGenerator->generateForDraft($parsed['tags'] ?? [], $parsed['title']);
+
         $draft->update([
             'ai_title' => mb_substr($parsed['title'], 0, 255),
             'ai_content' => $parsed['content'],
@@ -85,6 +100,7 @@ class GroqRewriterService
             'ai_tags' => $parsed['tags'] ?? [],
             'ai_meta_description' => mb_substr($parsed['meta_description'] ?? '', 0, 255),
             'lead_cta' => $cta,
+            'image' => $imagePath,
             'status' => 'draft',
             'generation_model' => $response['model'] ?? $this->model,
             'generation_tokens' => $response['tokens'] ?? null,

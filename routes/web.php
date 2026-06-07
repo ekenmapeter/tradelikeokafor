@@ -129,6 +129,7 @@ Route::middleware(['auth', 'moderator'])->prefix('admin')->name('admin.')->group
     Route::post('forex-drafts/{draft}/approve', [ForexDraftController::class, 'approve'])->name('forex-drafts.approve');
     Route::post('forex-drafts/{draft}/reject', [ForexDraftController::class, 'reject'])->name('forex-drafts.reject');
     Route::post('forex-drafts/{draft}/regenerate', [ForexDraftController::class, 'regenerate'])->name('forex-drafts.regenerate');
+    Route::post('forex-drafts/{draft}/regenerate-image', [ForexDraftController::class, 'regenerateImage'])->name('forex-drafts.regenerate-image');
     Route::post('forex-drafts/bulk-approve', [ForexDraftController::class, 'bulkApprove'])->name('forex-drafts.bulk-approve');
     Route::resource('forex-drafts', ForexDraftController::class)->parameters([
         'forex-drafts' => 'draft'

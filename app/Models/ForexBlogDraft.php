@@ -17,6 +17,7 @@ class ForexBlogDraft extends Model
         'ai_tags',
         'ai_meta_description',
         'lead_cta',
+        'image',
         'status',
         'moderator_id',
         'reviewed_at',

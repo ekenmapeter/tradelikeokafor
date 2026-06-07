@@ -24,6 +24,12 @@ return [
     // Hybrid fallback flag
     'fallback_to_huggingface' => env('FALLBACK_TO_HUGGINGFACE', true),
 
-    // ... rest of the config (unchanged) ...
+    // Image Generation Configuration
+    'image_driver' => env('IMAGE_GENERATOR_DRIVER', 'pexels'),
+    'pexels_api_key' => env('PEXELS_API_KEY', ''),
+    'pixabay_api_key' => env('PIXABAY_API_KEY', ''),
+    'unsplash_api_key' => env('UNSPLASH_API_KEY', ''),
+    'siliconflow_api_key' => env('SILICONFLOW_API_KEY', ''),
+    'getimg_api_key' => env('GETIMG_API_KEY', ''),
 ];
 ?>
