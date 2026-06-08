@@ -291,9 +291,14 @@ class ForexDraftController extends Controller
     /**
      * Manually trigger RSS fetch.
      */
-    public function handle(ForexRssFetcherService $fetcher, HuggingFaceRewriterService $hf): int
+    public function triggerFetch(ForexRssFetcherService $fetcher)
     {
-        try { $stats = $fetcher->fetchAll(); return back()->with('success', "RSS Fetch complete: {$stats['fetched']} new articles, {$stats['duplicates']} duplicates, {$stats['errors']} errors."); } catch (\Exception $e) { return back()->with('error', 'Fetch failed: ' . $e->getMessage()); }
+        try {
+            $stats = $fetcher->fetchAll();
+            return back()->with('success', "RSS Fetch complete: {$stats['fetched']} new articles, {$stats['duplicates']} duplicates, {$stats['errors']} errors.");
+        } catch (\Exception $e) {
+            return back()->with('error', 'Fetch failed: ' . $e->getMessage());
+        }
     }
 
     /**
