@@ -75,10 +75,10 @@
                                     <label for="fee">USD - INTERNATIONAL PAYMENT</label>
                                 </h1>
                                 <h4 style="font-size: 2em;margin-bottom: -8px;">
-                                    <label for="fee">$150</label>
+                                    <label for="fee">$250</label>
                                 </h4>
                                 <label>
-                                    <h6 style="margin-top: -1px; color: #82b68d; font-size: 14px;">₦215,000</h6>
+                                    <h6 style="margin-top: -1px; color: #82b68d; font-size: 14px;">₦360,000</h6>
                                     <hr>
                                 </label>
                                 <h6 style="font-size: 1.2em;margin-bottom: -5px;">

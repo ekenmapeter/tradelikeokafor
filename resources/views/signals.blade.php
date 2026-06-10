@@ -149,8 +149,8 @@
                                 <div class="price-box">
                                     <div class="">
                                         <div class="price-label basic">Life Time Access</div>
-                                        <div class="price">$100</div>
-                                        <div class="price-label basic">₦145,000</div>
+                                        <div class="price">$150</div>
+                                        <div class="price-label basic">₦220,000</div>
                                     </div>
                                     <div class="info">
                                         <ul>

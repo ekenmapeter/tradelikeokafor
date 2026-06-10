@@ -204,8 +204,8 @@
                                 <div class="price-box" style="border: 2px solid #323234!important;">
                                     <div class="">
                                         <div class="price-label basic">General Mentorship</div>
-                                        <div class="price">$150</div>
-                                        <div class="price-label basic">₦215,000</div>
+                                        <div class="price">$250</div>
+                                        <div class="price-label basic">₦360,000</div>
                                     </div>
                                     <div class="info">
                                         <ul>

@@ -244,7 +244,7 @@
                                 alt="Mentorship Base">
                         </div>
                         <div class="card-image-overlay m-auto">
-                            <span class="card-detail-badge">$150</span>
+                            <span class="card-detail-badge">$250</span>
                         </div>
                         <div class="card-body">
                             <span><b>Includes</b><br>
